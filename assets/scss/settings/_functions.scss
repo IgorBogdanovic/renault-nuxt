@@ -1,0 +1,21 @@
+//Calculate percents
+@function calculatePercent($target, $container) {
+	@return ($target / $container) * 100%;
+}
+
+//Calculate letter spacing from Photoshop tracking
+@function calculateTracking($ps-tracking) {
+	$emTracking: $ps-tracking/1000;
+	@return #{$emTracking}em;
+}
+
+//Calculate vw
+@function calculateVw($target, $container) {
+	@return ($target / $container) * 100vw;
+}
+
+//Calculate rem
+@function calculateRem($size) {
+	$remSize: $size / $base-font-size; 
+	@return #{$remSize}rem; 
+}

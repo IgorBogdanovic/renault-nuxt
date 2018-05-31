@@ -1,0 +1,94 @@
+@mixin breakpoint($size) {
+	@if $size == mobile {
+		@media (max-width: 767px) {
+			@content;
+		}
+	}
+	@else if $size == desktop {
+		@media (min-width: 768px) {
+			@content;
+		}
+	}
+	@else if $size == desktopLarge {
+		@media (min-width: 1441px) {
+			@content;
+		}
+	}
+}
+
+//Font size vw
+$site-mobile: 375;
+$site-desktop: 1440;
+@mixin fontSizeVw($mobile-font-size, $desktop-font-size) {
+	font-size: #{$desktop-font-size}px;
+	@include breakpoint(mobile) {
+		font-size: calculateVw($mobile-font-size, $site-mobile);
+	}
+	@include breakpoint(desktop) {
+		font-size: calculateVw($desktop-font-size, $site-desktop);
+	}
+	@include breakpoint(desktopLarge) {
+		font-size: 10px;
+	}
+}
+
+//Line height vw
+@mixin lineHeightVw($mobile-font-size, $desktop-font-size) {
+	line-height: #{$desktop-font-size}px;
+	@include breakpoint(mobile) {
+		line-height: calculateVw($mobile-font-size, $site-mobile);
+	}
+	@include breakpoint(desktop) {
+		line-height: calculateVw($desktop-font-size, $site-desktop);
+	}
+}
+
+//Font size rem 
+@mixin fontSizeRem($mobile-font-size, $desktop-font-size) {
+	@include breakpoint(mobile) {
+		font-size: calculateRem($mobile-font-size);
+	}
+	@include breakpoint(desktop) {
+		font-size: calculateRem($desktop-font-size);
+	}
+}
+
+//Line height rem
+@mixin lineHeightRem($mobile-line-height, $desktop-line-height) {
+	@include breakpoint(mobile) {
+		line-height: calculateRem($mobile-line-height);
+	}
+	@include breakpoint(desktop) {
+		line-height: calculateRem($desktop-line-height);
+	}
+}
+
+//Letter spacing em
+@mixin letterSpacingEm($mobile-letter-spacing, $desktop-letter-spacing) {
+	@include breakpoint(mobile) {
+		letter-spacing: calculateTracking($mobile-letter-spacing);
+	}
+	@include breakpoint(desktop) {
+		letter-spacing: calculateTracking($desktop-letter-spacing);
+	}
+}
+
+//----- Mixin / Absolute position
+//----- Example @include absolute(center);
+@mixin absolute($position) {
+	$per: 50%;
+	position: absolute;
+	@if $position == 'center' {
+		top: #{$per};
+		left: #{$per};
+		transform: translate(-#{$per}, -#{$per});
+	}
+	@else if $position == 'center-vertical' {
+		top: #{$per};
+		transform: translateY(-#{$per});
+	}
+	@else if $position == 'center-horizontal' {
+		left: #{$per};
+		transform: translateX(-#{$per});
+	}
+}
