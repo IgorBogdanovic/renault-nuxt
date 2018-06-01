@@ -26,6 +26,12 @@
 import AppLogo from '~/components/AppLogo.vue'
 
 export default {
+  created() {
+    this.$api.get(this.$api.queries.test_node)
+    .then(res => {
+      console.log(res);
+    });
+  },
   components: {
     AppLogo
   }

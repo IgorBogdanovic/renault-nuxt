@@ -23,6 +23,10 @@ module.exports = {
   /*
   ** Build configuration
   */
+  plugins: [
+    '~/plugins/api.js'
+  ],
+
   modules: [
     '@nuxtjs/pwa',
     '@nuxtjs/axios'
