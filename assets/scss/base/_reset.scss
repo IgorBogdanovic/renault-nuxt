@@ -89,6 +89,10 @@ video {
 html {
   @include fontSizeVw($base-font-size, $base-font-size); // 10px
   line-height: 1;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 }
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
