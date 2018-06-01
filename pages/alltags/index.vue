@@ -6,7 +6,7 @@
           </div>
           <h1 class='page-title'>ALL TAGS</h1>
           <div class="b-all-tags-atlas">
-              <tags-atlas v-for="item in items" :key='item'></tags-atlas>
+              <tags-atlas v-for="(item,index) in items" :key='index' :inicial='item'></tags-atlas>
           </div>
       </div>
   </div>
@@ -18,7 +18,7 @@ import TagsAtlas from '~/components/TagsAtlas.vue'
 export default {
     data(){
         return{
-            items:[1,2,3,4,5],
+            items:['A','B','C','D','E','F','G','H'],
         }
     },
     created() {
