@@ -1,16 +1,16 @@
 <template>
 
-    <article class="o-article-preview">
-        <figure class="o-article-preview__image">
+    <article class="c-article-preview">
+        <figure class="c-article-preview__image">
             <img src="https://dummyimage.com/344x456/c9c9c9/000000.png" alt="">
-            <span class="o-article-preview__tag" v-if="tagged">my business</span>
+            <span class="c-article-preview__tag">my business</span>
         </figure>
 
-        <p class="o-article-preview__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        <p class="c-article-preview__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua.
         </p>
 
-        <p class="o-article-preview__desc" v-if="desc">All work and no play make Jack a dull boy, all work and no play
+        <p class="c-article-preview__desc">All work and no play make Jack a dull boy, all work and no play
             make Jack a dull boy, all work and no play make Jack a dull boy, all work and no play make Jack a dull boy,
             all work and no play make Jack a dull boy, all work and no play make Jack a dull boy, all work and no play
             make Jack a dull boy...
@@ -21,35 +21,31 @@
 
 <script>
 export default {
-    data: function() {
-        return {
-            tagged: true,
-            desc: false
-            // desc: winWidth() < 768 ? false : true
-        };
-    },
-    // computed: {
-    //     winWidth() {
-    //         if (process.browser) {
-    //             if (window.innerWidth > 767) this.desc = true;
-    //         }
-    //         return true;
-    //     }
-    // }
-    // methods: {
-    //     winWidth() {
-    //         if (process.browser) {
-    //             if (window.innerWidth > 767) this.desc = true;
-    //         }
-    //     }
-    // }
+//     data: function() {
+//         return {
+//             tagged: true,
+//             desc: false
+//         };
+//     },
+//     mounted() {
+//         this.winWidth();
+//     },
+//     methods: {
+//         winWidth() {
+//             if (process.browser) {
+//                 if (window.innerWidth > 767) this.desc = true;
+//             }
+//         }
+//     }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '~assets/scss/settings';
 
-.o-article-preview {
+.c-article-preview {
+    width: 20rem;
+
     &__image {
         position: relative;
         margin-bottom: 0.9rem;
@@ -94,6 +90,19 @@ export default {
             font-size: 1.8rem;
             margin-bottom: 1rem;
         }
+    }
+
+    &__desc {
+        display: none;
+        @include breakpoint(desktop) {
+            display: block;
+            font-size: 1.4rem;
+            line-height: 1.5;
+            color: $warm-grey;
+        }
+    }
+
+    &.component--landscape {
     }
 }
 
