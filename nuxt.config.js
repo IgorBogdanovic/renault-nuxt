@@ -36,7 +36,7 @@ module.exports = {
 
   },
   build: {
-     vendor: ['axios'],
+    vendor: ['axios'],
     /*
     ** Run ESLint on save
     */
