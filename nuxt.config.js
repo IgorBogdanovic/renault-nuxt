@@ -33,9 +33,10 @@ module.exports = {
   ],
 
   axios: {
-    baseURL: 'http://test-cms.diwanee.net/graphql/'
+
   },
   build: {
+     vendor: ['axios'],
     /*
     ** Run ESLint on save
     */
