@@ -1,12 +1,17 @@
+//import roots and  query strings from external js file
 import { GQL, Queries } from './queries';
 
 const apiFactory = axios => ({
+    //define requests to use then in components
     get(query) {
         return axios.get( GQL + query )
             .catch((error) => {
                 console.log(error);
             });
     },
+
+    //global queries object ( strings )
+    //access with $this.$api.queries.queryPropName Or  within asyncData context.app.$api.queries.queryPropName
     queries: Queries
 });
 
