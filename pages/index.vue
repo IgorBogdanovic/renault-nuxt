@@ -13,7 +13,7 @@
           <br>
           <button class="c-btn"><a href="wekios/t&c" target="_blank">Terms & Conditions</a></button>
           <br>
-          <button class="c-btn"><a href="alltags" target="_blank">All Tags</a></button>
+          <button class="c-btn"><a href="all-tags" target="_blank">All Tags</a></button>
           <br>
       </div>
     </div>
