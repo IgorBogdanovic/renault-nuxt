@@ -1,0 +1,55 @@
+.page {
+    color: $white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .container {
+    width: 33.6rem;
+    margin: 0 auto;
+    @include breakpoint(desktop) {
+      width: 109.6rem;
+    }
+  }
+  
+  ///////////////////
+  // Unique Style //
+  /////////////////
+  
+  .p-static {
+    margin-top: 5rem;
+    color: $black;
+    text-transform: uppercase;
+  }
+  
+  .page-title {
+    @include fontSizeRem(38.67, 44.3);
+    font-family: "Lato-Black";
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+  
+  .static-page__paragraph {
+  
+    &-title {
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      font-family: "Lato-Bold";
+      margin-bottom: 2.2rem;
+    }
+  
+    &-text {
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+      line-height: 1.5;
+      text-transform: none;
+      color: $dark-grey;
+      margin-bottom: 4.2rem;
+      @include breakpoint(desktop) {
+          margin-bottom: 2.6rem;
+      }
+    }
+  
+  }

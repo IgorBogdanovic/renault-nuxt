@@ -1,0 +1,23 @@
+.c-btn {
+    cursor: pointer;
+    font-family: 'Lato-Bold';
+    background-color: $white;
+    display: inline-block;
+    display: block;
+    margin: 0 auto;
+    text-transform: uppercase;
+    box-shadow: 0 0.3rem 0.6rem 0 rgba(0, 0, 0, 0.16);
+    padding: 2.86% 8.9%;
+    @include fontSizeRem(8,12);
+
+    @include breakpoint(desktop) {
+        padding: 1.1% 4.2%;
+    }
+
+
+    &:hover, &:active {
+        background-color: $black;
+        color: $white;
+    }
+
+}

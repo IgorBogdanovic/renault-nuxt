@@ -1,10 +1,12 @@
 <template>
-  <div class="page"> 
-      <app-footer/>
+  <div class="page">
+    <app-header/>
+    <app-footer/>
   </div>
 </template>
 
 <script>
+import AppHeader from "~/components/Header.vue";
 import AppFooter from "~/components/Footer.vue";
 
 export default {
@@ -14,21 +16,19 @@ export default {
     });
   },
   components: {
+    AppHeader,
     AppFooter
   }
 };
-
 </script>
 
 <style lang="scss" scoped>
-
-@import '~assets/scss/settings';
+@import "~assets/scss/settings";
 .page {
   color: $white;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
-
 </style>

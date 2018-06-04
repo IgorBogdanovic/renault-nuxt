@@ -1,8 +1,8 @@
 <template>
-<footer class="footer">
-   <img src="~static/logo-footer.png" alt="logo" class="footer__img">
+<footer class="b-footer">
+   <img src="~static/logo-footer.png" alt="logo" class="b-footer__img">
    <ul>
-       <li v-for="(link, index) in links" :key="index" class="footer__link text--center text--bolder"> 
+       <li v-for="(link, index) in links" :key="index" class="b-footer__link text--center text--bolder"> 
            <a :href="link.url" target="_blank"> {{ ++index }}: {{ link.title }} </a>
        </li>
    </ul>
@@ -52,27 +52,20 @@ export default {
   text-align: center;
 }
 
-.text--bolder {
-  font-family: 'Lato-Bold';
-}
-
 // Kraj globalnih klasa. //
 
-////////////////////////////////
-///////  Ko Rano Rani   ///////
-/////// Dve Srece Grabi //////
-/////// Novine I 500 Eura ///
-////// Maznuh Nekoj Babi ///
 ///////////////////////////
+/// Individual classes ///
+/////////////////////////
 
-.footer {
+.b-footer {
 
   @include breakpoint(desktop) {
 
   }
 
   &__img {
-    margin: 3rem auto;
+    margin: 0 auto;
     width: 12.5rem;
     height: 5.1rem;
     object-fit: contain;
