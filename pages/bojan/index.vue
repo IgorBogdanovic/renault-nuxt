@@ -2,18 +2,18 @@
     <div class="main-wrapper">
         <div class="inner-wrapper">
 
-            <article-preview></article-preview>
+            <list-test></list-test>
 
         </div>
     </div>
 </template>
 
 <script>
-import ArticlePreview from '~/components/ArticlePreview.vue'
+import ListTest from '~/components/ListTest.vue'
 
 export default {
     components: {
-        ArticlePreview
+        ListTest
     }
 }
 </script>

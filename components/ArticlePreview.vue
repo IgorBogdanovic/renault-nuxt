@@ -2,25 +2,20 @@
 
     <article class="c-article-preview">
         <figure class="c-article-preview__image">
-            <img src="https://dummyimage.com/344x456/c9c9c9/000000.png" alt="">
-            <span class="c-article-preview__tag">my business</span>
+            <img :src="prev.image" :alt="prev.imageAlt">
+            <span class="c-article-preview__tag">{{ prev.tag }}</span>
         </figure>
 
-        <p class="c-article-preview__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        <div class="c-article-preview__title">{{ prev.title }}</div>
 
-        <p class="c-article-preview__desc">All work and no play make Jack a dull boy, all work and no play
-            make Jack a dull boy, all work and no play make Jack a dull boy, all work and no play make Jack a dull boy,
-            all work and no play make Jack a dull boy, all work and no play make Jack a dull boy, all work and no play
-            make Jack a dull boy...
-        </p>
+        <div class="c-article-preview__desc">{{ prev.desc }}</div>
     </article>
 
 </template>
 
 <script>
 export default {
+    props: ['prev']
 //     data: function() {
 //         return {
 //             tagged: true,
