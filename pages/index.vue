@@ -9,14 +9,12 @@
         Renault Nuxt.js-CMS project
       </h2>
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
+        <button class="c-btn"><a href="wekios/cgu" target="_blank">Cgu</a></button>
+          <br>
+          <button class="c-btn"><a href="wekios/t&c" target="_blank">Terms & Conditions</a></button>
+          <br>
+          <button class="c-btn"><a href="alltags" target="_blank">All Tags</a></button>
+          <br>
       </div>
     </div>
   </section>
