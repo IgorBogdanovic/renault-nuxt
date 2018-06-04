@@ -1,7 +1,16 @@
 <template>
-	<div class="c-login__wrapper" v-if=visible>
+	<div class="c-login__wrapper" v-if="visible">
 		<div class="c-login">
-			<div class="c-login__close" @click="closeLogin"><img src="~/static/images/close.png" alt=""></div>
+			<div class="c-login__close" @click="closeLogin">
+				<div v-if="mobile">
+					<img src="~/static/images/close-white.png" alt="">
+				</div>
+				<div v-else >
+					<img src="~/static/images/close-gray.png" alt="">
+				</div>
+				
+				
+			</div>
 			<div class="c-login--left" :style="{ 'background': 'url('+background+') ' }">
 				<h2 class="c-login__title">
 					Sign Up
@@ -37,6 +46,7 @@
 		data(){
 			return{
 				visible: true,
+				mobile: false,
 				background: require(`@/static/images/login-back.png`),
 				signupText: '<p>Drive my Business is much better when you have an account.</p><p><em>Get yourself one.</em></p>',
 				termsText: 'By singing up I agree with <span>terms and conditions.</span>'
@@ -45,7 +55,19 @@
 		methods:{
 			closeLogin(){
 				this.visible = false
+			},
+			isMobile(){
+				if (process.browser) {
+					if(window.innerWidth < 768){
+						this.mobile = true;
+					}
+				}
 			}			
+		},
+		created() {
+		    this.isMobile();
+		},
+		computed:{
 		}
 	}
 </script>
@@ -84,8 +106,8 @@
 		&--left{
 			color: #ffffff;
 			padding: 1rem 3.3rem 1.4rem 3.3rem;
-			background-size: cover;
-			background-position: center;
+			background-size: cover !important;
+			background-position: center !important;
 			position: relative;
 			&:before{
 				position: absolute;
