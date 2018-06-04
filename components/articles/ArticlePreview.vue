@@ -1,15 +1,15 @@
 <template>
 
-    <article class="c-article-preview">
+    <nuxt-link tag='article' to='/' class="c-article-preview">
         <figure class="c-article-preview__image">
             <img :src="prev.image" :alt="prev.imageAlt">
-            <span class="c-article-preview__tag">{{ prev.tag }}</span>
+            <span v-if="prev.tagged" class="c-article-preview__tag">{{ prev.tag }}</span>
         </figure>
-
-        <div class="c-article-preview__title">{{ prev.title }}</div>
-
-        <div class="c-article-preview__desc">{{ prev.desc }}</div>
-    </article>
+        <div class="c-article-preview__content">
+            <h4 v-if="prev.title" class="c-article-preview__title">{{ prev.title }}</h4>
+            <p v-if="prev.desc" class="c-article-preview__desc">{{ prev.desc }}</p>
+        </div>
+    </nuxt-link>
 
 </template>
 
@@ -39,7 +39,6 @@ export default {
 @import '~assets/scss/settings';
 
 .c-article-preview {
-    width: 20rem;
 
     &__image {
         position: relative;
@@ -84,6 +83,7 @@ export default {
         @include breakpoint(desktop) {
             font-size: 1.8rem;
             margin-bottom: 1rem;
+            line-height: 1.28;
         }
     }
 
@@ -94,11 +94,32 @@ export default {
             font-size: 1.4rem;
             line-height: 1.5;
             color: $warm-grey;
+            padding-top: .5rem;
+        }
+    }
+}
+
+.c-article-preview.component--landscape{
+    display: flex;
+    flex-flow: row nowrap;
+
+    @include breakpoint(desktop) {
+
+    }
+
+    .c-article-preview {
+        &__image {
+            width:50%
+        }
+        &__content {
+            width: 50%;
         }
     }
 
-    &.component--landscape {
+    &--reverse{
+        flex-flow: row-reverse nowrap;
     }
+
 }
 
 </style>
