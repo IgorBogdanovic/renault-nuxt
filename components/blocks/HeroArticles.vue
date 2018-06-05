@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="b-articles-list-hero ">
+  <section class="b-articles-list-hero ">
       <div class="c-hero-article-wrapper">
           <div class="c-hero-article-wrapper__inner">
               <HeroArticlePreview/>
@@ -8,7 +8,7 @@
       <div class="b-articles-list-hero__after-hero">
           <ArticlePreview v-for='(item, index) in previews' :key="index" :prev="item" />
       </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -57,10 +57,12 @@ export default {
 <style scoped lang='scss'>
 @import '~assets/scss/settings';
     .b-articles-list-hero{
+        padding-top:4.4rem;
         @include breakpoint(desktop){
             width: 100%;
             margin: 0 auto;
             max-width: 1440px;
+            padding-top:8.8rem;
         }
 
         &__after-hero{

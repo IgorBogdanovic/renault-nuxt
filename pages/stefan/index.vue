@@ -2,12 +2,14 @@
   <div class="main-wrapper">
      <div class="inner-wrapper">
          <NewsOfTheWeek/>
+         <HeroArticles/>
      </div>
   </div>
 </template>
 
 <script>
 import NewsOfTheWeek from '~/components/blocks/NewsOfTheWeek.vue'
+import HeroArticles  from '~/components/blocks/HeroArticles.vue'
 
 export default {
     data() {
@@ -42,7 +44,8 @@ export default {
     },
 
     components:{
-        NewsOfTheWeek
+        NewsOfTheWeek,
+        HeroArticles
     }
 }
 </script>
