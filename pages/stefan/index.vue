@@ -1,19 +1,13 @@
 <template lang="html">
-  <div class="b-articles-list-hero ">
-      <div class="c-hero-article-wrapper">
-          <div class="c-hero-article-wrapper__inner">
-              <HeroArticlePreview/>
-          </div>
-      </div>
-      <div class="b-articles-list-hero__after-hero">
-          <ArticlePreview v-for='(item, index) in previews' :key="index" :prev="item" />
-      </div>
+  <div class="main-wrapper">
+     <div class="inner-wrapper">
+         <NewsOfTheWeek/>
+     </div>
   </div>
 </template>
 
 <script>
-import HeroArticlePreview from '~/components/articles/HeroArticlePreview.vue'
-import ArticlePreview from '~/components/articles/ArticlePreview.vue'
+import NewsOfTheWeek from '~/components/blocks/NewsOfTheWeek.vue'
 
 export default {
     data() {
@@ -48,8 +42,7 @@ export default {
     },
 
     components:{
-        HeroArticlePreview,
-        ArticlePreview
+        NewsOfTheWeek
     }
 }
 </script>

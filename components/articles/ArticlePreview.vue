@@ -109,10 +109,10 @@ export default {
 
     .c-article-preview {
         &__image {
-            width:50%
+            width:60%
         }
         &__content {
-            width: 50%;
+            width: 40%;
         }
     }
 
@@ -120,6 +120,36 @@ export default {
         flex-flow: row-reverse nowrap;
     }
 
+}
+
+.b-news-otw{
+    .c-article-preview.component--landscape{
+        display: flex;
+        flex-flow: row nowrap;
+        padding-top:1.7rem;
+        @include breakpoint(desktop) {
+            padding-top:9.7rem;
+        }
+
+        .c-article-preview {
+            &__image {
+                width:59.5%;
+                margin-bottom: 0;
+                @include breakpoint(desktop) {
+                    width:55.2%;
+                }
+            }
+            &__content {
+                width: 38.8%;
+                padding: 0 3%;
+                @include breakpoint(desktop) {
+                    padding: 0;
+                    padding-left: 6%;
+                    width: 42.5%;
+                }
+            }
+        }
+    }
 }
 
 </style>
