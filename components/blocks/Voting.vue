@@ -10,7 +10,7 @@
                 <span v-for='(star, i) in marks' :key='i' :class='`star${++i}`'>{{'★'}}</span>
             </div>
         </div>
-        <div class="c-car c-car--unvoted" id='2' @click='rateMe' @mouseover="hoverParent" >
+        <div class="c-car c-car--unvoted" id='2' @click='rateMe' @mouseover="hoverParent" @mouseleave='leaveParent' >
             <div class="c-car__image">
                 <img src="https://dummyimage.com/208x208/000/fff.jpg&text=Reno+Capture" alt="">
             </div>
@@ -18,7 +18,7 @@
                 <span v-for='(star, i) in marks' :key='i' :class='`star${++i}`'>{{'★'}}</span>
             </div>
         </div>
-        <div class="c-car c-car--unvoted" id='3' @mouseover="hoverParent">
+        <div class="c-car c-car--unvoted" id='3' @mouseover="hoverParent" @mouseleave='leaveParent'>
             <div class="c-car__image">
                 <img src="https://dummyimage.com/208x208/000/fff.jpg&text=Reno+Clio" alt="">
             </div>
@@ -46,17 +46,24 @@ export default {
             console.log(event.target);
         },
         hoverParent(event){
-            //console.log(event.target);
-            console.log( event.target.closest(".c-car") );
+
             var parent = event.target.closest(".c-car").querySelector('.c-voting-stars');
-            console.log(parent.childNodes);
-            parent.childNodes[1].style.color = 'blue'
+            parent.childNodes.forEach((item,index)=>{
+                if(index<2){
+                    item.style.color = 'blue';
+                }
+            })
+            //parent.childNodes[1].style.color = 'blue';
 
         },
 
         leaveParent(event){
             var parent = event.target.closest(".c-car").querySelector('.c-voting-stars');
-            parent.childNodes[1].style.color = 'silver'
+            parent.childNodes.forEach((item,index)=>{
+                if(index<2){
+                    item.style.color = 'silver';
+                }
+            })
         }
     }
 }
