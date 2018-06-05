@@ -99,13 +99,14 @@
     @import '~assets/scss/settings';
 
     .c-pagination {
-
         @include breakpoint(desktop) {
             width: 23.3%;
             margin: 0 auto;
         }
 
         & ul {
+            display: flex;
+            justify-content: space-between;
 
             & li {
                 display: inline-block;
@@ -137,7 +138,7 @@
         &__last {
             & svg {
                 .cls-1 {
-                    fill:#f6f6f6
+                    fill: $white-two;
                 }
             }
         }
