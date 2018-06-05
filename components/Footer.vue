@@ -16,7 +16,7 @@ export default {
     return {
       links: [
         {
-          url: "http://www.google.com",
+          url: "localhost:3000",
           title: "modern slavery act statement"
           },{
           url: "http://www.renault.com",

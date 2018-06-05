@@ -12,7 +12,7 @@
                 <img src="~static/images/404-van.png" alt="van" class="c-404__van">
             </div>
 
-            <button href="index.html" class="c-btn"><a href="http://localhost:3000/">back to homepage</a></button>
+            <button href="localhost:3000" class="c-btn c-btn--404"><a href="http://localhost:3000/">back to homepage</a></button>
 
         </div>
 
@@ -44,27 +44,24 @@ export default {
 @import "~assets/scss/settings";
 
 .p-404 {
-    margin-top: 13rem;
-    @include breakpoint(desktop) {
-        margin-top: 8rem;
-    }
-
-    .c-btn {
-        margin-bottom: 5rem;
-    }
-
+  margin-top: 6rem;
+  margin-bottom: 7.6rem;
+  @include breakpoint(desktop) {
+    margin-top: 8rem;
+    margin-bottom: 14.4rem;
+  }
 }
 
 .c-404 {
+  position: relative;
+  text-align: center;
+  margin-bottom: 5rem;
+  @include breakpoint(desktop) {
+    margin-bottom: 8rem;
+  }
 
-    position: relative;
-    text-align: center;
-    margin-bottom: 7.6rem;
-    @include breakpoint(desktop) {
-    }
-
-    &__heading {
-    @include fontSizeRem(23.4,68);
+  &__heading {
+    @include fontSizeRem(23.4, 68);
     letter-spacing: -0.025em;
     color: $sun-yellow;
     position: absolute;
@@ -72,18 +69,19 @@ export default {
     top: -1.4rem;
     left: 1.5rem;
     @include breakpoint(desktop) {
-        top: -3.7rem;
-        left: 8rem;
+      top: -3.7rem;
+      left: 8rem;
     }
 
-        span {
-            @include fontSizeRem(45.9,132.1);
-            vertical-align: text-top;
-        }
+    span {
+      @include fontSizeRem(45.9, 132.1);
+      vertical-align: text-top;
     }
-
-
+  }
 }
 
-
+.c-btn--404 {
+  font-size: 1.2rem;
+  line-height: 3;
+}
 </style>
