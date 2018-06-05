@@ -2,7 +2,7 @@
   <section class="b-vote">
     <h2>Vote for Your cars</h2>
     <div class="b-vote__cars_list">
-        <div class="c-car c-car--unvoted" id='1' @mouseover="hoverParent">
+        <div class="c-car c-car--unvoted" id='1' @mouseover="hoverParent" @mouseleave='leaveParent'>
             <div class="c-car__image">
                 <img src="https://dummyimage.com/208x208/000/fff.jpg&text=Reno+Laguna" alt="">
             </div>
@@ -53,9 +53,10 @@ export default {
             parent.childNodes[1].style.color = 'blue'
 
         },
-        hoverChildren(event){
-            event.stopPropagation();
-            console.log('child');
+
+        leaveParent(event){
+            var parent = event.target.closest(".c-car").querySelector('.c-voting-stars');
+            parent.childNodes[1].style.color = 'silver'
         }
     }
 }
@@ -80,6 +81,7 @@ export default {
             }
         }
         & span{
+            transition:all 0.3s ease;
             padding-top: 2rem;
             font-size:3.5rem;
             //color:$sun-yellow;
