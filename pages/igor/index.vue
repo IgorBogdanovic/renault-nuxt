@@ -1,18 +1,20 @@
 <template>
-  <div class="full-width-wrapper">
-    <app-header></app-header>
+  <div>
+    <div class="full-width-wrapper">
+      <app-header></app-header>
+    </div>
+    <section class="temp"></section>
   </div>
 </template>
 
 <script>
-import Header from '~/components/Header.vue'
-
 export default {
-  components: {
-    AppHeader: Header
-  }
 }
 </script>
 
 <style>
+.temp {
+  height: 300vh;
+  background-color: beige;
+}
 </style>

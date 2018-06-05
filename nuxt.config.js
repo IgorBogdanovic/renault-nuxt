@@ -24,7 +24,8 @@ module.exports = {
   ** Build configuration
   */
   plugins: [
-    '~/plugins/api.js'
+    '~/plugins/api.js',
+    '~/plugins/core-components.js'
   ],
 
   modules: [
@@ -37,6 +38,11 @@ module.exports = {
   },
   build: {
     vendor: ['axios'],
+    postcss: [
+      require('autoprefixer')({
+        browsers: ['> 5%']
+      })
+    ],
     /*
     ** Run ESLint on save
     */
