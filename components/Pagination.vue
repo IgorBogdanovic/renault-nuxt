@@ -5,12 +5,21 @@
                 <!-- show if active page is more than 1. -->
                 <li :class="{ 'is-hidden' : isHidden }">
                     <a href="" class="c-pagination__first">
-                        <svg viewBox="0 0 491.858 491.858">
-                            <g>
-                                <path d="M222.97,114.836c7.426,0,13.445,6.02,13.445,13.445v235.295c0,7.425-6.019,13.445-13.445,13.445L4.482,256.011
-                                    c0,0-10.084-10.084,0-20.166C14.565,225.76,222.97,114.836,222.97,114.836z"/>
-                                <path d="M478.411,114.835c7.426,0,13.447,6.02,13.447,13.447v235.294c0,7.426-6.02,13.447-13.447,13.447l-218.487-121.01
-                                    c0,0-10.084-10.084,0-20.167C270.008,225.76,478.411,114.835,478.411,114.835z"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31">
+                            <g id="two-arrows" transform="translate(-792 -3036)">
+                                <g id="Group_67" data-name="Group 67" transform="translate(-38)">
+                                    <circle id="circle" cx="15.5" cy="15.5" r="15.5" class="cls-1" transform="rotate(180 430.5 1533.5)"/>
+                                    <g id="left-arrow" transform="rotate(180 422.366 1544.651)">
+                                        <g id="Group_9" data-name="Group 9" transform="translate(0 32.038)">
+                                            <path id="Path_15" d="M11.487 34.97H5.379v-2.688a.245.245 0 0 0-.417-.173L.071 37a.245.245 0 0 0 0 .346l4.89 4.888a.244.244 0 0 0 .173.071.241.241 0 0 0 .093-.019.245.245 0 0 0 .151-.226v-2.69h6.108a.244.244 0 0 0 .244-.244v-3.912a.244.244 0 0 0-.243-.244z" data-name="Path 15" transform="translate(0 -32.038)"/>
+                                        </g>
+                                    </g>
+                                    <g id="left-arrow-2" data-name="left-arrow" transform="rotate(180 429.366 1544.651)">
+                                        <g id="Group_9-2" data-name="Group 9" transform="translate(0 32.038)">
+                                            <path id="Path_15-2" d="M11.487 34.97H5.379v-2.688a.245.245 0 0 0-.417-.173L.071 37a.245.245 0 0 0 0 .346l4.89 4.888a.244.244 0 0 0 .173.071.241.241 0 0 0 .093-.019.245.245 0 0 0 .151-.226v-2.69h6.108a.244.244 0 0 0 .244-.244v-3.912a.244.244 0 0 0-.243-.244z" data-name="Path 15" transform="translate(0 -32.038)"/>
+                                        </g>
+                                    </g>
+                                </g>
                             </g>
                         </svg>
                     </a>
@@ -18,29 +27,31 @@
                 <!-- show if active page is more than 1. -->
                 <li :class="{ 'is-hidden' : isHidden }">
                     <a href="" class="c-pagination__previous">
-                        <svg width="44.307px" height="44.306px" viewBox="0 0 443.307 443.306">
-                            <g>
-                                <path d="M415.934,212.799L36.788,2.097C32.411-0.377,28.65-0.661,25.51,1.242c-3.14,1.902-4.708,5.328-4.708,10.276V431.78
-                                    c0,4.952,1.569,8.381,4.708,10.284c3.14,1.902,6.901,1.622,11.278-0.855l379.146-210.703c4.381-2.478,6.571-5.434,6.571-8.856
-                                    C422.505,218.224,420.314,215.274,415.934,212.799z"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31">
+                            <g id="arrow" transform="translate(-753 -3036)">
+                                <circle id="circle" cx="15.5" cy="15.5" r="15.5" class="cls-1" transform="rotate(180 392 1533.5)"/>
+                                <g id="Group_9" data-name="Group 9" transform="rotate(180 387.5 1528.632)">
+                                    <path id="Path_15" d="M11.487 34.97H5.379v-2.688a.245.245 0 0 0-.417-.173L.071 37a.245.245 0 0 0 0 .346l4.89 4.888a.244.244 0 0 0 .173.071.241.241 0 0 0 .093-.019.245.245 0 0 0 .151-.226v-2.69h6.108a.244.244 0 0 0 .244-.244v-3.912a.244.244 0 0 0-.243-.244z" data-name="Path 15" transform="translate(0 -32.038)"/>
+                                </g>
                             </g>
                         </svg>
                     </a>
                 </li>
-                <!-- list of all pages, for mobile max 3, for desktop max 9 -->
-                <!-- for mobile, if first and previous buttons are visible, show only one number -->
+                <!-- list of all pages, max 6 -->
+                <!-- if all four buttons are visible, show only four numbers -->
                 <!-- page currently active has 'is-active-page' class -->
                 <li v-for="(number, index) in numbers" :key="index">
-                    <a href="" class="c-pagination__link" :class="{ 'is-active-page': isActivePage}">{{ number }}</a>
+                    <a href="" :class="{ 'is-active-page': isActivePage}">{{ number }}</a>
                 </li>
                 <!-- hide if active page is the last one -->
                 <li>
                     <a href="" class="c-pagination__next">
-                        <svg width="44.307px" height="44.306px" viewBox="0 0 443.307 443.306">
-                            <g>
-                                <path d="M415.934,212.799L36.788,2.097C32.411-0.377,28.65-0.661,25.51,1.242c-3.14,1.902-4.708,5.328-4.708,10.276V431.78
-                                    c0,4.952,1.569,8.381,4.708,10.284c3.14,1.902,6.901,1.622,11.278-0.855l379.146-210.703c4.381-2.478,6.571-5.434,6.571-8.856
-                                    C422.505,218.224,420.314,215.274,415.934,212.799z"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31">
+                            <g id="arrow" transform="translate(-753 -3036)">
+                                <circle id="circle" cx="15.5" cy="15.5" r="15.5" class="cls-1" transform="rotate(180 392 1533.5)"/>
+                                <g id="Group_9" data-name="Group 9" transform="rotate(180 387.5 1528.632)">
+                                    <path id="Path_15" d="M11.487 34.97H5.379v-2.688a.245.245 0 0 0-.417-.173L.071 37a.245.245 0 0 0 0 .346l4.89 4.888a.244.244 0 0 0 .173.071.241.241 0 0 0 .093-.019.245.245 0 0 0 .151-.226v-2.69h6.108a.244.244 0 0 0 .244-.244v-3.912a.244.244 0 0 0-.243-.244z" data-name="Path 15" transform="translate(0 -32.038)"/>
+                                </g>
                             </g>
                         </svg>
                     </a>
@@ -48,24 +59,27 @@
                 <!-- hide if active page is the last one -->
                 <li>
                     <a href="" class="c-pagination__last">
-                        <svg viewBox="0 0 491.858 491.858">
-                            <g>
-                                <path d="M222.97,114.836c7.426,0,13.445,6.02,13.445,13.445v235.295c0,7.425-6.019,13.445-13.445,13.445L4.482,256.011
-                                    c0,0-10.084-10.084,0-20.166C14.565,225.76,222.97,114.836,222.97,114.836z"/>
-                                <path d="M478.411,114.835c7.426,0,13.447,6.02,13.447,13.447v235.294c0,7.426-6.02,13.447-13.447,13.447l-218.487-121.01
-                                    c0,0-10.084-10.084,0-20.167C270.008,225.76,478.411,114.835,478.411,114.835z"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31">
+                            <g id="two-arrows" transform="translate(-792 -3036)">
+                                <g id="Group_67" data-name="Group 67" transform="translate(-38)">
+                                    <circle id="circle" cx="15.5" cy="15.5" r="15.5" class="cls-1" transform="rotate(180 430.5 1533.5)"/>
+                                    <g id="left-arrow" transform="rotate(180 422.366 1544.651)">
+                                        <g id="Group_9" data-name="Group 9" transform="translate(0 32.038)">
+                                            <path id="Path_15" d="M11.487 34.97H5.379v-2.688a.245.245 0 0 0-.417-.173L.071 37a.245.245 0 0 0 0 .346l4.89 4.888a.244.244 0 0 0 .173.071.241.241 0 0 0 .093-.019.245.245 0 0 0 .151-.226v-2.69h6.108a.244.244 0 0 0 .244-.244v-3.912a.244.244 0 0 0-.243-.244z" data-name="Path 15" transform="translate(0 -32.038)"/>
+                                        </g>
+                                    </g>
+                                    <g id="left-arrow-2" data-name="left-arrow" transform="rotate(180 429.366 1544.651)">
+                                        <g id="Group_9-2" data-name="Group 9" transform="translate(0 32.038)">
+                                            <path id="Path_15-2" d="M11.487 34.97H5.379v-2.688a.245.245 0 0 0-.417-.173L.071 37a.245.245 0 0 0 0 .346l4.89 4.888a.244.244 0 0 0 .173.071.241.241 0 0 0 .093-.019.245.245 0 0 0 .151-.226v-2.69h6.108a.244.244 0 0 0 .244-.244v-3.912a.244.244 0 0 0-.243-.244z" data-name="Path 15" transform="translate(0 -32.038)"/>
+                                        </g>
+                                    </g>
+                                </g>
                             </g>
                         </svg>
                     </a>
                 </li>
             </ul>
-            <ul>
-                <li v-for="(highNumber, index) in highNumbers" :key="index">
-                    <a href="">{{ highNumber }}</a>
-                </li> 
-            </ul>
         </div>
-        
     </div>
 </template>
 
@@ -75,8 +89,7 @@
             return {
                 isHidden: true,
                 isActivePage: false,
-                numbers: [1, 2, 3],
-                highNumbers: [20, 30, 40, 50]
+                numbers: [1, 2, 3, 4, 5, 6]
             }
         }
     }
@@ -86,15 +99,13 @@
     @import '~assets/scss/settings';
 
     .c-pagination {
-        margin-left: 0.9rem;
 
         @include breakpoint(desktop) {
-            width: 53.2%;
-            margin: 20rem auto;
+            width: 23.3%;
+            margin: 0 auto;
         }
 
         & ul {
-            position: relative;
 
             & li {
                 display: inline-block;
@@ -102,18 +113,12 @@
                 & a {
                     display: block;
                     color: $black;
-                    @include fontSizeRem(19, 17); //check with design
-                    width: 4.48rem;
-                    height: 4.48rem;
-                    line-height: 4.48rem;
+                    @include fontSizeRem(16, 16);
+                    width: 3.1rem;
+                    height: 3.1rem;
+                    line-height: 3.1rem;
                     text-align: center;
                     border-radius: 50%;
-
-                    @include breakpoint(desktop) {
-                        width: 4.34rem;
-                        height: 4.34rem;
-                        line-height: 4.34rem;
-                    }
 
                     &.is-active-page {
                         background: $white-two;
@@ -122,96 +127,29 @@
 
                 &.is-hidden {
                     display: none;
-
-                    @include breakpoint(desktop) {
-                        display: inline-block;
-                        visibility: hidden;
-                    }
-                }
-            }
-
-            & + ul {
-                display: flex;
-                justify-content: space-around;
-                padding: 3.2rem 1.3rem 0 1.7rem;
-
-                @include breakpoint(desktop) {
-                    padding: 0rem 17.5rem;
                 }
             }
         } 
-
-        &__link {
-            margin-right: 1.8rem;
-
-            @include breakpoint(desktop) {
-                margin-right: -0.8rem;
-            }
-        }
 
         &__first,
         &__previous,
         &__next,
         &__last {
-            background: $white-two;
-            position: absolute;
-            top: 0;
-
-            @include breakpoint(desktop) {
-                position: static;
+            & svg {
+                .cls-1 {
+                    fill:#f6f6f6
+                }
             }
         }
 
         &__first {
-            left: 0;
-
             & svg {
-                width: 1.4rem;
+                transform: rotate(180deg);
             }
         }
 
         &__previous {
-            left: 6.3rem;
-
-            @include breakpoint(desktop) {
-                margin-right: 2.6rem;
-                margin-left: 1.8rem;
-            }
-
             & svg {
-                width: 0.7rem;
-                height: 1rem;
-                transform: rotate(180deg);
-
-                @include breakpoint(desktop) {
-                    margin-bottom: 0.1rem;
-                }
-            }
-        }
-
-        &__next {
-            right: 8.2rem;
-
-            @include breakpoint(desktop) {
-                margin-left: 3rem;
-                margin-right: 1.8rem;
-            }
-
-            & svg {
-                width: 0.7rem;
-                height: 1rem;
-
-                @include breakpoint(desktop) {
-                    margin-bottom: 0.1rem;
-                }
-            }
-        }
-
-        &__last {
-            right: 0.4rem;
-
-            & svg {
-                width: 1.4rem;
                 transform: rotate(180deg);
             }
         }
