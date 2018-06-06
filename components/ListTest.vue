@@ -9,8 +9,6 @@
 </template>
 
 <script>
-import ArticlePreview from '~/components/articles/ArticlePreview.vue'
-
 export default {
     data() {
         return {
@@ -49,9 +47,6 @@ export default {
                 }
             ]
         }
-    },
-    components: {
-        ArticlePreview
     }
 }
 </script>

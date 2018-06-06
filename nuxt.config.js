@@ -33,9 +33,15 @@ module.exports = {
     '@nuxtjs/axios'
   ],
 
-  axios: {
-
+  router: {
+    extendRoutes (routes, resolve) {
+      routes.push({
+        path: '*',
+        component: resolve(__dirname, 'pages/404/index.vue')
+      });
+    }
   },
+
   build: {
     vendor: ['axios'],
     postcss: [
