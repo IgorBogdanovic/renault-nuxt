@@ -1,5 +1,5 @@
 <template>
-  <nav class="b-nav">
+  <nav class="b-nav full-width-wrapper">
     <div class="b-nav__hamburger u-only-mob" :class="{'b-nav__hamburger--close': dropMenuActive}" @click="dropMenuActive = !dropMenuActive">
       <span></span>
       <span></span>
@@ -19,9 +19,9 @@
     <div class="b-nav__menu-container" :class="{'is-active': dropMenuActive}">
       <div class="b-nav__menu-inner-wrapper">
         <ul class="b-nav__menu-list">
-          <li v-for="(menuItem, index) in menuSim" :key="index">
+          <li v-for="(menuItem, index) in nav" :key="index" :class="{'signup': menuItem.name.toUpperCase() === 'SIGN UP'}">
             <div class="b-nav__menu-arrow u-only-mob">
-              <svg v-if="menuItem.subMenu.length > 0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+              <svg v-if="menuItem.children.length > 0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 444.819 444.819" style="enable-background:new 0 0 444.819 444.819;" xml:space="preserve">
                 <g>
                   <path d="M434.252,114.203l-21.409-21.416c-7.419-7.04-16.084-10.561-25.975-10.561c-10.095,0-18.657,3.521-25.7,10.561
@@ -32,12 +32,12 @@
                 </g>
               </svg>
             </div>
-            <span class="b-nav__menu-item" @click="activateThisSubmenu">{{ menuItem.title }}</span>
-            <div v-if="menuItem.subMenu.length > 0" class="b-nav__submenu-container" @mouseover="submenuMouseEvent" @mouseleave="submenuMouseEvent">
+            <span class="b-nav__menu-item" @click="activateThisSubmenu">{{ menuItem.name }}</span>
+            <div v-if="menuItem.children.length > 0" class="b-nav__submenu-container" @mouseover="submenuMouseEvent" @mouseleave="submenuMouseEvent">
               <ul class="b-nav__submenu-list">
                 <div class="b-nav__submenu-list-mid-border"></div>
-                <li v-for="(submenuItem, index) in menuItem.subMenu" :key="index">
-                  <span>{{ submenuItem }}</span>
+                <li v-for="(submenuItem, index) in menuItem.children" :key="index">
+                  <span>{{ submenuItem.name }}</span>
                 </li>
               </ul>
               <ul class="b-nav__submenu-articles u-only-desktop">
@@ -73,35 +73,10 @@
 
 <script>
 export default {
+  props: ['nav'],
   data () {
     return {
       dropMenuActive: false,
-      menuSim: [
-        {
-          title: 'my business',
-          subMenu: ['start a business', 'finance', 'insurance', 'legal', 'communication']
-        },
-        {
-          title: 'my van',
-          subMenu: ['start a business', 'finance', 'insurance', 'legal', 'communication']
-        },
-        {
-          title: 'faq',
-          subMenu: ['start a business', 'finance', 'insurance', 'legal', 'communication']
-        },
-        {
-          title: 'we, the vans driver',
-          subMenu: ['start a business', 'finance', 'insurance', 'legal', 'communication']
-        },
-        {
-          title: 'what’s new',
-          subMenu: ['start a business', 'finance', 'insurance', 'legal', 'communication']
-        },
-        {
-          title: 'signup',
-          subMenu: []
-        }
-      ],
       articlesSim: [
         {
           image: 'https://dummyimage.com/68x55/000/fff.png',
@@ -179,7 +154,6 @@ export default {
 .b-nav {
   z-index: 10;
   position: fixed;
-  width: 100%;
   height: 4.4rem;
   background-color: #000;
 
@@ -240,6 +214,7 @@ export default {
   }
 
   &__logo {
+    cursor: pointer;
     position: absolute;
     top: 1.1rem;
     @include absolute(center-horizontal);
@@ -258,6 +233,7 @@ export default {
   }
 
   &__search {
+    cursor: pointer;
     position: absolute;
     top: 1.6rem;
     right: 1.6rem;
@@ -379,6 +355,13 @@ export default {
           }
         }
       }
+
+      &.signup {
+        @include breakpoint(desktop) {
+          position: absolute;
+          right: 4.8rem;
+        }
+      }
     }
   }
 
@@ -482,6 +465,7 @@ export default {
     }
 
     > li {
+      cursor: pointer;
       display: inline-block;
       width: 50%;
       margin-bottom: .8rem;
@@ -536,6 +520,7 @@ export default {
   }
 
   &__menu-link {
+    cursor: pointer;
     display: inline-block;
 
     &--fb {

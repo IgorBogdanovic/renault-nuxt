@@ -1,14 +1,26 @@
 <template>
   <div>
-    <div class="full-width-wrapper">
-      <app-header></app-header>
-    </div>
+    <app-header :nav="navigation"></app-header>
     <section class="temp"></section>
   </div>
 </template>
 
 <script>
 export default {
+  data () {
+      return {
+        navigation: []
+      }
+  },
+  asyncData(context) {
+    return context.app.$api.get(context.app.$api.queries.nav)
+    .then(res => {
+      console.log(res);
+      return {
+        navigation: res.data.data.navigation
+      }
+    })
+  }
 }
 </script>
 
