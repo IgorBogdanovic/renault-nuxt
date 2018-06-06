@@ -167,6 +167,7 @@ export default {
     position: fixed;
     left: 0;
     right: 0;
+    height: 4.4rem;
   }
 
   &__hamburger {
