@@ -92,11 +92,11 @@ export default {
         }
 
         & .bolder{
-            @include fontSizeRem(22, 32)
+            @include fontSizeRem(22, 32);
             font-family: 'Lato-Black';
         }
         & .cursive{
-            @include fontSizeRem(22, 32)
+            @include fontSizeRem(22, 32);
             font-family: 'Airways';
             margin-left:1rem;
             @include breakpoint(desktop){
@@ -104,7 +104,7 @@ export default {
             }
         }
         & .regular{
-            @include fontSizeRem(22, 32)
+            @include fontSizeRem(22, 32);
             display: block;
         }
     }

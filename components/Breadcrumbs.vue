@@ -1,19 +1,21 @@
 <template>
-    <div class="main-wrapper inner-wrapper">
-        <!-- <p>{{ $route.name }}</p> -->
-        <div class="c-breadcrumbs">
-            <ul>
-                <li>
-                    <a href="">Home</a>
-                    <a href="">Business</a>
-                    <a href="">Communication</a>
-                    <!-- <nuxt-link v-for="(route, index) in $route.matched" :key="index" :to="{ name: route.name }">
-                        {{ route.name }}
-                    </nuxt-link> -->
-                </li>
-            </ul>
+    <div class="main-wrapper">
+        <div class="inner-wrapper">
+            <!-- <p>{{ $route.name }}</p> -->
+            <div class="c-breadcrumbs">
+                <ul>
+                    <li>
+                        <a href="">Home</a>
+                        <a href="">Business</a>
+                        <a href="">Communication</a>
+                        <!-- <nuxt-link v-for="(route, index) in $route.matched" :key="index" :to="{ name: route.name }">
+                            {{ route.name }}
+                        </nuxt-link> -->
+                    </li>
+                </ul>
+            </div>
+            <!-- <nuxt-child/> -->
         </div>
-        <nuxt-child/>
     </div>
 </template>
 
@@ -31,6 +33,7 @@
 
         @include breakpoint(desktop) {
             display: block;
+            padding-top: 3.7rem;
         }
 
         & ul li {
