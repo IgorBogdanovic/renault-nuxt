@@ -1,12 +1,14 @@
 <template>
   <div class="page">
     <app-header/>
+    <app-accordion/>
     <app-footer/>
   </div>
 </template>
 
 <script>
 import AppHeader from "~/components/Header.vue";
+import AppAccordion from "~/components/Accordion.vue";
 import AppFooter from "~/components/Footer.vue";
 
 export default {
@@ -17,6 +19,7 @@ export default {
   },
   components: {
     AppHeader,
+    AppAccordion,
     AppFooter
   }
 };

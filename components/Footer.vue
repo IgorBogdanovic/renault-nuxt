@@ -60,9 +60,7 @@ export default {
 
 .b-footer {
 
-  @include breakpoint(desktop) {
-
-  }
+  text-align: center;
 
   &__img {
     margin: 0 auto;
