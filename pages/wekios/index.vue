@@ -2,6 +2,12 @@
   <div class="page">
     <app-header/>
     <app-accordion/>
+    <h2>Latest News Block</h2>
+    <block-latest-news/>
+    <hr>
+    <h2>Latest News Block End</h2>
+    <hr>
+    <block-qa-list/>
     <app-footer/>
   </div>
 </template>
@@ -9,6 +15,8 @@
 <script>
 import AppHeader from "~/components/Header.vue";
 import AppAccordion from "~/components/Accordion.vue";
+import BlockLatestNews from "~/components/blocks/LatestNews.vue";
+import BlockQaList from "~/components/blocks/QaList.vue";
 import AppFooter from "~/components/Footer.vue";
 
 export default {
@@ -20,6 +28,8 @@ export default {
   components: {
     AppHeader,
     AppAccordion,
+    BlockLatestNews,
+    BlockQaList,
     AppFooter
   }
 };
@@ -28,10 +38,15 @@ export default {
 <style lang="scss" scoped>
 @import "~assets/scss/settings";
 .page {
-  color: $white;
+  background-color: $white;
+  color: $black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+h2 {
+  color: red;
 }
 </style>

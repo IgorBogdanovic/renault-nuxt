@@ -152,4 +152,31 @@ export default {
     }
 }
 
+
+// Veljkove Klase //
+
+.c-article-preview-landscape {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    background-color: $white-two;
+    padding-bottom: 3.3rem;
+
+
+    .c-article-preview__image {
+        width: 46%;
+        margin-bottom: 0;
+        margin-top: -3.3rem;
+    }
+
+    .c-article-preview__content {
+        width: 49%;
+        padding-left: 5%;
+    }
+
+}
+
+// Ende //
+
+
 </style>

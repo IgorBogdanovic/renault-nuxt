@@ -38,9 +38,18 @@ html{
     font-family: 'Lato';
 }
 
+.text--italic,.text--bold,.text--bolder {
+    @include fontSizeRem(22,32);
+    color: $black;
+}
+
+.text--italic {
+    font-family: 'Airways';
+}
 
 .text--bold {
-    font-family: 'Lato-Bold'
+    font-family: 'Lato-Bold';
+    text-transform: uppercase;
 }
 
 .text--bolder {
