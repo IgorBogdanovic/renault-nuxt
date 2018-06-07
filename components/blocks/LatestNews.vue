@@ -25,12 +25,11 @@
           <div class="row">
 
             <app-article-preview :prev="previews[3]" class="c-article-preview-square-lg"/>
-
               <app-article-preview :prev="previews[4]" class="c-article-preview-square"/>
               <app-article-preview :prev="previews[5]" class="c-article-preview-square"/>
 
             </div>
-            
+
         </div>
 
       </div>
