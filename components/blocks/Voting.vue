@@ -2,36 +2,13 @@
   <section class="b-vote">
     <h2>Vote for Your cars</h2>
     <div class="b-vote__cars_list">
-        <div class="c-car c-car--unvoted" id='1'>
+        <div class="c-car" v-for="(car,i) in cars" :key='i'>
             <div class="c-car__image">
                 <img src="https://dummyimage.com/208x208/000/fff.jpg&text=Reno+Laguna" alt="">
+                <h4>{{car.name}}</h4>
             </div>
-            <div class="c-voting-stars" id='01' data-rating='0' @mouseover="hoverStar" @mouseleave='unhoverStar' @click='clickStar'>
-                <span v-for='(star, i) in cars' :key='i' :class='`star star${++i}`' :data-count='`${i+1}`'>{{'★'}}</span>
-            </div>
-        </div>
-        <div class="c-car c-car--unvoted" id='2' >
-            <div class="c-car__image">
-                <img src="https://dummyimage.com/208x208/000/fff.jpg&text=Reno+Capture" alt="">
-            </div>
-            <div class="c-voting-stars" id='02' data-rating='0' @mouseover="hoverStar" @mouseleave='unhoverStar' @click='clickStar'>
-                <span v-for='(star, i) in cars' :key='i' :class='`star star${++i}`' :data-count='`${i+1}`'>{{'★'}}</span>
-            </div>
-        </div>
-        <div class="c-car c-car--unvoted" id='3'>
-            <div class="c-car__image">
-                <img src="https://dummyimage.com/208x208/000/fff.jpg&text=Reno+Clio" alt="">
-            </div>
-            <div class="c-voting-stars" id='03' data-rating='0' @mouseover="hoverStar" @mouseleave='unhoverStar' @click='clickStar'>
-                <span v-for='(star, i) in cars' :key='i' :class='`star star${++i}`' :data-count='`${i+1}`'>{{'★'}}</span>
-            </div>
-        </div>
-        <div class="c-car c-car--unvoted" id='4' >
-            <div class="c-car__image">
-                <img src="https://dummyimage.com/208x208/000/fff.jpg&text=Reno+Megan" alt="">
-            </div>
-            <div class="c-voting-stars" id='04' data-rating='0' @mouseover="hoverStar" @mouseleave='unhoverStar' @click='clickStar'>
-                <span v-for='(star, i) in cars' :key='i' :class='`star star${++i}`' :data-count='`${i+1}`'>{{'★'}}</span>
+            <div class="c-voting-stars" data-rating='0' @mouseover="hoverStar" @mouseleave='unhoverStar' @click='clickStar'>
+                <span v-for='(star, i) in cars' :key='i' class='star' :data-count='`${i+1}`'>{{'★'}}</span>
             </div>
         </div>
     </div>
@@ -59,7 +36,7 @@ export default {
             //cashing vars
             var star = event.target;
             var parent = star.parentNode;
-        
+
             parent.childNodes.forEach((item,index)=>{
                 if(index < parseInt(star.dataset.count) ){
                     //console.log(item);
@@ -225,6 +202,7 @@ export default {
                 animation-name: ScalingStar;
                 animation-duration: 0.2s;
             }
+
 
             &__hover{
                 color:#ffbf00;
