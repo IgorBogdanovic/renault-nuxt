@@ -15,9 +15,11 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.1",
     "@nuxtjs/pwa": "^2.0.8",
+    "@nuxtjs/toast": "^3.0.1",
     "node-sass": "^4.9.0",
     "nuxt": "^1.0.0",
-    "sass-loader": "^7.0.1"
+    "sass-loader": "^7.0.1",
+    "vuelidate": "^0.7.4"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
