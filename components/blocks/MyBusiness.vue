@@ -24,53 +24,53 @@
         data() {
             return {
                 previews: [
-                {
-                    // image: 'https://dummyimage.com/160x275/c9c9c9/000000.png',//mobile
-                    image: 'https://dummyimage.com/272x360/c9c9c9/000000.png',
-                    imageAlt: 'some alt',
-                    tagged: true,
-                    tag: 'MY BUSINESS',
-                    title: 'How to Set Up a Mobile Showroom',
-                    desc: 'A mobile showroom for your business really isn’t so different from the tried and tested mobile retail outlet…'
-                },
-                {
-                    // image: 'https://dummyimage.com/156x136/c9c9c9/000000.png',//mobile
-                    image: 'https://dummyimage.com/272x224/c9c9c9/000000.png',
-                    imageAlt: 'some alt',
-                    tagged: true,
-                    tag: 'MY BUSINESS',
-                    title: '5 Novel Ideas for A Food Truck',
-                    desc: 'The UK boasts several ski resorts offering seasonal business opportunities to entrepreneurs on wheels. Here are a few..'
-                },
-                {
-                    // image: 'https://dummyimage.com/336x284/c9c9c9/000000.png',//mobile
-                    image: 'https://dummyimage.com/492x400/c9c9c9/000000.png',
-                    imageAlt: 'some alt',
-                    tagged: true,
-                    tag: 'MY BUSINESS',
-                    title: 'Setting Up A Mobile Business in the Tourism Sector: Do’s and Don’ts',
-                    desc: 'The UK tourism economy is undergoing a boom; employment-wise, it has been the fastest-growing sector in the country…'
-                },
-                {
-                    // image: 'https://dummyimage.com/160x136/c9c9c9/000000.png',//mobile
-                    image: 'https://dummyimage.com/272x224/c9c9c9/000000.png',
-                    imageAlt: 'some alt',
-                    tagged: true,
-                    tag: 'MY BUSINESS',
-                    title: 'Writing an Operations Manual for Your Small Business',
-                    desc: 'The process of writing an operations manual for your small business may sound dry, but once you get to grips with the…'
-                },
-                {
-                    // image: 'https://dummyimage.com/156x276/c9c9c9/000000.png',//mobile
-                    image: 'https://dummyimage.com/272x360/c9c9c9/000000.png',
-                    imageAlt: 'some alt',
-                    tagged: true,
-                    tag: 'MY BUSINESS',
-                    title: 'How to Attract New Customers',
-                    desc: 'Whether you’re operating a large delivery van fleet or running your electrical business from a single Kangoo, you’ll…'
-                }
-            ]
-        }
+                    {
+                        // image: 'https://dummyimage.com/160x275/c9c9c9/000000.png',//mobile
+                        image: 'https://dummyimage.com/272x360/c9c9c9/000000.png',
+                        imageAlt: 'some alt',
+                        tagged: true,
+                        tag: 'MY BUSINESS',
+                        title: 'How to Set Up a Mobile Showroom',
+                        desc: 'A mobile showroom for your business really isn’t so different from the tried and tested mobile retail outlet…'
+                    },
+                    {
+                        // image: 'https://dummyimage.com/156x136/c9c9c9/000000.png',//mobile
+                        image: 'https://dummyimage.com/272x224/c9c9c9/000000.png',
+                        imageAlt: 'some alt',
+                        tagged: true,
+                        tag: 'MY BUSINESS',
+                        title: '5 Novel Ideas for A Food Truck',
+                        desc: 'The UK boasts several ski resorts offering seasonal business opportunities to entrepreneurs on wheels. Here are a few..'
+                    },
+                    {
+                        // image: 'https://dummyimage.com/336x284/c9c9c9/000000.png',//mobile
+                        image: 'https://dummyimage.com/492x400/c9c9c9/000000.png',
+                        imageAlt: 'some alt',
+                        tagged: true,
+                        tag: 'MY BUSINESS',
+                        title: 'Setting Up A Mobile Business in the Tourism Sector: Do’s and Don’ts',
+                        desc: 'The UK tourism economy is undergoing a boom; employment-wise, it has been the fastest-growing sector in the country…'
+                    },
+                    {
+                        // image: 'https://dummyimage.com/160x136/c9c9c9/000000.png',//mobile
+                        image: 'https://dummyimage.com/272x224/c9c9c9/000000.png',
+                        imageAlt: 'some alt',
+                        tagged: true,
+                        tag: 'MY BUSINESS',
+                        title: 'Writing an Operations Manual for Your Small Business',
+                        desc: 'The process of writing an operations manual for your small business may sound dry, but once you get to grips with the…'
+                    },
+                    {
+                        // image: 'https://dummyimage.com/156x276/c9c9c9/000000.png',//mobile
+                        image: 'https://dummyimage.com/272x360/c9c9c9/000000.png',
+                        imageAlt: 'some alt',
+                        tagged: true,
+                        tag: 'MY BUSINESS',
+                        title: 'How to Attract New Customers',
+                        desc: 'Whether you’re operating a large delivery van fleet or running your electrical business from a single Kangoo, you’ll…'
+                    }
+                ]
+            }
         },
         components: {
             appArticlePreview: ArticlePreview

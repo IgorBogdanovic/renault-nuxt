@@ -43,10 +43,10 @@ export default {
 
         &__main-title{
             font-family: 'Lato-Black';
-            @include fontSizeRem(22, 32)
+            @include fontSizeRem(22, 32);
             span{
                 font-family: 'Airways';
-                @include fontSizeRem(25, 32)
+                @include fontSizeRem(25, 32);
                 @include breakpoint(mobile){
                     margin-left: 0.6rem;
                 }
@@ -54,7 +54,7 @@ export default {
         }
 
         &__subtitle{
-            @include fontSizeRem(16, 28)
+            @include fontSizeRem(16, 28);
             font-family: 'Lato-Black';
             line-height: 1.19;
             padding-top: 1.7rem;
@@ -66,7 +66,7 @@ export default {
         }
 
         &__description{
-            @include fontSizeRem(14, 14)
+            @include fontSizeRem(14, 14);
             display: none;
             color:$warm-grey;
             @include breakpoint(desktop){

@@ -109,7 +109,8 @@ export default {
 
     .c-article-preview {
         &__image {
-            width:60%
+            width:60%;
+            margin-bottom: 0;
         }
         &__content {
             width: 40%;
@@ -147,6 +148,28 @@ export default {
                     padding-left: 6%;
                     width: 42.5%;
                 }
+            }
+        }
+    }
+}
+
+.b-editor {
+    & .c-article-preview.component--landscape {
+        justify-content: space-between;
+
+        & .c-article-preview__image {
+            @include breakpoint(desktop) {
+                width: 55.6%;
+            }
+        }
+
+        & .c-article-preview__content {
+            padding: 0 0.5rem;
+
+            @include breakpoint(desktop) {
+                padding: 0;
+                width: 40%;
+                margin-top: -0.5rem;
             }
         }
     }
