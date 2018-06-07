@@ -25,13 +25,20 @@ module.exports = {
   */
   plugins: [
     '~/plugins/api.js',
-    '~/plugins/core-components.js'
+    '~/plugins/core-components.js',
+    '~/plugins/Vuelidate'
   ],
 
   modules: [
     '@nuxtjs/pwa',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/toast'
   ],
+
+  toast: {
+    position: 'top-center',
+    duration: '3000'
+  },
 
   router: {
     extendRoutes (routes, resolve) {
