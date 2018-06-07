@@ -16,6 +16,14 @@
 	}
 }
 
+// Box Shadow 
+
+@mixin box-shadow {
+	-webkit-box-shadow: 0px 0.3rem 0.6rem 0px rgba(0,0,0,0.16);
+	-moz-box-shadow: 0px 0.3rem 0.6rem 0px rgba(0,0,0,0.16);
+	box-shadow: 0px 0.3rem 0.6rem 0px rgba(0,0,0,0.16);
+  }
+
 //Font size vw
 $site-mobile: 375;
 $site-desktop: 1440;

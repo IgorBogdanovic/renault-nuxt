@@ -38,8 +38,9 @@ html{
     font-family: 'Lato';
 }
 
-.text--italic,.text--bold,.text--bolder {
+.text--italic,.text--bold,.text--bolder,.text--regular {
     @include fontSizeRem(22,32);
+    text-transform: uppercase;
     color: $black;
 }
 

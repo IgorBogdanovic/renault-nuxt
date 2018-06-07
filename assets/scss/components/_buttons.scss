@@ -6,7 +6,7 @@
     display: block;
     margin: 0 auto;
     text-transform: uppercase;
-    box-shadow: 0 0.3rem 0.6rem 0 rgba(0, 0, 0, 0.16);
+    @include box-shadow;
     padding: 2.86% 8.9%;
     @include fontSizeRem(8,12);
 

@@ -176,6 +176,27 @@ export default {
 
 }
 
+.c-article-preview-portrait {
+    width: 47.7%;
+    background-color: $white-two;
+    padding-bottom: 3.3rem;
+
+
+    .c-article-preview__image {
+        width: 100%;
+        margin-bottom: 0;
+        margin-top: -6.4rem;
+        @include box-shadow;
+    }
+
+    .c-article-preview__content {
+        margin: 1.9rem auto 0;
+        width: 77%;
+
+    }
+}
+
+
 // Ende //
 
 
