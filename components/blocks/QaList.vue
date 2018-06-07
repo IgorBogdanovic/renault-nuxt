@@ -9,23 +9,22 @@
         <div class="b-qa-list__inner">
 
           <h2 class='b-qa-list__title'>
-            <span class='text--italic'>Latest </span>
-            <span class='text--bold'> news</span>
+            <span class="text--bolder">Q<span class='text--italic'>&</span>A</span>
+            <br>
+            <span class='text--regular'>list</span>
           </h2>
           
           <app-article-preview :prev="previews[0]" class="c-article-preview-landscape"/>
 
-          <div class="row--desktop">
-
             <div class="row">
-                <app-article-preview :prev="previews[4]" class="article-preview-square"/>
-                <app-article-preview :prev="previews[5]" class="article-preview-square"/>
+                <app-article-preview :prev="previews[1]" class="c-article-preview-portrait"/>
+                <app-article-preview :prev="previews[2]" class="c-article-preview-portrait"/>
             </div>
-            
-            <app-article-preview :prev="previews[3]" class="article-preview-square-lg"/>
 
-          </div>
-
+            <button class="c-btn c-btn--yellow"><a href="/">slideshow</a></button>      
+            <button class="c-btn c-btn--signUp"><a href="/">Sign Up</a></button>
+            <button class="c-btn c-btn--logIn"><a href="/">Log in</a></button>      
+    
         </div>
 
       </div>
@@ -46,7 +45,7 @@ export default {
           image: 'https://dummyimage.com/156x137/c9c9c9/000000.png',//mobile
 //          image: "https://dummyimage.com/272x360/c9c9c9/000000.png",
           imageAlt: "some alt",
-          tagged: true,
+          tagged: false,
           tag: "MY BUSINESS",
           title: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
           desc:
@@ -56,28 +55,28 @@ export default {
           image: 'https://dummyimage.com/156x136/c9c9c9/000000.png',//mobile
 //          image: "https://dummyimage.com/272x224/c9c9c9/000000.png",
           imageAlt: "some alt",
-          tagged: true,
+          tagged: false,
           tag: "MY BUSINESS",
-          title: "5 Novel Ideas for A Food Truck",
+          title: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
           desc:
             "The UK boasts several ski resorts offering seasonal business opportunities to entrepreneurs on wheels. Here are a few.."
         },
         {
-          image: 'https://dummyimage.com/336x284/c9c9c9/000000.png',//mobile
+          image: 'https://dummyimage.com/156x136/c9c9c9/000000.png',//mobile
 //          image: "https://dummyimage.com/492x400/c9c9c9/000000.png",
           imageAlt: "some alt",
-          tagged: true,
+          tagged: false,
           tag: "MY BUSINESS",
           title:
-            "Setting Up A Mobile Business in the Tourism Sector: Do’s and Don’ts",
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
           desc:
             "The UK tourism economy is undergoing a boom; employment-wise, it has been the fastest-growing sector in the country…"
         },
         {
-          image: 'https://dummyimage.com/336x284/c9c9c9/000000.png',//mobile
+          image: 'https://dummyimage.com/156x136/c9c9c9/000000.png',//mobile
 //          image: "https://dummyimage.com/272x224/c9c9c9/000000.png",
           imageAlt: "some alt",
-          tagged: true,
+          tagged: false,
           tag: "MY BUSINESS",
           title: "Setting Up A Mobile Business in the Tourism Sector: Do’s and Don’ts",
           desc:
@@ -87,7 +86,7 @@ export default {
           image: 'https://dummyimage.com/156x136/c9c9c9/000000.png',//mobile
 //          image: "https://dummyimage.com/272x360/c9c9c9/000000.png",
           imageAlt: "some alt",
-          tagged: true,
+          tagged: false,
           tag: "MY BUSINESS",
           title: "5 Novel Ideas for A Food Truck",
           desc:
@@ -116,45 +115,19 @@ export default {
 @import "~assets/scss/settings";
 
 .b-qa-list {
-
+  
   &__inner {
-    padding-top: 4.4rem;
-
-    @include breakpoint(desktop) {
-      margin-top: 11.2rem;
-      padding-top: 3.6rem;
-      border-top: 0.1rem solid $white-two;
-    }
-
+    margin: 5rem auto;
   }
 
   &__title {
-    margin-bottom: 2.4rem;
-
-    @include breakpoint(desktop) {
-      margin-bottom: 5.4rem;
-      display: inline-block;
-    }
-
+    margin-bottom: 6.2rem;
   }
 
-  .row {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
+  .c-article-preview-square {
 
     @include breakpoint(desktop) {
-      width: 47%;
-    }
-
-  }
-
-  .row--desktop {
-    
-    @include breakpoint(desktop) {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+      width: 33%;
     }
 
   }
@@ -163,17 +136,7 @@ export default {
 
 .c-article-preview-landscape {
     display: flex;
+    margin-bottom: 8.8rem;
 }
 
-  .article-preview-square {
-    width: 47.7%;
-  }
-
-  .article-preview-square-lg {
-    width: 100%;
-    
-    @include breakpoint(desktop) {
-      width: 47.7%;
-      }
-  }
 </style>

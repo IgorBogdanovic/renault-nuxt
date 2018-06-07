@@ -1,29 +1,24 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5rem;
+  flex-wrap: wrap;
+  @include breakpoint(desktop) {
+    align-items: baseline;
+  }
+}
 
-  .row {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    margin: 5rem auto;
-    @include breakpoint(desktop) {
-      width: 50%;
-    }
+.c-article-preview-square {
+  width: 15.6rem;
+  @include breakpoint(desktop) {
+    width: 27.2rem;
+  }
+}
+
+.c-article-preview-square-lg {
+  width: 33.6rem;
+  @include breakpoint(desktop) {
+    width: 49.2rem;
   }
 
-  .row--desktop {
-    @include breakpoint(desktop) {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-    }
-  }
-  
-  .c-article-preview-square {
-    width: 47.7%;
-  }
-
-  .c-article-preview-square-lg {
-    width: 100%;
-    @include breakpoint(desktop) {
-      width: 47.7%;
-    }
-  }
+}

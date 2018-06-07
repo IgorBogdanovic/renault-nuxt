@@ -1,41 +1,36 @@
 <template>
 
-  <section class="b-my-business">
+  <section class="b-latest-news">
 
     <div class="main-wrapper">
 
       <div class="inner-wrapper">
 
-        <div class="b-my-business__inner">
+        <div class="b-latest-news__inner">
 
-          <h2 class='b-my-business__title'>
+          <h2 class='b-latest-news__title'>
             <span class='text--italic'>Latest </span>
             <span class='text--bold'> news</span>
           </h2>
 
-          <div class="row--desktop">
-
             <div class="row">
+
               <app-article-preview v-for="(preview, index) in previews.slice(0,2)" 
               :key="index" :prev="preview" class="c-article-preview-square"/>
-            </div>
 
             <app-article-preview :prev="previews[2]" class="c-article-preview-square-lg"/>
 
           </div>
-
-          <div class="row--desktop">
+          
+          <div class="row">
 
             <app-article-preview :prev="previews[3]" class="c-article-preview-square-lg"/>
 
-            <div class="row">
               <app-article-preview :prev="previews[4]" class="c-article-preview-square"/>
               <app-article-preview :prev="previews[5]" class="c-article-preview-square"/>
+
             </div>
-
-          </div>
-
-
+            
         </div>
 
       </div>
@@ -125,7 +120,7 @@ export default {
 <style lang="scss" scoped>
 @import "~assets/scss/settings";
 
-.b-my-business {
+.b-latest-news {
   &__inner {
     padding-top: 4.4rem;
     @include breakpoint(desktop) {
@@ -133,6 +128,7 @@ export default {
       padding-top: 3.6rem;
       border-top: 0.1rem solid $white-two;
     }
+
   }
 
   &__title {
@@ -142,7 +138,7 @@ export default {
       display: inline-block;
     }
   }
-  
+
 }
 
 </style>

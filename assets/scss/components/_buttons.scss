@@ -14,10 +14,23 @@
         padding: 1.1% 4.2%;
     }
 
-
     &:hover, &:active {
         background-color: $black;
         color: $white;
+    }
+
+    &--signUp {
+        background-color: $green;
+        color: $white;
+    }
+
+    &--logIn {
+        color: $green;
+    }
+
+    &--yellow {
+        box-shadow: none;
+        background-color: $sun-yellow;
     }
 
 }
