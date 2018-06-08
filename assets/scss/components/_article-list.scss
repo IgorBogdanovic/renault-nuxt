@@ -1,7 +1,6 @@
 .row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 5rem;
   flex-wrap: wrap;
   @include breakpoint(desktop) {
     align-items: baseline;
@@ -68,22 +67,29 @@
 }
 
 .c-article-preview-landscape--desk.padded {
+    @include breakpoint(desktop) {
+      width: 60.5rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+      padding-bottom: 3.3rem;
+      
+      .c-article-preview__image {
+        width: 46%;
+        margin-bottom: 0;
+        margin-top: -3.3rem;
+      }
+      
+      .c-article-preview__content {
+        width: 49%;
+        padding-left: 5%;
+      }
+  }
+}
+
+.c-article-preview-square-sm {
+  width: 15.6rem;
   @include breakpoint(desktop) {
-    width: 60.5rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    padding-bottom: 3.3rem;
-    
-    .c-article-preview__image {
-      width: 46%;
-      margin-bottom: 0;
-      margin-top: -3.3rem;
-    }
-    
-    .c-article-preview__content {
-      width: 49%;
-      padding-left: 5%;
-    }
+    width: 18.8rem;
   }
 }

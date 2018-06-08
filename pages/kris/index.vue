@@ -3,8 +3,9 @@
         <!-- <app-pagination></app-pagination>
         <app-breadcrumbs></app-breadcrumbs>
         <app-social></app-social> -->
-        <app-my-business></app-my-business>
+        <!-- <app-my-business></app-my-business> -->
         <app-editor></app-editor>
+        <app-whats-new></app-whats-new>
     </div>
 </template>
 
@@ -14,6 +15,7 @@
     import Social from '~/components/Social.vue'
     import MyBusiness from '~/components/blocks/MyBusiness.vue'
     import Editor from '~/components/blocks/Editor.vue'
+    import WhatsNew from '~/components/blocks/WhatsNew.vue'
 
     export default {
         components: {
@@ -21,7 +23,8 @@
             appBreadcrumbs: Breadcrumbs,
             appSocial: Social,
             appMyBusiness: MyBusiness,
-            appEditor: Editor
+            appEditor: Editor,
+            appWhatsNew: WhatsNew
         }
     }
 </script>
