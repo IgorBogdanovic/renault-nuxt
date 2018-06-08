@@ -19,18 +19,23 @@
         color: $white;
     }
 
-    &--signUp {
-        background-color: $green;
-        color: $white;
-    }
-
-    &--logIn {
-        color: $green;
-    }
-
     &--yellow {
         box-shadow: none;
         background-color: $sun-yellow;
+
+        &:hover, &:active {
+            background-color: $black;
+            color: $sun-yellow;
+        }
+    }
+
+    &--signUp {
+        background-color: $green;
+        color: $white;
+        &:hover, &:active {
+            background-color: $white;
+            color: $green;
+        }
     }
 
 }
