@@ -18,9 +18,7 @@ import TagsAtlas from '~/components/TagsAtlas.vue'
 export default {
     data(){
         return{
-            sortedArray:[],
-            reMaped:[],
-            sortedTagsListOfArrays:[],
+            sortedArray:[]
         }
     },
     asyncData(context) {
