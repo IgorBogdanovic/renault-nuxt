@@ -9,7 +9,10 @@
     @include box-shadow;
     padding: 2.86% 8.9%;
     @include fontSizeRem(8,12);
-    transition: all 0.35s ease;
+    -webkit-transition: 250ms;
+    -moz-transition: 250ms;
+    -o-transition: 250ms;
+    transition: 250ms;    
 
     @include breakpoint(desktop) {
         padding: 1.1% 4.2%;
@@ -20,18 +23,23 @@
         color: $white;
     }
 
-    &--signUp {
-        background-color: $green;
-        color: $white;
-    }
-
-    &--logIn {
-        color: $green;
-    }
-
     &--yellow {
         box-shadow: none;
         background-color: $sun-yellow;
+
+        &:hover, &:active {
+            background-color: $black;
+            color: $sun-yellow;
+        }
+    }
+
+    &--signUp {
+        background-color: $green;
+        color: $white;
+        &:hover, &:active {
+            background-color: $white;
+            color: $green;
+        }
     }
 
 }

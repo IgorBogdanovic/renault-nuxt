@@ -26,9 +26,8 @@
             <app-article-preview :prev="previews[1]" class="c-article-preview-square padded"/>
             <app-article-preview :prev="previews[2]" class="c-article-preview-square padded"/>
             <app-article-preview :prev="previews[3]" class="c-article-preview-square padded"/>
-            <app-article-preview :prev="previews[0]" class="c-article-preview-square c-article-preview-landscape--desk padded"/>
+            <app-article-preview :prev="previews[0]" class="c-article-preview-square c-article-preview-landscape--desk padded float-right"/>
 
-            
             </div>
 
             <div class="row">
@@ -41,6 +40,7 @@
 
             </div>
 
+            <button class="c-btn"><a href="/">see all</a></button>      
             <button class="c-btn c-btn--yellow"><a href="/">slideshow</a></button>      
             <button class="c-btn c-btn--signUp"><a href="/">Sign Up</a></button>
             <button class="c-btn c-btn--logIn"><a href="/">Log in</a></button>      
@@ -77,7 +77,7 @@ export default {
           imageAlt: "some alt",
           tagged: false,
           tag: "MY BUSINESS",
-          title: "PRVI  xt of the printing and typesetting industry. Lorem Ipsum has been",
+          title: "PRVI Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
           desc:
             "The UK boasts several ski resorts offering seasonal business opportunities to entrepreneurs on wheels. Here are a few.."
         },
@@ -88,7 +88,7 @@ export default {
           tagged: false,
           tag: "MY BUSINESS",
           title:
-            " DRUGI t of the printing and typesetting industry. Lorem Ipsum has been",
+            " DRUGI Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
           desc:
             "The UK tourism economy is undergoing a boom; employment-wise, it has been the fastest-growing sector in the country…"
         },
@@ -99,7 +99,7 @@ export default {
           tagged: false,
           tag: "MY BUSINESS",
           title:
-            "TRECI um has been",
+            "TRECI Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
           desc:
             "The UK tourism economy is undergoing a boom; employment-wise, it has been the fastest-growing sector in the country…"
         }
@@ -125,8 +125,8 @@ export default {
     margin-bottom: 6.2rem;
   }
 
-  .c-article-preview-square {
-    margin: 5rem 0;
+  .c-article-preview {
+    margin-bottom: 8.8rem;
   }
   
   .c-article-preview-landscape--desk {
@@ -146,6 +146,12 @@ export default {
         width: 49%;
         padding-left: 5%;
       }
+    }
+  }
+
+  .float-right {
+    @include breakpoint(desktop) {
+      margin-left: calc(111rem - 60.5rem);
     }
   }
 

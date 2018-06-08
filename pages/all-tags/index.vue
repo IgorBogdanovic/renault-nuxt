@@ -6,7 +6,7 @@
           </div>
           <h1 class='page-title'>ALL TAGS</h1>
           <div class="b-all-tags-atlas">
-              <tags-atlas v-for="(item,index) in sortedArray " :key='index' :inicial='item[0][0]' :tagsList='item'></tags-atlas>
+              <tags-atlas v-for="(item,index) in items" :key='index' :inicial='item'></tags-atlas>
           </div>
       </div>
   </div>
@@ -31,7 +31,8 @@ export default {
       })
   },
   created(){
-     this.sortedArray = this.sortArray( this.sortedArray )
+     this.sortedArray = this.sortArray( this.sortedArray );
+     console.log(this.sortedArray);
   },
 
   methods:{
@@ -57,10 +58,9 @@ export default {
       }
   },
 
-  components: {
+    components: {
         TagsAtlas
-  },
-
+    }
 }
 </script>
 

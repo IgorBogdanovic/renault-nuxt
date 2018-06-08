@@ -1,36 +1,28 @@
 <template>
   <div class="main-nav">
-    <nav class="c-nav full-width-wrapper">
+    <nav class="b-nav full-width-wrapper">
       <div class="main-wrapper">
-        <div class="c-nav__hamburger u-only-mob" :class="{'c-nav__hamburger--close': dropMenuState}" @click="dropMenuState = !dropMenuState">
+        <div class="b-nav__hamburger u-only-mob" :class="{'b-nav__hamburger--close': dropMenuState}" @click="dropMenuState = !dropMenuState">
           <span></span>
           <span></span>
           <span></span>
           <span></span>
         </div>
-        <nuxt-link class="c-nav__logo" to="/" tag="div">
+        <nuxt-link class="b-nav__logo" to="/" tag="div">
           <img src="~static/images/header_logo.png" alt="logo">
         </nuxt-link>
-        <div class="c-nav__search" :class="{'is-hidden': dropMenuState}" @click="search">
+        <div class="b-nav__search" :class="{'is-hidden': dropMenuState}" @click="search">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17">
             <g id="search" transform="translate(-595.064 -192)">
                 <path id="Path_14" d="M27.792 26.793L23.7 22.706a7.158 7.158 0 1 0-1 1l4.087 4.083a.708.708 0 1 0 1-1zM18.164 23.9a5.74 5.74 0 1 1 5.742-5.738 5.746 5.746 0 0 1-5.742 5.738z" class="cls-1" data-name="Path 14" transform="translate(584.064 181)"/>
             </g>
           </svg>
         </div>
-        <div class="c-nav__menu-container" :class="{'is-active': dropMenuState}">
-          <div class="c-nav__menu-inner-wrapper">
-            <ul class="c-nav__menu-list">
-              <li class="c-nav__signup">
-                <div class="c-nav__menu-arrow c-nav__menu-arrow--empty u-only-mob"></div>
-                <span class="c-nav__menu-item">sign up</span>
-              </li>
-              <li class="c-nav__login">
-                <div class="c-nav__menu-arrow c-nav__menu-arrow--empty u-only-mob"></div>
-                <span class="c-nav__menu-item">login</span>
-              </li>
+        <div class="b-nav__menu-container" :class="{'is-active': dropMenuState}">
+          <div class="b-nav__menu-inner-wrapper">
+            <ul class="b-nav__menu-list">
               <li v-for="(menuItem, index) in nav" :key="index">
-                <div class="c-nav__menu-arrow u-only-mob">
+                <div class="b-nav__menu-arrow u-only-mob">
                   <svg v-if="menuItem.children.length > 0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                     viewBox="0 0 444.819 444.819" style="enable-background:new 0 0 444.819 444.819;" xml:space="preserve">
                     <g>
@@ -42,15 +34,15 @@
                     </g>
                   </svg>
                 </div>
-                <span class="c-nav__menu-item" @click="activateThisSubmenu">{{ menuItem.name }}</span>
-                <div v-if="menuItem.children.length > 0" class="c-nav__submenu-container" @mouseover="submenuMouseEvent" @mouseleave="submenuMouseEvent">
-                  <ul class="c-nav__submenu-list">
-                    <div class="c-nav__submenu-list-mid-border"></div>
+                <span class="b-nav__menu-item" @click="activateThisSubmenu">{{ menuItem.name }}</span>
+                <div v-if="menuItem.children.length > 0" class="b-nav__submenu-container" @mouseover="submenuMouseEvent" @mouseleave="submenuMouseEvent">
+                  <ul class="b-nav__submenu-list">
+                    <div class="b-nav__submenu-list-mid-border"></div>
                     <li v-for="(submenuItem, index) in menuItem.children" :key="index">
                       <span>{{ submenuItem.name }}</span>
                     </li>
                   </ul>
-                  <ul class="c-nav__submenu-articles u-only-desktop">
+                  <ul class="b-nav__submenu-articles u-only-desktop">
                     <h4><span>top&nbsp;</span><span>articles</span></h4>
                     <li v-for="(articleItem, index) in articlesSim" :key="index">
                       <img :src="articleItem.image" alt="article preview image">
@@ -59,16 +51,18 @@
                   </ul>
                 </div>
               </li>
+              <li class="b-nav__login"><span class="b-nav__menu-item">login</span></li>
+              <li class="b-nav__signup"><span class="b-nav__menu-item">sign up</span></li>
             </ul>
-            <div class="c-nav__menu-ext-links">
-              <div class="c-nav__menu-link c-nav__menu-link--fb">
+            <div class="b-nav__menu-ext-links">
+              <div class="b-nav__menu-link b-nav__menu-link--fb">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.101 17.36">
                   <g id="facebook" transform="translate(-461.252 -240.951)">
                       <path id="Facebook-2" d="M116.447 3.363v2.39H114.7v2.923h1.751v8.685h3.6V8.676h2.414s.226-1.4.336-2.934h-2.736v-2a.849.849 0 0 1 .78-.7h1.96V0h-2.665c-3.782 0-3.693 2.926-3.693 3.363z" class="cls-1" data-name="Facebook" transform="translate(346.556 240.95)"/>
                   </g>
                 </svg>
               </div>
-              <div class="c-nav__menu-link c-nav__menu-link--yt">
+              <div class="b-nav__menu-link b-nav__menu-link--yt">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.148 12.772">
                   <g id="youtube" transform="translate(-658.06 -99.062)">
                       <path id="XMLID_823_" d="M17.441 47.013c-.655-.779-1.865-1.1-4.174-1.1H4.882c-2.363 0-3.593.338-4.245 1.167C0 47.893 0 49.084 0 50.732v3.142c0 3.194.755 4.815 4.882 4.815h8.385c2 0 3.113-.28 3.831-.968.736-.7 1.051-1.855 1.051-3.847v-3.142c-.001-1.738-.049-2.932-.708-3.719zm-5.79 5.723l-3.808 1.99a.585.585 0 0 1-.857-.519v-3.966a.585.585 0 0 1 .855-.52L11.65 51.7a.585.585 0 0 1 0 1.038z" class="cls-1" transform="translate(658.06 53.145)"/>
@@ -80,7 +74,7 @@
         </div>
       </div>
     </nav>
-    <app-search :class="{'is-active': searchState}" @deactivateSearch="search"></app-search>
+    <app-search :class="{'is-active': searchState}" :searchState="searchState" @deactivateSearch="search"></app-search>
   </div>
 </template>
 
@@ -95,20 +89,20 @@ export default {
       searchState: false,
       articlesSim: [
         {
-          image: 'https://dummyimage.com/64x50/000/fff.png',
+          image: 'https://dummyimage.com/68x55/000/fff.png',
           text: 'Proin rhoncus eros ac ante pellentesque, id lobortis turpis'
         },
         {
-          image: 'https://dummyimage.com/64x50/000/fff.png',
+          image: 'https://dummyimage.com/68x55/000/fff.png',
           text: 'Proin rhoncus eros ac ante pellentesque, id lobortis turpis'
         },
         {
-          image: 'https://dummyimage.com/64x50/000/fff.png',
-          text: 'Vivamus a tincidunt massa, id molestie lacus.'
+          image: 'https://dummyimage.com/68x55/000/fff.png',
+          text: 'Vivamus a tincidunt massa, id molestie lacus. donec aliquet mi nis'
         },
         {
-          image: 'https://dummyimage.com/64x50/000/fff.png',
-          text: 'Vivamus a tincidunt massa, id molestie lacus.'
+          image: 'https://dummyimage.com/68x55/000/fff.png',
+          text: 'Vivamus a tincidunt massa, id molestie lacus. donec aliquet mi nis'
         }
       ]
     }
@@ -128,9 +122,9 @@ export default {
           menuItemArrowSvg.style.transform = 'rotate(0deg)';
           submenuList.style.height = 0 + 'px';
           menuItem.classList.remove('js-active');
-          submenuList.classList.remove('js-active');
+          submenuList.classList.remove('is-active');
         } else {
-          const activeMenuItems = document.getElementsByClassName('c-nav__menu-item js-active');
+          const activeMenuItems = document.getElementsByClassName('b-nav__menu-item js-active');
           for (let item of activeMenuItems) {
             const itemArrow = item.previousSibling;
             const itemArrowSvg = itemArrow.childNodes[0];
@@ -138,11 +132,11 @@ export default {
             itemArrowSvg.style.transform = 'rotate(0deg)';
             itemSubmenuList.style.height = 0 + 'px';
             item.classList.remove('js-active');
-            itemSubmenuList.classList.remove('js-active');
+            itemSubmenuList.classList.remove('is-active');
           }
           menuItem.classList.add('js-active');
-          submenuList.classList.add('js-active');
-          if (submenuList.classList.contains('js-active')) {
+          submenuList.classList.add('is-active');
+          if (submenuList.classList.contains('is-active')) {
             menuItemArrowSvg.style.transform = 'rotate(180deg)';
             submenuList.style.height = submenuListTotalHeight + 'px';
           }
@@ -184,7 +178,7 @@ export default {
   width: 100%;
 }
 
-.c-nav {
+.b-nav {
   position: fixed;
   height: 4.4rem;
   background-color: #000;
@@ -232,7 +226,7 @@ export default {
       }
     }
 
-    &.c-nav__hamburger--close span {
+    &.b-nav__hamburger--close span {
       &:nth-child(1) {
         top: 1.2rem;
         width: 0%;
@@ -331,11 +325,11 @@ export default {
   }
 
   &__menu-list {
-    font-family: 'Lato-Black';
+    font-family: 'Lato-Bold';
     @include fontSizeRem(17, 12);
-    @include lineHeightRem(22, 15);
-    @include letterSpacingEm(50, 0);
-    padding-top: 3.9rem;
+    @include lineHeightRem(59, 15);
+    @include letterSpacingEm(100, 0);
+    padding-top: 6.3rem;
     padding-left: 2.1rem;
 
     @include breakpoint(desktop) {
@@ -347,17 +341,15 @@ export default {
 
     > li {
       text-transform: uppercase;
-      margin-top: 3.4rem;
 
       @include breakpoint(desktop) {
         display: inline-block;
         color: $sun-yellow;
-        margin-top: 0;
         margin-right: 3.2rem;
         
         // hadn't better solution for solving this then nth-child selector because of logo in the middle
         // should be changed in case of more li elements in menu list
-        &:nth-child(5) {
+        &:nth-child(3) {
           margin-right: 22rem;
         }
 
@@ -377,7 +369,7 @@ export default {
               background-color: $white;
             }
 
-            + .c-nav__submenu-container {
+            + .b-nav__submenu-container {
               display: block;
             }
           }
@@ -397,23 +389,17 @@ export default {
         }
       }
 
-      &.c-nav__signup {
-        margin-top: 0;
-
+      &.b-nav__login {
         @include breakpoint(desktop) {
           position: absolute;
           right: 12.5rem;
         }
       }
 
-      &.c-nav__login {
-        margin-top: 0;
-        padding: 1.8rem 0 2.2rem 0;
-
+      &.b-nav__signup {
         @include breakpoint(desktop) {
           position: absolute;
           right: 4.8rem;
-          padding: 0;
         }
       }
     }
@@ -443,6 +429,12 @@ export default {
     transition: height .3s ease;
     overflow: auto;
 
+    &.is-active {
+      @include breakpoint(mobile) {
+        margin-bottom: 2rem;
+      }
+    }
+
     @include breakpoint(desktop) {
       float: left;
       width: 50%;
@@ -462,8 +454,8 @@ export default {
 
     > li {
       text-transform: lowercase;
-      padding-top: 2.4rem;
-      padding-left: 3.6rem;
+      padding-bottom: 1.2rem;
+      padding-left: 4.6rem;
 
       @include breakpoint(desktop) {
         font-family: 'Lato-Black';
@@ -471,7 +463,6 @@ export default {
         color: #000;
         display: inline-block;
         width: 50%;
-        padding-top: 0;
         padding-bottom: 5.3%;
         padding-left: 14.5%;
 
@@ -493,23 +484,23 @@ export default {
     float: right;
     width: 50%;
     height: auto;
-    padding: 4.5rem 9rem 4.1rem 8rem;
+    padding: 4.5rem 15rem 4.1rem 8.2rem;
     border-left: 1px solid #ececec;
 
     h4 {
       span:first-child {
         font-family: 'Lato-Black';
-        @include fontSizeRem(0, 18);
+        @include fontSizeRem(0, 26);
         @include lineHeightRem(0, 48);
         @include letterSpacingEm(0, 0);
       }
 
       span:last-child {
         font-family: 'Airways';
-        @include fontSizeRem(0, 18);
+        @include fontSizeRem(0, 30);
         @include lineHeightRem(0, 48);
         @include letterSpacingEm(0, 0);
-        text-transform: capitalize;
+        text-transform: lowercase;
       }
     }
 
@@ -520,19 +511,19 @@ export default {
       margin-bottom: .8rem;
 
       h6 {
-        font-family: 'Lato';
-        @include fontSizeRem(0, 12);
+        font-family: 'Lato-Bold';
+        @include fontSizeRem(0, 13);
         @include lineHeightRem(0, 15);
         @include letterSpacingEm(0, 50);
         text-transform: initial;
         float: left;
-        width: 13.5rem;
-        margin-left: .9rem;
+        width: 65%;
+        margin-left: 1.7rem;
       }
 
       img {
         float: left;
-        width: 6.4rem;
+        width: 5.8rem;
         height: 5rem;
       }
     }
@@ -551,10 +542,10 @@ export default {
   }
 
   &__menu-ext-links {
-    display: block;
-    margin-top: 5.3rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 10.4rem;
     margin-bottom: 6.2rem;
-    margin-left: 4.8rem;
 
     @include breakpoint(desktop) {
       float: left;
@@ -573,8 +564,8 @@ export default {
     display: inline-block;
 
     &--fb {
-      width: 1.1rem;
-      margin-right: 3.6rem;
+      width: 1.4rem;
+      margin-right: 6rem;
 
       @include breakpoint(desktop) {
         width: .7rem;
@@ -583,7 +574,8 @@ export default {
     }
 
     &--yt {
-      width: 2.5rem;
+      width: 4rem;
+      margin-right: 1.7rem;
       padding: .2rem 0;
 
       @include breakpoint(desktop) {

@@ -22,13 +22,12 @@
 
           </div>
           
-          <div class="row--desktop">
-            <app-article-preview :prev="previews[3]" class="article-preview-square-lg"/>
-
           <div class="row">
-            <app-article-preview :prev="previews[4]" class="article-preview-square"/>
-            <app-article-preview :prev="previews[5]" class="article-preview-square"/>
-          </div>
+
+            <app-article-preview :prev="previews[3]" class="c-article-preview-square-lg"/>
+            <app-article-preview :prev="previews[4]" class="c-article-preview-square"/>
+            <app-article-preview :prev="previews[5]" class="c-article-preview-square"/>
+            
           </div>
 
         </div>
@@ -123,52 +122,26 @@ export default {
 .b-latest-news {
   &__inner {
     padding-top: 4.4rem;
-    
     @include breakpoint(desktop) {
       margin-top: 11.2rem;
       padding-top: 3.6rem;
       border-top: 0.1rem solid $white-two;
     }
+
   }
 
   &__title {
     margin-bottom: 2.4rem;
-
     @include breakpoint(desktop) {
       margin-bottom: 5.4rem;
       display: inline-block;
     }
   }
 
-  .row {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-
-    @include breakpoint(desktop) {
-      width: 47%;
-    }
+  .c-article-preview {
+    margin-bottom: 3.4rem;
   }
 
-  .row--desktop {
-    
-    @include breakpoint(desktop) {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-    }
-  }
-  
-  .article-preview-square {
-    width: 47.7%;
-  }
-
-  .article-preview-square-lg {
-    width: 100%;
-    
-    @include breakpoint(desktop) {
-      width: 47.7%;
-    }
-  }
 }
+
 </style>

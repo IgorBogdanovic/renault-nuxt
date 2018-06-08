@@ -1,8 +1,8 @@
 <template>
     <div>
-        <!-- <app-pagination></app-pagination>
+        <!-- <app-pagination></app-pagination> -->
         <app-breadcrumbs></app-breadcrumbs>
-        <app-social></app-social> -->
+        <!-- <app-social></app-social> -->
         <!-- <app-my-business></app-my-business> -->
         <app-editor></app-editor>
         <app-whats-new></app-whats-new>

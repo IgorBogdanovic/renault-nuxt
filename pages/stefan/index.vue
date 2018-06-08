@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="main-wrapper">
      <div class="inner-wrapper">
+         <p>{{articlesList}}</p>
          <NewsOfTheWeek/>
          <HeroArticles/>
      </div>
@@ -14,6 +15,7 @@ import HeroArticles  from '~/components/blocks/HeroArticles.vue'
 export default {
     data() {
         return {
+            articlesList:[],
             previews: [
                 {
                     image: 'https://dummyimage.com/132x108/c9c9c9/000000.png',
@@ -42,8 +44,17 @@ export default {
             ]
         }
     },
+    asyncData(context) {
+      return context.app.$api.get(context.app.$api.queries.allArticles)
+      .then( res => {
+          console.log(res);
+          return {
+             articlesList:res.data.data.nodes
+          }
+      })
+  },
 
-    components:{
+  components:{
         NewsOfTheWeek,
         HeroArticles
     }

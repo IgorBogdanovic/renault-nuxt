@@ -10,13 +10,6 @@ const apiFactory = axios => ({
             });
     },
 
-    getTest( url ){
-        return axios.get( url )
-            .catch((error) => {
-                console.log(error);
-            });
-    },
-
     //global queries object ( strings )
     //access with $this.$api.queries.queryPropName Or  within asyncData context.app.$api.queries.queryPropName
     queries: Queries
