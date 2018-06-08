@@ -5,23 +5,45 @@
             <div class="c-breadcrumbs">
                 <ul>
                     <li>
-                        <a href="">Home</a>
+                        <!-- <a href="">Home</a>
                         <a href="">Business</a>
-                        <a href="">Communication</a>
-                        <!-- <nuxt-link v-for="(route, index) in $route.matched" :key="index" :to="{ name: route.name }">
+                        <a href="">Communication</a> -->
+                        <!-- <nuxt-link v-for="(route, index) in $route.matched" :key="index" :to="{ path: $route.path }">
                             {{ route.name }}
                         </nuxt-link> -->
+                        <!-- <nuxt-link v-for="(route, index) in names" :key="index" :to="{ path: $route.path }"> -->
+                        <nuxt-link v-for="(name, index) in names" :key="index" :to="{ path: '/' + names[index - 1] + '/' + name }">
+                            {{ name }}
+                            <span>{{ '/' + names[index - 1] + '/' + name }}</span>
+                        </nuxt-link>
                     </li>
                 </ul>
             </div>
-            <!-- <nuxt-child/> -->
         </div>
     </div>
 </template>
 
 <script>
     export default {
-
+        data() {
+            return {
+                routes: '',
+                names: []
+            }
+        },
+        mounted() {
+            for(var i = 0; i < this.$route.matched.length; i++) {
+                console.log(this.$route.matched[i])
+                // this.routes.push(this.$route.matched[i])
+                this.routes = this.$route.matched[i]
+            }
+            console.log(this.routes)
+            console.log(this.routes.name)
+            this.names = this.routes.path.split('/');
+            console.log(this.names)
+            console.log(this.$route.path)
+            // console.log(this.names.splice(1));
+        }
     }
 </script>
 
@@ -50,6 +72,10 @@
                     &::after {
                         display: none;
                     }
+                }
+
+                & span {
+                    color: red;
                 }
             }
         }
