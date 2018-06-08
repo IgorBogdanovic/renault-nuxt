@@ -9,6 +9,10 @@
     @include box-shadow;
     padding: 2.86% 8.9%;
     @include fontSizeRem(8,12);
+    -webkit-transition: 250ms;
+    -moz-transition: 250ms;
+    -o-transition: 250ms;
+    transition: 250ms;    
 
     @include breakpoint(desktop) {
         padding: 1.1% 4.2%;
