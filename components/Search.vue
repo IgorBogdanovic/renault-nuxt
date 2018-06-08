@@ -13,8 +13,8 @@
     </div>
     <form action="">
       <div class="b-search__form-wrapper">
-        <input type="text" v-model="inputSearch">
-        <button type="submit" :class="{'is-valid': !$v.$invalid}" :disabled="$v.$invalid">
+        <input type="text" v-model="inputSearch" @blur="$v.fullname.$touch()">
+        <button :class="{'is-valid': !$v.inputSearch.$invalid}" :disabled="$v.$invalid">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             viewBox="0 0 330 330" style="enable-background:new 0 0 330 330;" xml:space="preserve">
             <path d="M325.606,304.394L223.328,202.117c16.707-21.256,26.683-48.041,26.683-77.111C250.011,56.077,193.934,0,125.005,0
@@ -33,6 +33,7 @@
 import { required } from 'vuelidate/lib/validators'
 
 export default {
+  props: ['searchState'],
   data () {
     return {
       inputSearch: ''

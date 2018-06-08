@@ -7,9 +7,6 @@
     <hr>
     <h2>Latest News Block End</h2>
     <hr>
-    <hr>
-    <h2>Q&A List Block</h2>
-    <hr>
     <block-qa-list/>
     <app-footer/>
   </div>
