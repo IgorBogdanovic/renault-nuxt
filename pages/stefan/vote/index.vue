@@ -4,12 +4,10 @@
 </template>
 
 <script>
-import VoteOld from "@/components/blocks/VOTING-old.vue"
 import Vote from "@/components/blocks/Voting.vue"
 export default {
     components:{
         Vote,
-        VoteOld
     }
 }
 </script>
