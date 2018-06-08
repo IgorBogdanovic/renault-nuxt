@@ -6,7 +6,7 @@
           </div>
           <h1 class='page-title'>ALL TAGS</h1>
           <div class="b-all-tags-atlas">
-              <tags-atlas v-for="(item,index) in sortedTagsListOfArrays " :key='index' :inicial='item[0][0]' :tagsList='item'></tags-atlas>
+              <tags-atlas v-for="(item,index) in sortedArray " :key='index' :inicial='item[0][0]' :tagsList='item'></tags-atlas>
           </div>
       </div>
   </div>
@@ -18,7 +18,7 @@ import TagsAtlas from '~/components/TagsAtlas.vue'
 export default {
     data(){
         return{
-            originalFetch:[],
+            sortedArray:[],
             reMaped:[],
             sortedTagsListOfArrays:[],
         }
@@ -27,17 +27,13 @@ export default {
       return context.app.$api.get(context.app.$api.queries.allTagsNames)
       .then( res => {
           return {
-              originalFetch:res.data.data.tags
+              //retrun reMaped array ( sort all tag names in one array )
+              sortedArray:res.data.data.tags.map( item => item.name )
           }
       })
   },
   created(){
-     //console.log(this.test);
-     this.sortedTagsListOfArrays = this.sortArray( this.originalFetch.map( item => item.name ) )
-     this.reMaped = this.originalFetch.map( item => item.name );
-     //console.log(this.ReMaped);
-    //this.sortedTagsListOfArrays = this.sortArray(this.reMaped);
-    //this.test = this.sortArray(this.reMaped);
+     this.sortedArray = this.sortArray( this.sortedArray )
   },
 
   methods:{
