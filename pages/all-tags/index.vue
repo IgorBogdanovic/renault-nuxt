@@ -6,7 +6,7 @@
           </div>
           <h1 class='page-title'>ALL TAGS</h1>
           <div class="b-all-tags-atlas">
-              <tags-atlas v-for="(item,index) in items" :key='index' :inicial='item'></tags-atlas>
+              <tags-atlas v-for="(item,index) in sortedTagsListOfArrays " :key='index' :inicial='item[0][0]' :tagsList='item'></tags-atlas>
           </div>
       </div>
   </div>
@@ -18,17 +18,55 @@ import TagsAtlas from '~/components/TagsAtlas.vue'
 export default {
     data(){
         return{
-            items:['A','B','C','D','E','F','G','H'],
+            originalFetch:[],
+            reMaped:[],
+            sortedTagsListOfArrays:[],
         }
     },
-    created() {
-        this.$api.get(this.$api.queries.test_node)
-            .then(res => { console.log(res) });
-    },
+    asyncData(context) {
+      return context.app.$api.get(context.app.$api.queries.allTagsNames)
+      .then( res => {
+          return {
+              originalFetch:res.data.data.tags
+          }
+      })
+  },
+  created(){
+     //console.log(this.test);
+     this.sortedTagsListOfArrays = this.sortArray( this.originalFetch.map( item => item.name ) )
+     this.reMaped = this.originalFetch.map( item => item.name );
+     //console.log(this.ReMaped);
+    //this.sortedTagsListOfArrays = this.sortArray(this.reMaped);
+    //this.test = this.sortArray(this.reMaped);
+  },
 
-    components: {
+  methods:{
+      sortArray(arr){
+          var rArr = [];
+          var temp = [];
+
+          arr.reduce( function(acc, cur, index){
+            if(acc[0] === cur[0]){
+              temp.push(cur)
+              return cur
+            }else{
+              rArr.push(temp);
+              temp = [];
+              temp.push(cur)
+              if(index === arr.length - 1){
+                rArr.push(temp);
+              }
+              return cur
+            }
+          }, 0);
+          return rArr.splice(1);
+      }
+  },
+
+  components: {
         TagsAtlas
-    }
+  },
+
 }
 </script>
 
