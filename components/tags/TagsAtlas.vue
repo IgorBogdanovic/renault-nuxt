@@ -3,7 +3,7 @@
       <div class="c-tags-atlas__inner">
           <h2 class='c-tags-atlas__title'>{{inicial}}</h2>
           <ul class='c-tags-atlas__list'>
-              <li class='c-tags-atlas__index' v-for="(tag, index) in tags" :key='index+1'>
+              <li class='c-tags-atlas__index' v-for="(tag, index) in listOfTags" :key='index+1'>
                   <a class='c-tags-atlas__link' href="#" >{{tag}}</a>
               </li>
           </ul>
@@ -19,7 +19,7 @@ export default {
         }
     },
 
-    props:['inicial']
+    props:['inicial', 'listOfTags']
 }
 </script>
 

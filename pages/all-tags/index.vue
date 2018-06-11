@@ -6,14 +6,14 @@
           </div>
           <h1 class='page-title'>ALL TAGS</h1>
           <div class="b-all-tags-atlas">
-              <tags-atlas v-for="(item,index) in items" :key='index' :inicial='item'></tags-atlas>
+              <tags-atlas v-for="(item,index) in sortedArray" :key='index' :inicial='item[0][0]' :listOfTags='item'></tags-atlas>
           </div>
       </div>
   </div>
 </template>
 
 <script>
-import TagsAtlas from '~/components/TagsAtlas.vue'
+import TagsAtlas from '~/components/tags/TagsAtlas.vue'
 
 export default {
     data(){
