@@ -1,12 +1,15 @@
 <template>
   <div>
     <app-header :nav="navigation"></app-header>
-    <section class="temp"></section>
+    <section class="temp">
+        <app-login></app-login>
+    </section>
     <app-footer></app-footer>
   </div>
 </template>
 
 <script>
+import AppLogin from '@/components/Login.vue'
 export default {
   data () {
       return {
@@ -21,6 +24,9 @@ export default {
         navigation: res.data.data.navigation
       }
     })
+},
+  components:{
+      AppLogin
   }
 }
 </script>
