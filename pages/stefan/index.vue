@@ -1,9 +1,28 @@
 <template lang="html">
   <div class="main-wrapper">
      <div class="inner-wrapper">
-         <p>{{articlesList}}</p>
          <NewsOfTheWeek/>
          <HeroArticles/>
+        <!-- Slider main container -->
+        <div class="swiper-container">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">Slide 1</div>
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+                ...
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- If we need scrollbar -->
+            <div class="swiper-scrollbar"></div>
+        </div>
      </div>
   </div>
 </template>
@@ -11,37 +30,13 @@
 <script>
 import NewsOfTheWeek from '~/components/blocks/NewsOfTheWeek.vue'
 import HeroArticles  from '~/components/blocks/HeroArticles.vue'
+import Swiper        from 'swiper'; //npm module
 
 export default {
+
     data() {
         return {
             articlesList:[],
-            previews: [
-                {
-                    image: 'https://dummyimage.com/132x108/c9c9c9/000000.png',
-                    imageAlt: 'some alt',
-                    tagged: false,
-                    tag: 'my business',
-                    title: 'Turning Your Van into A Seasonal Ski-Resort Minibus',
-                    desc: 'All work and no play make Jack a dull boy, all work and no play make Jack a dull boy, all work and no play make Jack a dull boy, all work and no play make Jack a dull boy, all work and no play make Jack a dull boy, all work and no play make Jack a dull boy, all work and no play make Jack a dull boy...'
-                },
-                {
-                    image: 'https://dummyimage.com/132x108/c9c9c9/000000.png',
-                    imageAlt: 'some alt',
-                    tagged: false,
-                    tag: 'tag',
-                    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
-                    desc: 'All work and no play make Jack a dull boy, all work and no play make Jack a dull boy, all work and no play make Jack a dull boy, all work and no play make Jack a dull boy, all work and no play make Jack a dull boy...'
-                },
-                {
-                    image: 'https://dummyimage.com/132x108/c9c9c9/000000.png',
-                    imageAlt: 'some alt',
-                    tagged: false,
-                    tag: 'other tag',
-                    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                    desc: 'All work and no play make Jack a dull boy, all work and no play make Jack a dull boy, all work and no play make Jack a dull boy...'
-                }
-            ]
         }
     },
     asyncData(context) {
@@ -56,13 +51,43 @@ export default {
 
   components:{
         NewsOfTheWeek,
-        HeroArticles
-    }
+        HeroArticles,
+  },
+
+  mounted(){
+      var mySwiper = new Swiper ('.swiper-container', {
+      // Optional parameters
+      direction: 'vertical',
+      loop: true,
+
+      // If we need pagination
+      pagination: {
+        el: '.swiper-pagination',
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+
+      // And if we need scrollbar
+      scrollbar: {
+        el: '.swiper-scrollbar',
+      },
+    })
+  }
 }
+
 </script>
 
 <style scoped lang='scss'>
 @import '~assets/scss/settings';
+@import '~assets/scss/plugins/swiper-min';
+        .swiper-container {
+            width: 600px;
+            height: 300px;
+        }
     .b-articles-list-hero{
         @include breakpoint(desktop){
             width: 100%;
