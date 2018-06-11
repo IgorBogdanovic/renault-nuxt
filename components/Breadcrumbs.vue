@@ -1,20 +1,12 @@
 <template>
     <div class="main-wrapper">
         <div class="inner-wrapper">
-            <!-- <p>{{ $route.name }}</p> -->
             <div class="c-breadcrumbs">
                 <ul>
                     <li>
-                        <!-- <a href="">Home</a>
-                        <a href="">Business</a>
-                        <a href="">Communication</a> -->
-                        <!-- <nuxt-link v-for="(route, index) in $route.matched" :key="index" :to="{ path: $route.path }">
-                            {{ route.name }}
-                        </nuxt-link> -->
-                        <!-- <nuxt-link v-for="(route, index) in names" :key="index" :to="{ path: $route.path }"> -->
-                        <nuxt-link v-for="(name, index) in names" :key="index" :to="{ path: '/' + names[index - 1] + '/' + name }">
+                        <nuxt-link to="/">Homepage</nuxt-link>
+                        <nuxt-link v-for="(name, index) in names" :key="index" :to="{ path: paths[index] }">
                             {{ name }}
-                            <span>{{ '/' + names[index - 1] + '/' + name }}</span>
                         </nuxt-link>
                     </li>
                 </ul>
@@ -27,22 +19,24 @@
     export default {
         data() {
             return {
-                routes: '',
-                names: []
+                routes: [],
+                names: [],
+                slashNames: [],
+                helpArr: [],
+                paths: []
             }
         },
-        mounted() {
-            for(var i = 0; i < this.$route.matched.length; i++) {
-                console.log(this.$route.matched[i])
-                // this.routes.push(this.$route.matched[i])
-                this.routes = this.$route.matched[i]
+        created() {
+            this.routes = this.$route.matched
+            this.names = this.routes[0].path.split('/');
+            this.names.splice(0, 1)
+            for(let i = 0; i < this.names.length; i++) {
+                this.slashNames.push('/' + this.names[i])
             }
-            console.log(this.routes)
-            console.log(this.routes.name)
-            this.names = this.routes.path.split('/');
-            console.log(this.names)
-            console.log(this.$route.path)
-            // console.log(this.names.splice(1));
+            for(let i = 0; i < this.slashNames.length; i++) {
+                this.helpArr += this.slashNames[i]
+                this.paths.push(this.helpArr)
+            } 
         }
     }
 </script>
@@ -72,10 +66,6 @@
                     &::after {
                         display: none;
                     }
-                }
-
-                & span {
-                    color: red;
                 }
             }
         }
