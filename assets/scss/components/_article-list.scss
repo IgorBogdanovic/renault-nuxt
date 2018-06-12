@@ -93,3 +93,10 @@
     width: 18.8rem;
   }
 }
+
+.c-article-preview-mr {
+  width: 16rem;
+  @include breakpoint(desktop) {
+    width: 20rem;
+  }
+}

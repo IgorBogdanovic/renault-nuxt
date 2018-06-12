@@ -29,7 +29,7 @@
 
 <script>
     import ArticlePreview from '~/components/articles/ArticlePreview.vue'
-    import YellowSlider from '~/components/YellowSlider.vue'
+    import YellowSlider from '~/components/sliders/YellowSlider.vue'
 
     export default {
         data() {

@@ -99,6 +99,23 @@ export default {
     }
 }
 
+.c-article-preview--most-read {
+    & .c-article-preview__image {
+        @include breakpoint(desktop) {
+            margin-bottom: 1.9rem;
+        }
+    }
+    
+    & .c-article-preview__title {
+        @include fontSizeRem(14, 14);
+        font-family: 'Lato';
+        
+        @include breakpoint(desktop) {
+            font-family: 'Lato-Bold';
+        }
+    }
+}
+
 .c-article-preview.component--landscape{
     display: flex;
     flex-flow: row nowrap;

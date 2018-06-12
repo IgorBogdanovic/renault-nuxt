@@ -4,8 +4,8 @@
          <!-- <p>{{articlesList}}</p> -->
          <NewsOfTheWeek/>
          <HeroArticles/>
-         <FaqMiniSlider/>
      </div>
+      <app-faq/>
   </div>
 </template>
 
@@ -13,7 +13,7 @@
 import Swiper        from 'swiper'; //npm module
 import NewsOfTheWeek from '~/components/blocks/NewsOfTheWeek.vue'
 import HeroArticles  from '~/components/blocks/HeroArticles.vue'
-import FaqMiniSlider from '~/components/sliders/FaqMiniSlider.vue'
+import AppFaq        from '~/components/blocks/FAQSlider.vue'
 
 
 export default {
@@ -36,11 +36,11 @@ export default {
   components:{
         NewsOfTheWeek,
         HeroArticles,
-        FaqMiniSlider,
+        AppFaq,
   },
 
   mounted(){
-      var mySwiper = new Swiper ('.swiper-container', {
+      var mySwiper = new Swiper ('.swiper-container-faq-mini', {
       // Optional parameters
       loop: true,
       // Navigation arrows
@@ -64,7 +64,7 @@ export default {
             return num;
         },
         renderFraction(currentClass, totalClass) {
-            return `<span class="${currentClass}" style="color:#ffcc33;"></span> / <span class="${totalClass}"></span>`;
+            return `<span class="${currentClass}" style="color:#ffcc33;"></span>/<span class="${totalClass}"></span>`;
 
         }
 

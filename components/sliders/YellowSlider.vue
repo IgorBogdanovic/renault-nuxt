@@ -1,6 +1,6 @@
 <template>
     <div class="c-yellow-slider">
-        <div class="swiper-container">
+        <div class="swiper-container swiper-container-yellow">
             <div class="swiper-wrapper">
                 <div v-for="(slide, index) in slider" :key="index" class="swiper-slide">
                     <div class="c-yellow-slider__wrapper">
@@ -39,7 +39,7 @@
     export default {
         props: ['slider'],
         mounted() {
-            var mySwiper = new Swiper ('.swiper-container', {
+            var mySwiper = new Swiper ('.swiper-container-yellow', {
                 loop: true,
                 autoplay: {
                     delay: 3000,

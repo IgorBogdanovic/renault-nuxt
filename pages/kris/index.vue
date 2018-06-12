@@ -6,6 +6,7 @@
         <!-- <app-my-business></app-my-business> -->
         <app-editor></app-editor>
         <app-whats-new></app-whats-new>
+        <app-most-read></app-most-read>
     </div>
 </template>
 
@@ -16,6 +17,7 @@
     import MyBusiness from '~/components/blocks/MyBusiness.vue'
     import Editor from '~/components/blocks/Editor.vue'
     import WhatsNew from '~/components/blocks/WhatsNew.vue'
+    import MostRead from '~/components/sliders/MostRead.vue'
 
     export default {
         components: {
@@ -24,7 +26,8 @@
             appSocial: Social,
             appMyBusiness: MyBusiness,
             appEditor: Editor,
-            appWhatsNew: WhatsNew
+            appWhatsNew: WhatsNew,
+            appMostRead: MostRead
         }
     }
 </script>
