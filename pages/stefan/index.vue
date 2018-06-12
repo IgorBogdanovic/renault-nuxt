@@ -4,8 +4,8 @@
          <!-- <p>{{articlesList}}</p> -->
          <NewsOfTheWeek/>
          <HeroArticles/>
-         <FaqMiniSlider/>
      </div>
+      <FaqMiniSlider/>
   </div>
 </template>
 
@@ -40,7 +40,7 @@ export default {
   },
 
   mounted(){
-      var mySwiper = new Swiper ('.swiper-container', {
+      var mySwiper = new Swiper ('.swiper-container-faq-mini', {
       // Optional parameters
       loop: true,
       // Navigation arrows
@@ -64,7 +64,7 @@ export default {
             return num;
         },
         renderFraction(currentClass, totalClass) {
-            return `<span class="${currentClass}" style="color:#ffcc33;"></span> / <span class="${totalClass}"></span>`;
+            return `<span class="${currentClass}" style="color:#ffcc33;"></span>/<span class="${totalClass}"></span>`;
 
         }
 
