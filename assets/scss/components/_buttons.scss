@@ -1,45 +1,46 @@
 .c-btn {
-    cursor: pointer;
-    font-family: 'Lato-Bold';
-    background-color: $white;
-    display: inline-block;
-    display: block;
-    margin: 0 auto;
-    text-transform: uppercase;
-    @include box-shadow;
-    padding: 2.86% 8.9%;
-    @include fontSizeRem(8,12);
-    -webkit-transition: 250ms;
-    -moz-transition: 250ms;
-    -o-transition: 250ms;
-    transition: 250ms;    
+  cursor: pointer;
+  font-family: "Lato-Bold";
+  background-color: $white;
+  display: block;
+  margin: 0 auto;
+  text-transform: uppercase;
+  @include box-shadow;
+  padding: 2.86% 8.9%;
+  @include fontSizeRem(8, 12);
+  -webkit-transition: 250ms;
+  -moz-transition: 250ms;
+  -o-transition: 250ms;
+  transition: 250ms;
 
-    @include breakpoint(desktop) {
-        padding: 1.1% 4.2%;
+  @include breakpoint(desktop) {
+    padding: 1.1% 4.2%;
+  }
+
+  &:hover,
+  &:active {
+    background-color: $black;
+    color: $white;
+  }
+
+  &--yellow {
+    box-shadow: none;
+    background-color: $sun-yellow;
+
+    &:hover,
+    &:active {
+      background-color: $black;
+      color: $sun-yellow;
     }
+  }
 
-    &:hover, &:active {
-        background-color: $black;
-        color: $white;
+  &--signUp {
+    background-color: $green;
+    color: $white;
+    &:hover,
+    &:active {
+      background-color: $white;
+      color: $green;
     }
-
-    &--yellow {
-        box-shadow: none;
-        background-color: $sun-yellow;
-
-        &:hover, &:active {
-            background-color: $black;
-            color: $sun-yellow;
-        }
-    }
-
-    &--signUp {
-        background-color: $green;
-        color: $white;
-        &:hover, &:active {
-            background-color: $white;
-            color: $green;
-        }
-    }
-
+  }
 }
