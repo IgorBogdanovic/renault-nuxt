@@ -1,13 +1,18 @@
 <template>
   <div class="page">
     <app-header/>
-    <app-accordion/>
-    <h2>Latest News Block</h2>
-    <block-latest-news/>
-    <hr>
-    <h2>Latest News Block End</h2>
-    <hr>
-    <block-qa-list/>
+    <div class="main-wrapper">
+      <div class="inner-wrapper">
+        <app-accordion/>
+        <h2>Latest News Block</h2>
+        <block-latest-news/>
+        <hr>
+        <h2>Latest News Block End</h2>
+        <hr>
+        <block-qa-list/>
+      </div>
+      <qa-slider/>
+    </div>
     <app-footer/>
   </div>
 </template>
@@ -17,6 +22,7 @@ import AppHeader from "~/components/Header.vue";
 import AppAccordion from "~/components/Accordion.vue";
 import BlockLatestNews from "~/components/blocks/LatestNews.vue";
 import BlockQaList from "~/components/blocks/QaList.vue";
+import QaSlider from "~/components/sliders/QaSlider.vue";
 import AppFooter from "~/components/Footer.vue";
 
 export default {
@@ -30,6 +36,7 @@ export default {
     AppAccordion,
     BlockLatestNews,
     BlockQaList,
+    QaSlider,
     AppFooter
   }
 };
@@ -37,6 +44,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "~assets/scss/settings";
+@import "~assets/scss/plugins/swiper-min";
 .page {
   background-color: $white;
   color: $black;

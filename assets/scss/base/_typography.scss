@@ -1,58 +1,70 @@
 @font-face {
-    font-family: 'Airways';
-    src: url('~assets/fonts/AirwaysPERSONALUSEONLY/AirwaysPERSONALUSEONLY.eot?#iefix') format('embedded-opentype'),
-    url('~assets/fonts/AirwaysPERSONALUSEONLY/AirwaysPERSONALUSEONLY.woff') format('woff'),
-    url('~assets/fonts/AirwaysPERSONALUSEONLY/AirwaysPERSONALUSEONLY.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Airways";
+  src: url("~assets/fonts/AirwaysPERSONALUSEONLY/AirwaysPERSONALUSEONLY.eot?#iefix")
+      format("embedded-opentype"),
+    url("~assets/fonts/AirwaysPERSONALUSEONLY/AirwaysPERSONALUSEONLY.woff")
+      format("woff"),
+    url("~assets/fonts/AirwaysPERSONALUSEONLY/AirwaysPERSONALUSEONLY.ttf")
+      format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Lato';
-    src: url('~assets/fonts/Lato-Regular/Lato-Regular.eot?#iefix') format('embedded-opentype'),
-    url('~assets/fonts/Lato-Regular/Lato-Regular.woff') format('woff'),
-    url('~assets/fonts/Lato-Regular/Lato-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Lato";
+  src: url("~assets/fonts/Lato-Regular/Lato-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("~assets/fonts/Lato-Regular/Lato-Regular.woff") format("woff"),
+    url("~assets/fonts/Lato-Regular/Lato-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Lato-Bold';
-    src: url('~assets/fonts/Lato-Bold/Lato-Bold.eot?#iefix') format('embedded-opentype'),
-    url('~assets/fonts/Lato-Bold/Lato-Bold.woff') format('woff'),
-    url('~assets/fonts/Lato-Bold/Lato-Bold.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Lato-Bold";
+  src: url("~assets/fonts/Lato-Bold/Lato-Bold.eot?#iefix")
+      format("embedded-opentype"),
+    url("~assets/fonts/Lato-Bold/Lato-Bold.woff") format("woff"),
+    url("~assets/fonts/Lato-Bold/Lato-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Lato-Black';
-    src: url('~assets/fonts/Lato-Black/Lato-Black.eot?#iefix') format('embedded-opentype'),
-    url('~assets/fonts/Lato-Black/Lato-Black.woff') format('woff'),
-    url('~assets/fonts/Lato-Black/Lato-Black.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Lato-Black";
+  src: url("~assets/fonts/Lato-Black/Lato-Black.eot?#iefix")
+      format("embedded-opentype"),
+    url("~assets/fonts/Lato-Black/Lato-Black.woff") format("woff"),
+    url("~assets/fonts/Lato-Black/Lato-Black.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
-html{
-    font-family: 'Lato';
+html {
+  font-family: "Lato";
 }
 
-.text--italic,.text--bold,.text--bolder,.text--regular {
-    @include fontSizeRem(22,32);
-    text-transform: uppercase;
-    color: $black;
+.text--italic,
+.text--bold,
+.text--bolder,
+.text--regular {
+  @include fontSizeRem(22, 32);
+  color: $black;
+}
+
+.text--regular {
+  text-transform: uppercase;
 }
 
 .text--italic {
-    font-family: 'Airways';
+  font-family: "Airways";
 }
 
 .text--bold {
-    font-family: 'Lato-Bold';
-    text-transform: uppercase;
+  font-family: "Lato-Bold";
+  text-transform: uppercase;
 }
 
 .text--bolder {
-    font-family: 'Lato-Black';
+  font-family: "Lato-Black";
 }
