@@ -136,16 +136,9 @@ export default {
         z-index: 100;
         padding-right: 6.1rem;
         @include fontSizeRem(15,15)
-        &-current{
-            color:$sun-yellow;
-        }
-        &-total{
 
-        }
     }
-    span.swiper-pagination-current{
-        color:blue;
-    }
+
     .swiper-prev{
         position: absolute;
         top: 13.3rem;
