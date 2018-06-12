@@ -1,5 +1,5 @@
 <template lang="html">
-    <section class='b-faq-slider-wrapper'>
+    <div class='b-faq-slider-wrapper'>
         <!-- Slider main container -->
         <div class="swiper-container swiper-container-faq-mini">
             <!-- Additional required wrapper -->
@@ -46,7 +46,7 @@
             <div class="swiper-prev">⬅</div>
             <div class="swiper-next">⬅</div>
         </div>
-    </section>
+    </div>
 
 </template>
 
