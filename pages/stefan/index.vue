@@ -5,7 +5,7 @@
          <NewsOfTheWeek/>
          <HeroArticles/>
      </div>
-      <FaqMiniSlider/>
+      <app-faq/>
   </div>
 </template>
 
@@ -13,7 +13,7 @@
 import Swiper        from 'swiper'; //npm module
 import NewsOfTheWeek from '~/components/blocks/NewsOfTheWeek.vue'
 import HeroArticles  from '~/components/blocks/HeroArticles.vue'
-import FaqMiniSlider from '~/components/sliders/FaqMiniSlider.vue'
+import AppFaq        from '~/components/blocks/FAQSlider.vue'
 
 
 export default {
@@ -36,7 +36,7 @@ export default {
   components:{
         NewsOfTheWeek,
         HeroArticles,
-        FaqMiniSlider,
+        AppFaq,
   },
 
   mounted(){

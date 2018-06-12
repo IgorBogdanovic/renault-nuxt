@@ -165,7 +165,7 @@ export default {
         &__title{
             font-family: 'Lato-Bold';
             line-height: 1.22;
-            padding-bottom: 30rem;
+            padding-bottom: 4rem;
             @include fontSizeRem(14,23);
             @include breakpoint(desktop){
                 width:45%;
