@@ -9,9 +9,9 @@
           <span></span>
         </div>
         <nuxt-link class="c-nav__logo" to="/" tag="div">
-          <img src="~static/images/header_logo.png" alt="logo">
+          <img src="~static/images/logo.png" alt="logo">
         </nuxt-link>
-        <div class="c-nav__search" :class="{'is-hidden': dropMenuState}" @click="search">
+        <div class="c-nav__search" :class="{'is-hidden': dropMenuState}" @click="stateController('search')">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17">
             <g id="search" transform="translate(-595.064 -192)">
                 <path id="Path_14" d="M27.792 26.793L23.7 22.706a7.158 7.158 0 1 0-1 1l4.087 4.083a.708.708 0 1 0 1-1zM18.164 23.9a5.74 5.74 0 1 1 5.742-5.738 5.746 5.746 0 0 1-5.742 5.738z" class="cls-1" data-name="Path 14" transform="translate(584.064 181)"/>
@@ -23,11 +23,11 @@
             <ul class="c-nav__menu-list">
               <li class="c-nav__signup">
                 <div class="c-nav__menu-arrow c-nav__menu-arrow--empty u-only-mob"></div>
-                <span class="c-nav__menu-item">sign up</span>
+                <span class="c-nav__menu-item" @click="stateController('signup')">sign up</span>
               </li>
               <li class="c-nav__login">
                 <div class="c-nav__menu-arrow c-nav__menu-arrow--empty u-only-mob"></div>
-                <span class="c-nav__menu-item">login</span>
+                <span class="c-nav__menu-item" @click="stateController('login')">login</span>
               </li>
               <li v-for="(menuItem, index) in nav" :key="index">
                 <div class="c-nav__menu-arrow u-only-mob">
@@ -44,19 +44,21 @@
                 </div>
                 <span class="c-nav__menu-item" @click="activateThisSubmenu">{{ menuItem.name }}</span>
                 <div v-if="menuItem.children.length > 0" class="c-nav__submenu-container" @mouseover="submenuMouseEvent" @mouseleave="submenuMouseEvent">
-                  <ul class="c-nav__submenu-list">
-                    <div class="c-nav__submenu-list-mid-border"></div>
-                    <li v-for="(submenuItem, index) in menuItem.children" :key="index">
-                      <span>{{ submenuItem.name }}</span>
-                    </li>
-                  </ul>
-                  <ul class="c-nav__submenu-articles u-only-desktop">
-                    <h4><span>top&nbsp;</span><span>articles</span></h4>
-                    <li v-for="(articleItem, index) in articlesSim" :key="index">
-                      <img :src="articleItem.image" alt="article preview image">
-                      <h6>{{ articleItem.text }}</h6>
-                    </li>
-                  </ul>
+                  <div class="c-nav__submenu-wrapper main-wrapper u-clearfix">
+                    <ul class="c-nav__submenu-list">
+                      <div class="c-nav__submenu-list-mid-border"></div>
+                      <li v-for="(submenuItem, index) in menuItem.children" :key="index">
+                        <span>{{ submenuItem.name }}</span>
+                      </li>
+                    </ul>
+                    <ul class="c-nav__submenu-articles u-only-desktop">
+                      <h4><span>top&nbsp;</span><span>articles</span></h4>
+                      <li v-for="(articleItem, index) in articlesSim" :key="index">
+                        <img :src="articleItem.image" alt="article preview image">
+                        <h6>{{ articleItem.text }}</h6>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </li>
             </ul>
@@ -80,12 +82,16 @@
         </div>
       </div>
     </nav>
-    <app-search :class="{'is-active': searchState}" @deactivateSearch="search"></app-search>
+    <app-search :class="{'is-active': searchState}" @deactivateSearch="stateController('search')"></app-search>
+    <app-signup :class="{'is-active': signupState}" @deactivateSignup="stateController('signup')"></app-signup>
+    <app-login :class="{'is-active': loginState}" @deactivateLogin="stateController('login')"></app-login>
   </div>
 </template>
 
 <script>
 import Search from '~/components/Search.vue';
+import Signup from '~/components/Signup.vue';
+import Login from '~/components/Login.vue';
 
 export default {
   props: ['nav'],
@@ -93,6 +99,8 @@ export default {
     return {
       dropMenuState: false,
       searchState: false,
+      signupState: false,
+      loginState: false,
       articlesSim: [
         {
           image: 'https://dummyimage.com/64x50/000/fff.png',
@@ -113,13 +121,35 @@ export default {
       ]
     }
   },
+  watch: {
+    dropMenuState() {
+      if (!this.dropMenuState) {
+        const activeMenuItems = document.getElementsByClassName('c-nav__menu-item js-active');
+        for (let item of activeMenuItems) {
+          const itemArrow = item.previousSibling;
+          const itemArrowSvg = itemArrow.childNodes[0];
+          const itemSubmenuList = item.nextSibling.childNodes[0].childNodes[0];
+          itemArrowSvg.style.transform = 'rotate(0deg)';
+          itemSubmenuList.style.height = 0 + 'px';
+          item.classList.remove('js-active');
+          itemSubmenuList.classList.remove('js-active');
+        }
+      } else {
+        if (this.signupState) {
+          this.signupState = false;
+        } else if (this.loginState) {
+          this.loginState = false;
+        }
+      }
+    }
+  },
   methods:{
     activateThisSubmenu(e) {
       if (window.innerWidth < 768) {
         const menuItem = e.currentTarget;
         const menuItemArrow = menuItem.previousSibling;
         const menuItemArrowSvg = menuItemArrow.childNodes[0];
-        const submenuList = menuItem.nextSibling.childNodes[0];
+        const submenuList = menuItem.nextSibling.childNodes[0].childNodes[0];
         const submenuListChildCount = submenuList.childElementCount - 1; // -1 because of the div (border) used on desktop
         const submenuListChildHeight = submenuList.childNodes[1].offsetHeight; // [0] because of the div (border) used on desktop
         const submenuListTotalHeight = submenuListChildCount * submenuListChildHeight;
@@ -134,7 +164,7 @@ export default {
           for (let item of activeMenuItems) {
             const itemArrow = item.previousSibling;
             const itemArrowSvg = itemArrow.childNodes[0];
-            const itemSubmenuList = item.nextSibling.childNodes[0];
+            const itemSubmenuList = item.nextSibling.childNodes[0].childNodes[0];
             itemArrowSvg.style.transform = 'rotate(0deg)';
             itemSubmenuList.style.height = 0 + 'px';
             item.classList.remove('js-active');
@@ -160,10 +190,38 @@ export default {
         }
       }
     },
-    search() {
+    stateController(arg) {
       const body = document.getElementsByTagName('body')[0];
-      this.searchState = !this.searchState;
-      if (this.searchState) {
+
+      // arg case 'search'
+      if (arg === 'search') {
+        this.searchState = !this.searchState;
+        if (this.signupState) {
+          this.signupState = false;
+        } else if (this.loginState) {
+          this.loginState = false;
+        }
+
+      // arg case 'signup'
+      } else if (arg === 'signup') {
+        this.signupState = !this.signupState;
+        if (this.dropMenuState) {
+          this.dropMenuState = false;
+        } else if (this.loginState) {
+          this.loginState = false;
+        }
+
+      // arg case 'login'
+      } else if (arg === 'login') {
+        this.loginState = !this.loginState;
+        if (this.dropMenuState) {
+          this.dropMenuState = false;
+        } else if (this.signupState) {
+          this.signupState = false;
+        }
+      }
+
+      if (this.searchState || this.signupState || this.loginState) {
         body.style.overflow = 'hidden';
       } else {
         body.style.overflow = 'initial';
@@ -171,7 +229,9 @@ export default {
     }
   },
   components: {
-    AppSearch: Search
+    AppSearch: Search,
+    AppSignup: Signup,
+    AppLogin: Login
   }
 }
 </script>
@@ -185,6 +245,7 @@ export default {
 }
 
 .c-nav {
+  z-index: 1;
   position: fixed;
   height: 4.4rem;
   background-color: #000;
@@ -193,7 +254,7 @@ export default {
     height: 5.5rem;
   }
 
-  .main-wrapper {
+  > .main-wrapper {
     position: fixed;
     left: 0;
     right: 0;
@@ -422,7 +483,7 @@ export default {
   &__submenu-container {
     @include breakpoint(desktop) {
       display: none;
-      position: absolute;
+      position: fixed;
       top: 5.5rem;
       left: 0;
       width: 100%;
@@ -431,6 +492,12 @@ export default {
       &:hover {
         display: block;
       }
+    }
+  }
+
+  &__submenu-wrapper {
+    @include breakpoint(desktop) {
+      position: relative;
     }
   }
 
