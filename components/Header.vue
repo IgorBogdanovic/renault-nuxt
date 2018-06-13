@@ -83,8 +83,8 @@
       </div>
     </nav>
     <app-search :class="{'is-active': searchState}" @deactivateSearch="stateController('search')"></app-search>
-    <app-signup :class="{'is-active': signupState}" @deactivateSignup="stateController('signup')"></app-signup>
-    <app-login :class="{'is-active': loginState}" @deactivateLogin="stateController('login')"></app-login>
+    <app-signup :class="{'is-active': signupState}" @deactivateSignup="stateController('signup')" @activateLogin="stateController('login')"></app-signup>
+    <app-login :class="{'is-active': loginState}" @deactivateLogin="stateController('login')" @activateSignup="stateController('signup')"></app-login>
   </div>
 </template>
 

@@ -94,7 +94,7 @@
 					<div class="c-signup__submit">
 						<button class='c-signup__submit--signup' type="submit" :class="{'is-disabled': $v.$invalid}" :disabled="$v.$invalid">sign up</button>
 						<span>or</span>
-						<div class='c-signup__submit--login'>log in</div>
+						<div class='c-signup__submit--login' @click="activateLogin">log in</div>
 					</div>				
 				</form>
 			</div>
@@ -142,6 +142,9 @@ export default {
   methods: {
     deactivateSignup() {
       this.$emit('deactivateSignup');
+    },
+    activateLogin() {
+      this.$emit('activateLogin');
     }
   }
 }

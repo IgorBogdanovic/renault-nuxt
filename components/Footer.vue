@@ -1,6 +1,6 @@
 <template>
 <footer class="b-footer">
-   <img src="~static/logo-footer.png" alt="logo" class="b-footer__img">
+   <img src="~static/images/logo-footer.png" alt="logo" class="b-footer__img">
    <ul>
        <li v-for="(link, index) in links" :key="index" class="b-footer__link text--center text--bolder"> 
            <a :href="link.url" target="_blank"> {{ ++index }}: {{ link.title }} </a>
