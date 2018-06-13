@@ -19,7 +19,7 @@
 
 <script>
 import AppHeader from "~/components/Header.vue";
-import AppAccordion from "~/components/Accordion.vue";
+import AppAccordion from "~/components/accordion/Accordion.vue";
 import BlockLatestNews from "~/components/blocks/LatestNews.vue";
 import BlockQaList from "~/components/blocks/QaList.vue";
 import QaSlider from "~/components/sliders/QaSlider.vue";
