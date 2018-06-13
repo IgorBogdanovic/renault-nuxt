@@ -2,7 +2,7 @@
   cursor: pointer;
   font-family: "Lato-Bold";
   background-color: $white;
-  display: block;
+  display: inline-block;
   margin: 0 auto;
   text-transform: uppercase;
   @include box-shadow;
