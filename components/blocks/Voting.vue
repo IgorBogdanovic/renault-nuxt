@@ -10,7 +10,7 @@
               </div>
           </div>
       </div>
-      <button type="button" name="button" class='c-btn c-btn-submit-car-quiz'> SUBMIT</button>
+      <button type="button" name="button" class='c-btn c-btn-submit-car-quiz' disabled > SUBMIT</button>
   </div>
 
 </template>
@@ -148,10 +148,12 @@ export default {
                 });
 
                 //toggle submit button
-                if(this.usedStars.length === 5){
-                    document.querySelector('.c-btn-submit-car-quiz').style.display = 'block'
+                if(this.usedStars.length === this.cars.length ){
+                    //document.querySelector('.c-btn-submit-car-quiz').style.display = 'block'
+                    document.querySelector('.c-btn-submit-car-quiz').removeAttribute("disabled")
                 }else{
-                    document.querySelector('.c-btn-submit-car-quiz').style.display = 'none'
+                    //document.querySelector('.c-btn-submit-car-quiz').style.display = 'none'
+                    document.querySelector('.c-btn-submit-car-quiz').disabled = true;
                 }
 
                 //mark Car as Favorite
@@ -301,7 +303,7 @@ export default {
     }
 
     .c-btn-submit-car-quiz{
-        display: none;
+        //display: none;
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
