@@ -4,7 +4,6 @@
           <h2 class='b-voting__title'><span class='cursive'>RATE YOUR</span><span class='bolder'>FAVORITES</span></h2>
           <p class='b-voting__instructions'>Rate your favorite car from your least favorite with one star to your most favorite with five stars.</p>
       </div>
-
       <Vote/>
   </section>
 
@@ -25,7 +24,7 @@ export default {
 .b-voting{
     position:relative;
     padding-top:2.3rem;
-    padding-bottom: 5.5rem;
+    padding-bottom: 0;
 
     @include breakpoint(desktop){
         padding-top:3.6rem;

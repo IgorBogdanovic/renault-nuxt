@@ -264,7 +264,11 @@ export default {
             padding:0 0.22rem;
             @include fontSizeRem(23, 25)
             color:$white;
-            text-shadow: -1px 1px 0px silver;
+             -webkit-text-stroke: 1px silver;
+             @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+                 //IE 11 fallBack
+                 text-shadow:-1px 1px 0px silver;
+              }
             @include breakpoint(desktop){
                 color:$white-two;
             }
