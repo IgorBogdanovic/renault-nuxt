@@ -1,18 +1,18 @@
 <template lang="html">
-  <section class="b-vote">
-    <h2>Vote for Your cars</h2>
-    <div class="b-vote__cars_list">
-        <div class="c-car" v-for="(car,i) in cars" :key='i'>
-            <div class="c-car__image">
-                <img src="https://dummyimage.com/208x208/000/fff.jpg&text=Reno+Laguna" alt="">
-                <h4>{{car.name}}</h4>
-            </div>
-            <div class="c-voting-stars" data-rating='0' @mouseover="hoverStar" @mouseleave='unhoverStar' @click='clickStar'>
-                <span v-for='(star, i) in cars' :key='i' class='star' :data-count='`${i+1}`'>{{'★'}}</span>
-            </div>
-        </div>
-    </div>
-  </section>
+    <div class="b-vote-quiz inner-wrapper">
+      <div class="b-vote__cars_list">
+          <div class="c-car" v-for="(car,i) in cars" :key='i'>
+              <div class="c-car__image">
+                  <img src="https://dummyimage.com/308x308/eb00eb/fff.jpg&text" alt="">
+              </div>
+              <div class="c-voting-stars" data-rating='0' @mouseover="hoverStar" @mouseleave='unhoverStar' @click='clickStar'>
+                  <span v-for='(star, i) in cars' :key='i' class='star' :data-count='`${i+1}`'>{{'★'}}</span>
+              </div>
+          </div>
+      </div>
+      <button type="button" name="button" class='c-btn c-btn-submit-car-quiz'> SUBMIT</button>
+  </div>
+
 </template>
 
 <script>
@@ -23,11 +23,17 @@ export default {
                 {name:'Reno Klio'},
                 {name:'Reno Megan'},
                 {name:'Reno Laguna'},
-                {name:'Reno Laguna'},
+                {name:'Reno Kajar'},
+                {name:'Reno Capture'},
             ],
-            voteCount:1,
-            hoverTarget:'',
-            usedStars:[],
+            show:false,
+            usedStars:[]
+        }
+    },
+
+    computed:{
+        button(){
+            return this.cars.length == this.usedStars.length
         }
     },
 
@@ -75,10 +81,13 @@ export default {
             //cashing vars
             var star = event.target;
             var voteCount  = parseInt(star.dataset.count);
+            console.log(voteCount);
             var parent = star.parentNode;
+            var clikedCar = parent.parentNode;
+            var favoriteCar = document.querySelector('.c-car__favorite') || false;
             var parentData = parseInt(parent.dataset.rating);
-            var parentIndex = this.usedStars.indexOf( parentData )
-
+            var parentIndex = this.usedStars.indexOf( parentData );
+            console.log(favoriteCar);
             //console.log(parent,'\n', star,'\n',voteCount,'\n', this.usedStars,'\n', parentData);
             if(parentData != voteCount){
                 //if not clicking on the same number of stars
@@ -127,7 +136,7 @@ export default {
                     }
 
                 }
-                console.log(this.usedStars);
+
 
                 parent.childNodes.forEach((item,index)=>{
                     if(index < voteCount ){
@@ -137,6 +146,21 @@ export default {
                         item.classList.remove('star__rated');
                     }
                 });
+
+                //toggle submit button
+                if(this.usedStars.length === 5){
+                    document.querySelector('.c-btn-submit-car-quiz').style.display = 'block'
+                }else{
+                    document.querySelector('.c-btn-submit-car-quiz').style.display = 'none'
+                }
+
+                //mark Car as Favorite
+                if(voteCount == 5){
+                    if(favoriteCar){
+                        favoriteCar.classList.remove('c-car__favorite')
+                    }
+                    clikedCar.classList.add('c-car__favorite')
+                }
             }
 
 
@@ -168,39 +192,90 @@ export default {
 
 <style lang="scss" scoped>
 @import "~assets/scss/settings";
+    .b-vote-quiz{
+        padding-top: 1.4rem;
+        @include breakpoint(desktop){
+            padding-top: 2.4rem;
+        }
+    }
 
     .b-vote__cars_list{
         display: flex;
-        width: 80%;
+        flex-flow: row wrap;
+        width: 100%;
         margin: 0 auto;
         justify-content: space-between;
+        padding-bottom: 3.3rem;
+        @include breakpoint(desktop){
+            padding-bottom: 6.4rem;
+        }
     }
 
     .c-car{
-        &--unvoted{
-            // &:hover{
-            //     .star1{
-            //         color:$sun-yellow;
-            //     }
-            // }
+        width:47%;
+        position: relative;
+        padding-bottom: 8.6rem;
+        @include breakpoint(desktop){
+            width: 18.7%;
+            padding-bottom: 3.4rem;
+        }
+        & img{
+            width: 100%;
+        }
+
+        &__favorite{
+            &::after{
+                // content:#{$svgIcon};
+                content:'';
+                background: rgba(0,0,0,0.5)  no-repeat center;
+                background-image: url('~/static/images/favorite.svg');
+                background-size: 33%;
+                position: absolute;
+                text-align: center;
+                margin: auto;
+                top:0;
+                bottom:8.6rem;
+                width:100%;
+                @include breakpoint(desktop){
+                    top:0;
+                    bottom:3.4rem;
+                }
+            }
         }
     }
 
     .c-voting-stars{
-        padding-top: 1.86rem;
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        bottom:4rem;
+        bottom: 4.9rem;
+        display: flex;
+        padding: 0px 3%;
+        justify-content: space-between;
+        @include breakpoint(desktop){
+            display: block;
+            bottom:0;
+        }
 
         .star{
+
             transition:all 0.15s ease;
-            padding-top: 2rem;
-            font-size:3.5rem;
-            color:white;
+            padding:0 0.22rem;
+            @include fontSizeRem(23, 25)
+            color:$white;
             text-shadow: -1px 1px 0px silver;
-            fill:red;
+            @include breakpoint(desktop){
+                color:$white-two;
+            }
 
             &__rated{
                 color:$sun-yellow;
-                animation-name: ScalingStar;
+                animation-name: ScalingStarMob;
                 animation-duration: 0.2s;
+                @include breakpoint(desktop){
+                    animation-name: ScalingStarDesk;
+                }
             }
 
 
@@ -209,10 +284,27 @@ export default {
                 cursor:pointer;
             }
         }
-        @keyframes ScalingStar {
-            0%  {font-size:3.5rem;}
-            60% {font-size:3.9rem;}
-            100% {font-size:3.5rem;}
+        @keyframes ScalingStarDesk {
+            0%  {font-size:2.5rem;}
+            60% {font-size:2.7rem;}
+            100% {font-size:2.5rem;}
+        }
+        @keyframes ScalingStarMob {
+            0%  {font-size:2.3rem;}
+            60% {font-size:2rem;}
+            100% {font-size:2.3rem;}
+        }
+    }
+
+    .c-btn-submit-car-quiz{
+        display: none;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 2% 7.5%;
+        @include breakpoint(desktop){
+            bottom:3.6rem;
+            padding: 0.8% 3.2%;
         }
     }
 </style>
