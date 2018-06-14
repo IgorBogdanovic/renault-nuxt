@@ -1,6 +1,7 @@
 <template>
   <div>
-    <app-header :nav="navigation"></app-header>
+    <app-header></app-header>
+    <app-hp-slider :hpSlider="hpSlider"></app-hp-slider>
     <section class="temp">
     </section>
     <app-footer></app-footer>
@@ -8,21 +9,35 @@
 </template>
 
 <script>
+import HpSlider from '~/components/sliders/HpSlider.vue';
+
 export default {
   data () {
       return {
-        navigation: []
+        hpSlider: []
       }
   },
   asyncData(context) {
-    return context.app.$api.get(context.app.$api.queries.nav)
-    .then(res => {
-      console.log(res);
-      return {
-        navigation: res.data.data.navigation
-      }
-    })
-}
+    return context.app.$api.get(context.app.$api.queries.homepage)
+      .then(res => {
+        const homepage = res.data.data.nodes[0].elements;
+
+        for (let node of homepage) {
+          if (node.data.item_name === 'HP Slider') {
+            return {
+              hpSlider: node.element_item.elements
+            }
+          }
+          // ... else if for rest of the blocks
+        }
+      })
+  },
+  components: {
+    AppHpSlider: HpSlider
+  },
+  created() {
+    // console.log(this.homepage);
+  }
 }
 </script>
 
