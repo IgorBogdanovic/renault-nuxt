@@ -27,10 +27,26 @@ export default {
   data() {
     return {
       items: [
-        { title: "Title 1", content: "Content 1" },
-        { title: "Title 2", content: "Content 2" },
-        { title: "Title 3", content: "Content 3" },
-        { title: "Title 4", content: "Content 4" }
+        {
+          title: "Title 1",
+          content:
+            "Content 1 Adipisicing elit. Enim, eius quaerat Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, eius quaerat"
+        },
+        {
+          title: "Title 2",
+          content:
+            "Content 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, eius quaerat Enim, eius quaerat"
+        },
+        {
+          title: "Title 3",
+          content:
+            "Content 3 Nana Batman Blah NananaM Ddipisicing elit. Enim, eius quaerat Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, eius quaerat"
+        },
+        {
+          title: "Title 4",
+          content:
+            "Content 4 Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, eius quaerat"
+        }
       ],
       activeLiIndex: null
     };

@@ -6,12 +6,16 @@
 
       <div class="accordion__element__heading">
         <p class="text--bolder"> {{title}}  </p>
-        <img ref="accordionElementImg" src="~/static/images/arrow.svg" :class="{'img-active': active}" alt="arrow" width="36px" height="36px">
+        <img ref="img" src="~/static/images/arrow.svg" class="img" :class="{'img-active': active}" alt="arrow" width="36px" height="36px">
       </div>
 
-        <div ref="accordionElementText" class="accordion__element__text" :class="{'active': active}">
+      <transition name="slide-fade">
+
+        <div ref="text" class="accordion__element__text" :class="{'active': active}">
           <p> {{content}} </p>
         </div>
+
+      </transition>
 
     </div>
 
@@ -28,12 +32,8 @@ export default {
   methods: {
     toggleRowActive() {
       this.$emit("newactive", this.index);
-      // console.log(this.$refs.accordionElementText);
-      // this.$refs.accordionElementText.classList.toggle("active");
-      // if (this.$refs.accordionElementText.classList.contains("active")) {
-      //   this.$refs.accordionElementText.classList.toggle("active");
-      //   this.$refs.accordionElementImg.classList.toggle("img-active");
-      // }
+      this.$refs.text.classList.toggle("active");
+      this.$refs.img.classList.toggle("img-active");
     }
   }
 };
@@ -58,10 +58,13 @@ export default {
       align-items: center;
       padding: 1.2rem 0;
 
-      img {
+      .img {
         border-radius: 50%;
         background-color: $white;
         transition: 0.3s ease-in-out;
+        outline: none;
+        color: transparent;
+        border: none;
       }
 
       .img-active {
@@ -72,15 +75,27 @@ export default {
     }
 
     &__text {
-      display: none;
-      p {
-        padding: 1rem;
-      }
+      line-height: 0;
+      padding: 0;
+      opacity: 0;
+      transition: all 0.2s ease;
+    }
+    &__text.active {
+      padding: 1rem;
+      line-height: 1;
+      opacity: 1;
     }
   }
 }
-
-.active {
-  display: block;
-}
+// .slide-fade-enter-active {
+//   transition: all 0.2s ease;
+// }
+// .slide-fade-leave-active {
+//   transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+// }
+// .slide-fade-enter, .slide-fade-leave-to
+// /* .slide-fade-leave-active below version 2.1.8 */ {
+//   transform: translateY(-10px);
+//   opacity: 0;
+// }
 </style>

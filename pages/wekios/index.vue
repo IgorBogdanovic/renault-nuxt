@@ -1,6 +1,5 @@
 <template>
   <div class="page">
-    <app-header/>
     <div class="main-wrapper">
       <div class="inner-wrapper">
         <app-accordion/>
