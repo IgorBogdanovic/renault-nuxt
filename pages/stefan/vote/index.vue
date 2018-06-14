@@ -1,19 +1,15 @@
 <template lang="html">
   <section class='b-voting main-wrapper'>
-      <div class="inner-wrapper">
-          <h2 class='b-voting__title'><span class='cursive'>RATE YOUR</span><span class='bolder'>FAVORITES</span></h2>
-          <p class='b-voting__instructions'>Rate your favorite car from your least favorite with one star to your most favorite with five stars.</p>
-      </div>
-      <Vote/>
+      <app-voting/>
   </section>
 
 </template>
 
 <script>
-import Vote from "@/components/blocks/Voting.vue"
+import AppVoting from "@/components/blocks/Voting.vue"
 export default {
     components:{
-        Vote,
+        AppVoting,
     }
 }
 </script>
