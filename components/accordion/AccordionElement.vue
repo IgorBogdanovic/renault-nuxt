@@ -1,16 +1,16 @@
 <template>
 
-<article class="accordion">
+<article class="accordion" @click="toggleRowActive" >
 
-    <div class="accordion__element" @click="toggleAccordion">
+    <div class="accordion__element">
 
       <div class="accordion__element__heading">
-        <p class="text--bolder"> Heading  </p>
-        <img src="~/static/images/arrow.svg" :class="arrowClasses" alt="arrow" width="36px" height="36px">
+        <p class="text--bolder"> {{title}}  </p>
+        <img ref="accordionElementImg" src="~/static/images/arrow.svg" :class="{'img-active': active}" alt="arrow" width="36px" height="36px">
       </div>
 
-        <div class="accordion__element__text" v-if="opened">
-          <p> Content </p>
+        <div ref="accordionElementText" class="accordion__element__text" :class="{'active': active}">
+          <p> {{content}} </p>
         </div>
 
     </div>
@@ -22,20 +22,18 @@
 <script>
 export default {
   data() {
-    return {
-      opened: false
-    };
+    return {};
   },
+  props: ["title", "content", "active", "index"],
   methods: {
-    toggleAccordion() {
-      this.opened = !this.opened;
-    }
-  },
-  computed: {
-    arrowClasses() {
-      return {
-        "is-closed": !this.opened
-      };
+    toggleRowActive() {
+      this.$emit("newactive", this.index);
+      // console.log(this.$refs.accordionElementText);
+      // this.$refs.accordionElementText.classList.toggle("active");
+      // if (this.$refs.accordionElementText.classList.contains("active")) {
+      //   this.$refs.accordionElementText.classList.toggle("active");
+      //   this.$refs.accordionElementImg.classList.toggle("img-active");
+      // }
     }
   }
 };
@@ -43,7 +41,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "~assets/scss/settings";
-
 .accordion {
   color: $black;
   width: 100%;
@@ -67,7 +64,7 @@ export default {
         transition: 0.3s ease-in-out;
       }
 
-      img.is-closed {
+      .img-active {
         -ms-transform: rotate(180deg); /* IE 9 */
         -webkit-transform: rotate(180deg); /* Safari 3-8 */
         transform: rotate(180deg);
@@ -75,10 +72,15 @@ export default {
     }
 
     &__text {
+      display: none;
       p {
         padding: 1rem;
       }
     }
   }
+}
+
+.active {
+  display: block;
 }
 </style>
