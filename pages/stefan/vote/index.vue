@@ -42,17 +42,14 @@ export default {
             display: block;
         }
         & .cursive{
-            @include fontSizeRem(22, 32);
+            @include fontSizeRem(25, 32);
             font-family: 'Airways';
-            @include breakpoint(desktop){
-
-            }
         }
     }
 
     &__instructions{
         @include fontSizeRem(12,18);
-        padding-top: 1.6rem;
+        padding-top: 1.3rem;
         width: 78%;
         line-height: 1.42;
         @include breakpoint(desktop){

@@ -10,7 +10,7 @@
               </div>
           </div>
       </div>
-      <button type="button" name="button" class='c-btn c-btn-submit-car-quiz' disabled > SUBMIT</button>
+      <button type="button" name="button" class='c-btn c-btn--submit-car-quiz c-btn c-btn--disabled' disabled > SUBMIT</button>
   </div>
 
 </template>
@@ -26,14 +26,7 @@ export default {
                 {name:'Reno Kajar'},
                 {name:'Reno Capture'},
             ],
-            show:false,
             usedStars:[]
-        }
-    },
-
-    computed:{
-        button(){
-            return this.cars.length == this.usedStars.length
         }
     },
 
@@ -45,33 +38,16 @@ export default {
 
             parent.childNodes.forEach((item,index)=>{
                 if(index < parseInt(star.dataset.count) ){
-                    //console.log(item);
-                    //item.style.color = '#ffcc33';
                     item.classList.add('star__hover');
                 }else{
                     item.classList.remove('star__hover');
                 }
             });
-
-            // if(star.classList.contains('c-car--unvoted') ){
-            //     stars.childNodes.forEach((item,index)=>{
-            //         if(index < this.voteCount){
-            //             item.style.color = '#ffcc33';
-            //         }
-            //     });
-            // }
-
-            // console.log('Parent', parent);
-            // console.log('EventTarget: ',star);
-            // console.log('DATAcount: ',star.dataset.count);
-            // console.log('Class List', star.classList);
-
         },
 
         unhoverStar(event){
             //cashing vars
-            var stars = event.target;//in this case (UN-hover) event.target is .c-voting-stars
-
+            var stars = event.target;
             stars.childNodes.forEach( (item,index)=>{
                 item.classList.remove('star__hover');
             });
@@ -79,65 +55,53 @@ export default {
 
         clickStar(event){
             //cashing vars
-            var star = event.target;
-            var voteCount  = parseInt(star.dataset.count);
-            console.log(voteCount);
-            var parent = star.parentNode;
-            var clikedCar = parent.parentNode;
-            var favoriteCar = document.querySelector('.c-car__favorite') || false;
-            var parentData = parseInt(parent.dataset.rating);
-            var parentIndex = this.usedStars.indexOf( parentData );
-            console.log(favoriteCar);
-            //console.log(parent,'\n', star,'\n',voteCount,'\n', this.usedStars,'\n', parentData);
-            if(parentData != voteCount){
-                //if not clicking on the same number of stars
+            var star = event.target; //clicked star
+            var voteCount  = parseInt(star.dataset.count); //number of points on clicked star
+            var parent = star.parentNode; //parent node that wraps all stras for rating
+            var clikedCar = parent.parentNode; //div that holds image and rating system
+            var favoriteCar = document.querySelector('.c-car__favorite') || false; //if we have car with max number of stars
+            var parentData = parseInt(parent.dataset.rating);//number of points assigned to car
+            var parentIndex = this.usedStars.indexOf( parentData ); //for tracking in usedStars array
+            var submitBtn   = document.querySelector('.c-btn--submit-car-quiz');//submit button
 
+            //if not clicking on the number of stars already assigned to car
+            if(parentData != voteCount){
                 if( this.usedStars.indexOf( voteCount ) != -1 ){
-                    //if in array
+                    //if already voted with this num of points
                     var itemToClear = document.querySelector('[data-rating = "'+voteCount+'"]');
 
-
                     if( parentData > 0 ){
+                        //and if cliked item HAS VOTING points
                         var indexToClear = this.usedStars.indexOf(parentData);
                         this.usedStars.splice( indexToClear, 1);
                         parent.dataset.rating = voteCount;
-                        console.log('in > 0');
                     }else{
+                        //or if cliked item HAS NO VOTING points
                         parent.dataset.rating = voteCount;
-                        console.log('in < 0');
                     }
 
-                    //reset Item
+                    //Reset Item to 0 stars
                     itemToClear.dataset.rating = 0;
                     itemToClear.childNodes.forEach((item,index)=>{
                         item.classList.remove('star__rated');
                     })
 
-                    //****** AUTO COMPLETE ( SWAP Logika ) ********
-                    // itemToClear.childNodes.forEach((item,index)=>{
-                    //     if(index < parseInt(itemToClear.dataset.rating)){
-                    //         item.classList.add('star__rated');
-                    //     }else{
-                    //         item.classList.remove('star__rated');
-                    //     }
-                    // });
-
                 }else{
+                    //if used did NOT vote with this num of points
                     if( parentData > 0 ){
+                        //and if cliked item HAS VOTING points
                         var indexToClear = this.usedStars.indexOf(parentData);
                         this.usedStars.splice( indexToClear, 1);
                         parent.dataset.rating = voteCount;
                         this.usedStars.push( voteCount );
-                        console.log('out > 0');
                     }else{
+                        //or if cliked item HAS NO VOTING points
                         this.usedStars.push( voteCount );
                         parent.dataset.rating = voteCount;
-                        console.log('out < 0');
                     }
-
                 }
 
-
+                //toggle Classes on rated item
                 parent.childNodes.forEach((item,index)=>{
                     if(index < voteCount ){
                         item.classList.remove('star__rated');
@@ -149,44 +113,25 @@ export default {
 
                 //toggle submit button
                 if(this.usedStars.length === this.cars.length ){
-                    //document.querySelector('.c-btn-submit-car-quiz').style.display = 'block'
-                    document.querySelector('.c-btn-submit-car-quiz').removeAttribute("disabled")
+                    submitBtn.classList.remove('c-btn--disabled');
+                    submitBtn.removeAttribute("disabled")
                 }else{
-                    //document.querySelector('.c-btn-submit-car-quiz').style.display = 'none'
-                    document.querySelector('.c-btn-submit-car-quiz').disabled = true;
+                    submitBtn.classList.add('c-btn--disabled');
+                    submitBtn.disabled = true;
                 }
 
                 //mark Car as Favorite
-                if(voteCount == 5){
+                if(voteCount == this.cars.length ){
                     if(favoriteCar){
                         favoriteCar.classList.remove('c-car__favorite')
                     }
                     clikedCar.classList.add('c-car__favorite')
+                }else{
+                    if( parentData == this.cars.length){
+                        favoriteCar.classList.remove('c-car__favorite')
+                    }
                 }
             }
-
-
-
-
-            // if( this.usedStars.indexOf( voteCount ) != -1 ){
-            //     //if User Voted with this Number of stars (clicked Number of stars)
-            //     //find item that have same rate and clear it
-            //     var itemToClear = document.querySelectorAll('[data-rating = "'+voteCount+'"]');
-            //     itemToClear.dataset.rating = '0';
-            //
-            //     //ReAssign new rate to cliked element
-            //     parent.dataset.rating = voteCount;
-            //
-            // }else{
-            //     //Number of stars is  Available for Voting
-            //     this.usedStars.push( voteCount );
-            //     parent.dataset.rating = voteCount;
-            //
-            // }
-
-            //add and remove rated class on clicked stars
-
-
         }
     }
 }
@@ -207,9 +152,9 @@ export default {
         width: 100%;
         margin: 0 auto;
         justify-content: space-between;
-        padding-bottom: 3.3rem;
+
         @include breakpoint(desktop){
-            padding-bottom: 6.4rem;
+
         }
     }
 
@@ -236,8 +181,10 @@ export default {
                 text-align: center;
                 margin: auto;
                 top:0;
+                left:0;
+                right:0;
                 bottom:8.6rem;
-                width:100%;
+
                 @include breakpoint(desktop){
                     top:0;
                     bottom:3.4rem;
@@ -250,8 +197,7 @@ export default {
         text-align: center;
         position: absolute;
         width: 100%;
-        bottom:4rem;
-        bottom: 4.9rem;
+        bottom: 4.7rem;
         display: flex;
         padding: 0px 3%;
         justify-content: space-between;
@@ -299,18 +245,6 @@ export default {
             0%  {font-size:2.3rem;}
             60% {font-size:2rem;}
             100% {font-size:2.3rem;}
-        }
-    }
-
-    .c-btn-submit-car-quiz{
-        //display: none;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 2% 7.5%;
-        @include breakpoint(desktop){
-            bottom:3.6rem;
-            padding: 0.8% 3.2%;
         }
     }
 </style>
