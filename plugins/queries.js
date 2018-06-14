@@ -15,4 +15,8 @@ export const Queries = {
 
     allArticles:
     `/node?query=query%7B%0A%20%20nodes%20(node_type%3A%20"Article")%20%7B%0A%09id%0A%09title%0A%09additional_fields%20%7B%0A%20%20%09%20%20...%20on%20TypeArticle%20%7B%0A%20%20%20%20%09%20%20%20%20intro%0A%20%20%20%20%09%20%20%20%20%7D%0A%09%7D%0A%09tags%20%7B%0A%0A%20%20%09%20%20name%0A%09%7D%0A%09featured_image%3A%20elements(type%3A%20"featured_image")%20%7B%0A%20%20%20%20%20%20%09%20%20data%20%20%20%20%20%20%09%20%0A%09%7D%0A%20%20%7D%0A%7D%0A`,
+
+    article: function(id) {
+        return '/node?query=query%7B%0A%20%20nodes%20(id%3A%20' + id + ')%20%7B%0A%09id%0A%09title%0A%09created_at%0A%09additional_fields%20%7B%0A%20%20%09%20%20...%20on%20TypeArticle%20%7B%0A%20%20%20%20%09%20%20%20%20intro%0A%20%20%20%20%09%20%20%20%20meta_title%0A%20%20%20%20%09%20%20%20%20meta_description%0A%20%20%09%20%20%7D%0A%09%7D%0A%09category%3A%20tags(taxonomy%3A%20"Category")%20%7B%0A%20%20%09%20%20id%0A%20%20%09%20%20name%0A%09%7D%0A%20%20article_type%3A%20tags(taxonomy%3A%20"Article%20Type")%20%7B%0A%20%20%09%20%20id%0A%20%20%09%20%20name%0A%09%7D%0A%09elements%20%7B%0A%20%20%09%20%20type%0A%20%20%09%20%20data%20%09%20%0A%09%7D%0A%20%20%20%7D%0A%7D%0A%0A'
+    },
 };
