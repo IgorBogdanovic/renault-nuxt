@@ -1,6 +1,7 @@
 <template>
 
 <div class="qa-slider">
+
   <h2 class="qa-slider__heading">
     <span class="text--regular">Renault</span>
     <br>
@@ -29,18 +30,17 @@
                 </div>
                 
             </div>
+                        
+            <div class="swiper-prev">⬅</div>
+            
+            <div class="swiper-pagination text--bold"></div>
 
+            <div class="swiper-next" :style="{ transform: 'scaleX(-1)' }">⬅</div>
 
-    <div class="swiper-prev">⬅</div>
+    </div>
 
-    <div class="swiper-pagination"></div>
-
-    <div class="swiper-next">⬅</div>
-    
   </div>
   
-  </div>
-
 </div>
 
 </template>
@@ -52,7 +52,7 @@ export default {
     return {
       slider: [
         {
-          image: "https://dummyimage.com/428x424/555555/000000.png",
+          image: "https://dummyimage.com/336x281/cecece/000000.png",
           imageAlt: "some alt",
           title: "My Van & Traffic Regulation",
           description:
@@ -114,6 +114,10 @@ export default {
 
 .qa-slider {
   width: 100%;
+  height: 26rem;
+  @include breakpoint(desktop) {
+    width: 65.6rem;
+  }
 
   &__heading {
     margin-bottom: 11rem;
@@ -130,11 +134,13 @@ export default {
     width: 33.6rem;
     top: -9.7rem;
     @include breakpoint(desktop) {
+      width: 41.6rem;
     }
   }
 
   &-slide {
     &__image {
+      width: 100%;
       margin-bottom: 0.9rem;
     }
 
@@ -154,30 +160,19 @@ export default {
   }
 
   &-pagination {
-    text-align: left;
-    z-index: 100;
-    @include fontSizeRem(15, 15);
-    @include breakpoint(desktop) {
-      top: 13.3rem;
-      right: 0;
-      text-align: right;
-      z-index: 100;
-    }
+    @include fontSizeRem(12, 0);
+    position: static;
+    display: inline;
+    margin: 0.8rem;
+    color: $warm-grey;
   }
-  &-prev {
-    left: 0;
-    bottom: 0;
-    display: inline-block;
-    z-index: 100;
-    @include fontSizeRem(15, 15);
-  }
+
+  &-prev,
   &-next {
     display: inline-block;
-    transform: scaleX(-1);
-    top: 13.3rem;
-    right: 3.4rem;
-    z-index: 100;
-    @include fontSizeRem(15, 15);
+    @include fontSizeRem(15, 0);
+    outline: 0;
+    cursor: pointer;
   }
 }
 </style>

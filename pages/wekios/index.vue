@@ -10,7 +10,9 @@
         <hr>
         <block-qa-list/>
       </div>
-      <qa-slider/>
+      <div class="inner-wrapper--full">
+        <qa-slider/>
+      </div>
     </div>
     <app-footer/>
   </div>
