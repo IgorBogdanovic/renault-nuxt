@@ -53,7 +53,7 @@
                     </ul>
                     <ul class="c-nav__submenu-articles u-only-desktop">
                       <h4><span>top&nbsp;</span><span>articles</span></h4>
-                      <li v-for="(articleItem, index) in articlesSim" :key="index">
+                      <li v-for="(articleItem, index) in topArticles" :key="index">
                         <img :src="articleItem.image" alt="article preview image">
                         <h6>{{ articleItem.text }}</h6>
                       </li>
@@ -94,31 +94,20 @@ import Signup from '~/components/Signup.vue';
 import Login from '~/components/Login.vue';
 
 export default {
-  props: ['nav'],
   data () {
     return {
       dropMenuState: false,
       searchState: false,
       signupState: false,
-      loginState: false,
-      articlesSim: [
-        {
-          image: 'https://dummyimage.com/64x50/000/fff.png',
-          text: 'Proin rhoncus eros ac ante pellentesque, id lobortis turpis'
-        },
-        {
-          image: 'https://dummyimage.com/64x50/000/fff.png',
-          text: 'Proin rhoncus eros ac ante pellentesque, id lobortis turpis'
-        },
-        {
-          image: 'https://dummyimage.com/64x50/000/fff.png',
-          text: 'Vivamus a tincidunt massa, id molestie lacus.'
-        },
-        {
-          image: 'https://dummyimage.com/64x50/000/fff.png',
-          text: 'Vivamus a tincidunt massa, id molestie lacus.'
-        }
-      ]
+      loginState: false
+    }
+  },
+  computed: {
+    nav() {
+      return this.$store.state.navigation;
+    },
+    topArticles() {
+      return this.$store.state.articlesSim;
     }
   },
   watch: {
@@ -143,7 +132,7 @@ export default {
       }
     }
   },
-  methods:{
+  methods: {
     activateThisSubmenu(e) {
       if (window.innerWidth < 768) {
         const menuItem = e.currentTarget;

@@ -1,62 +1,64 @@
 <template>
 	<div class="c-login__wrapper">
-		<div class="c-login">
-			<div class="c-login__close" @click="deactivateLogin">
-				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-					viewBox="0 0 357 357" style="enable-background:new 0 0 357 357;" xml:space="preserve">
-					<g>
-					<g id="close">
-						<polygon points="357,35.7 321.3,0 178.5,142.8 35.7,0 0,35.7 142.8,178.5 0,321.3 35.7,357 178.5,214.2 321.3,357 357,321.3 
-						214.2,178.5 		"/>
-					</g>
-					</g>
-				</svg>
-			</div>
-			<div class="c-login--left">
-				<h2 class="c-login__title">
-					Log In
-				</h2>
-				<div class="c-login__txt">
-          <p>Welcome back!</p>
+    <div class="c-login__inner-wrapper">
+      <div class="c-login">
+        <div class="c-login__close" @click="deactivateLogin">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="0 0 357 357" style="enable-background:new 0 0 357 357;" xml:space="preserve">
+            <g>
+            <g id="close">
+              <polygon points="357,35.7 321.3,0 178.5,142.8 35.7,0 0,35.7 142.8,178.5 0,321.3 35.7,357 178.5,214.2 321.3,357 357,321.3 
+              214.2,178.5 		"/>
+            </g>
+            </g>
+          </svg>
         </div>
-        <div class="c-login__logo u-only-desktop">
-          <img src="~static/images/logo.png" alt="logo">
+        <div class="c-login--left">
+          <h2 class="c-login__title">
+            Log In
+          </h2>
+          <div class="c-login__txt">
+            <p>Welcome back!</p>
+          </div>
+          <div class="c-login__logo u-only-desktop">
+            <img src="~static/images/logo.png" alt="logo">
+          </div>
         </div>
-			</div>
-			<div class="c-login--right">
-				<form action="">
-          <div class="c-login__field c-login__field--username">
-            <label for="username">username</label>
-            <input type="text" name='username' placeholder="enter username" v-model="username">
-            <div class="c-login__validation-msg">
+        <div class="c-login--right">
+          <form action="">
+            <div class="c-login__field c-login__field--username">
+              <label for="username">username</label>
+              <input type="text" name='username' placeholder="enter username" v-model="username">
+              <div class="c-login__validation-msg">
+                <div v-if="serverResValid" class="c-login__check c-login__check--true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.155 12.3">
+                    <path id="check" d="M5.14 63.28l-3.855-3.855L0 60.71l5.14 5.14 11.015-11.015-1.285-1.285z" class="cls-1" transform="translate(0 -53.55)"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="c-login__field c-login__field--password">
+              <label for="password">password</label>
+              <input type="password" name='password' placeholder="enter password" v-model="password">
               <div v-if="serverResValid" class="c-login__check c-login__check--true">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.155 12.3">
                   <path id="check" d="M5.14 63.28l-3.855-3.855L0 60.71l5.14 5.14 11.015-11.015-1.285-1.285z" class="cls-1" transform="translate(0 -53.55)"/>
                 </svg>
               </div>
             </div>
-          </div>
-          <div class="c-login__field c-login__field--password">
-            <label for="password">password</label>
-					  <input type="password" name='password' placeholder="enter password" v-model="password">
-            <div v-if="serverResValid" class="c-login__check c-login__check--true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.155 12.3">
-                <path id="check" d="M5.14 63.28l-3.855-3.855L0 60.71l5.14 5.14 11.015-11.015-1.285-1.285z" class="cls-1" transform="translate(0 -53.55)"/>
-              </svg>
+            <div class="c-login__validation u-clearfix">
+              <span v-if="serverError" class="c-login__validation--false-msg">username and password do not match</span>
+              <span class="c-login__validation--forgot-opt">forgot password?</span>
             </div>
-          </div>
-          <div class="c-login__validation u-clearfix">
-            <span v-if="serverError" class="c-login__validation--false-msg">username and password do not match</span>
-            <span class="c-login__validation--forgot-opt">forgot password?</span>
-          </div>
-					<div class="c-login__submit">
-						<button class='c-login__submit--login' type="submit" :class="{'is-disabled': $v.$invalid}" :disabled="$v.$invalid">log in</button>
-						<span>or</span>
-						<div class='c-login__submit--signup' @click="activateSignup">sign up</div>
-					</div>				
-				</form>
-			</div>
-		</div>		
+            <div class="c-login__submit">
+              <button class='c-login__submit--login' type="submit" :class="{'is-disabled': $v.$invalid}" :disabled="$v.$invalid">log in</button>
+              <span>or</span>
+              <div class='c-login__submit--signup' @click="activateSignup">sign up</div>
+            </div>				
+          </form>
+        </div>
+      </div>
+    </div>
 	</div>
 </template>
 
@@ -124,6 +126,14 @@ export default {
       &.is-active {
         visibility: visible;
         opacity: 1;
+      }
+    }
+
+    &__inner-wrapper {
+      @include breakpoint(desktop){
+				position: relative;
+        max-width: 1440px;
+        margin: 0 auto;
       }
     }
     
