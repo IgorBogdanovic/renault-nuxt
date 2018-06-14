@@ -5,12 +5,12 @@
                 <div v-for="(slide, index) in slider" :key="index" class="swiper-slide">
                     <div class="c-yellow-slider__wrapper">
                         <div class="c-yellow-slider__image">
-                            <img :src="slider[index].image" :alt="slider[index].imageAlt">
+                            <img :src="slide.image" :alt="slide.imageAlt">
                         </div>
                         <div class="c-yellow-slider__body">
                             <h2><span class="bolder">MY</span><span class="cursive"> van</span></h2>
-                            <h4>{{ slider[index].title }}</h4>
-                            <p>{{ slider[index].desc }}</p>
+                            <h4>{{ slide.title }}</h4>
+                            <p>{{ slide.desc }}</p>
                             <button class="c-btn">See all</button>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
             top: 2.8rem;
             left: 3rem;
             color: $white;
-            width: 50%;
+            width: 51%;
 
             & h2 {
                 margin-bottom: 3.9rem;
