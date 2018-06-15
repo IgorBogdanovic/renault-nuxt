@@ -2,52 +2,40 @@
 
   <section class="b-qa-list">
 
-    <!-- <div class="main-wrapper">
+    <div class="b-qa-list__inner">
 
-      <div class="inner-wrapper"> -->
+      <h2 class='b-qa-list__title'>
+        <span class="text--bolder">Q
+          <span class='text--italic'>&</span>A</span>
+        <br>
+        <span class='text--regular'>list</span>
+      </h2>
 
-        <div class="b-qa-list__inner">
+      <div class="row">
 
-          <h2 class='b-qa-list__title'>
-            <span class="text--bolder">Q<span class='text--italic'>&</span>A</span>
-            <br>
-            <span class='text--regular'>list</span>
-          </h2>
-          
-          
-          <div class="row">
-            
-            <app-article-preview :prev="previews[0]" class="c-article-preview-landscape padded"/>
-            
-            </div>
+        <app-article-preview :prev="previews[0]" class="c-article-preview-landscape padded float-right" />
 
-            <div class="row">
+      </div>
 
-            <app-article-preview :prev="previews[1]" class="c-article-preview-square padded"/>
-            <app-article-preview :prev="previews[2]" class="c-article-preview-square padded"/>
-            <app-article-preview :prev="previews[3]" class="c-article-preview-square padded"/>
-            <app-article-preview :prev="previews[0]" class="c-article-preview-square c-article-preview-landscape--desk padded float-right"/>
+      <div class="row">
 
-            </div>
+        <app-article-preview :prev="previews[1]" class="c-article-preview-square padded" />
+        <app-article-preview :prev="previews[2]" class="c-article-preview-square padded" />
+        <app-article-preview :prev="previews[3]" class="c-article-preview-square padded" />
+        <app-article-preview :prev="previews[0]" class="c-article-preview-square c-article-preview-landscape--desk padded"
+        />
 
-            <div class="row">
-              
-            <app-article-preview :prev="previews[1]" class="c-article-preview-square padded"/>
-            <app-article-preview :prev="previews[1]" class="c-article-preview-square padded"/>
-            <app-article-preview :prev="previews[1]" class="c-article-preview-square padded"/>
-            <app-article-preview :prev="previews[0]" class="c-article-preview-square c-article-preview-landscape--desk padded"/>
+      </div>
+
+      <div class="row">
+
+        <app-article-preview :prev="previews[1]" class="c-article-preview-square padded" />
+        <app-article-preview :prev="previews[1]" class="c-article-preview-square padded" />
+        <app-article-preview :prev="previews[1]" class="c-article-preview-square padded" />
+        <app-article-preview :prev="previews[0]" class="c-article-preview-square c-article-preview-landscape--desk padded float-right" />
 
 
-            </div>
-
-            <button class="c-btn"><a href="/">see all</a></button>      
-            <button class="c-btn c-btn--yellow"><a href="/">slideshow</a></button>      
-            <button class="c-btn c-btn--signUp"><a href="/">Sign Up</a></button>
-            <button class="c-btn c-btn--logIn"><a href="/">Log in</a></button>      
-    
-        <!-- </div>
-
-      </div> -->
+      </div>
 
     </div>
   </section>
@@ -62,35 +50,32 @@ export default {
     return {
       previews: [
         {
-          image: "https://dummyimage.com/156x137/c9c9c9/000000.png", //mobile
+          image: "https://dummyimage.com/232x200/c9c9c9/000000.png", //mobile
           //          image: "https://dummyimage.com/272x360/c9c9c9/000000.png",
           imageAlt: "some alt",
           tagged: false,
           tag: "MY BUSINESS",
-          title:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
+          title: "Lorem Ipsum is simply dummy text of the printing ",
           desc:
             "A mobile showroom for your business really isn’t so different from the tried and tested mobile retail outlet…"
         },
         {
-          image: "https://dummyimage.com/156x136/c9c9c9/000000.png", //mobile
+          image: "https://dummyimage.com/232x200/c9c9c9/000000.png", //mobile
           //          image: "https://dummyimage.com/272x224/c9c9c9/000000.png",
           imageAlt: "some alt",
           tagged: false,
           tag: "MY BUSINESS",
-          title:
-            "PRVI Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
+          title: "PRVI Ipsum is simply dummy text of the printing ",
           desc:
             "The UK boasts several ski resorts offering seasonal business opportunities to entrepreneurs on wheels. Here are a few.."
         },
         {
-          image: "https://dummyimage.com/156x136/c9c9c9/000000.png", //mobile
+          image: "https://dummyimage.com/232x200/c9c9c9/000000.png", //mobile
           //          image: "https://dummyimage.com/492x400/c9c9c9/000000.png",
           imageAlt: "some alt",
           tagged: false,
           tag: "MY BUSINESS",
-          title:
-            " DRUGI Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
+          title: " DRUGI Ipsum is simply dummy text of the printing ",
           desc:
             "The UK tourism economy is undergoing a boom; employment-wise, it has been the fastest-growing sector in the country…"
         },
@@ -100,8 +85,7 @@ export default {
           imageAlt: "some alt",
           tagged: false,
           tag: "MY BUSINESS",
-          title:
-            "TRECI Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
+          title: "TRECI Ipsum is simply dummy text of the printing ",
           desc:
             "The UK tourism economy is undergoing a boom; employment-wise, it has been the fastest-growing sector in the country…"
         }
@@ -124,10 +108,30 @@ export default {
 
   &__title {
     margin-bottom: 6.2rem;
+    @include breakpoint(desktop) {
+      margin-bottom: 0;
+    }
   }
 
   .c-article-preview {
     margin-bottom: 8.8rem;
+    @include breakpoint(desktop) {
+      margin-bottom: 10.8rem;
+    }
+  }
+
+  .c-article-preview-landscape {
+    @include breakpoint(desktop) {
+      margin-bottom: 17.2rem;
+    }
+  }
+
+  .c-article-preview-square {
+    @include breakpoint(desktop) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 
   .c-article-preview-landscape--desk {
@@ -136,6 +140,7 @@ export default {
       justify-content: flex-start;
       align-items: flex-end;
       padding-bottom: 3.3rem;
+      margin-bottom: 17.2rem;
 
       .c-article-preview__image {
         width: 46%;

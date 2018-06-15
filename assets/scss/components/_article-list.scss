@@ -26,7 +26,7 @@
 }
 
 .c-article-preview-landscape.padded {
-  width:  33.6rem;
+  width: 33.6rem;
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
@@ -40,6 +40,9 @@
     width: 46%;
     margin-bottom: 0;
     margin-top: -3.3rem;
+    @include breakpoint(desktop) {
+      margin-left: 6.4rem;
+    }
   }
 
   .c-article-preview__content {
@@ -51,39 +54,51 @@
 .c-article-preview-square.padded {
   background-color: $white-two;
   padding-bottom: 3.3rem;
+  @include breakpoint(desktop) {
+    width: 34.5rem;
+  }
 
   .c-article-preview__image {
     width: 100%;
     margin-bottom: 0;
     margin-top: -6.4rem;
     @include box-shadow;
+    @include breakpoint(desktop) {
+      width: 23.2rem;
+      margin-top: -10rem;
+    }
   }
 
   .c-article-preview__content {
-    margin: 1.9rem auto 0;
-    width: 77%;
+    margin-top: 1.9re;
+    @include breakpoint(desktop) {
+      width: 22rem;
+    }
   }
-
 }
 
 .c-article-preview-landscape--desk.padded {
-    @include breakpoint(desktop) {
-      width: 60.5rem;
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-end;
-      padding-bottom: 3.3rem;
-      
-      .c-article-preview__image {
-        width: 46%;
-        margin-bottom: 0;
-        margin-top: -3.3rem;
+  @include breakpoint(desktop) {
+    width: 60.5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding-bottom: 3.3rem;
+
+    .c-article-preview__image {
+      width: 46%;
+      margin-bottom: 0;
+      margin-top: -3.3rem;
+      @include breakpoint(desktop) {
+        width: 23.2rem;
+        margin-left: 6.4rem;
       }
-      
-      .c-article-preview__content {
-        width: 49%;
-        padding-left: 5%;
-      }
+    }
+
+    .c-article-preview__content {
+      width: 49%;
+      padding-left: 5%;
+    }
   }
 }
 
