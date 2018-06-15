@@ -28,7 +28,7 @@
             }
         },
         asyncData(context) {
-            return context.app.$api.get(context.app.$api.queries.article(60))
+            return context.app.$api.get(context.app.$api.queries.article(36))
             .then( res => {
                 console.log(res);
                 return {
