@@ -133,10 +133,11 @@
         },
         mounted() {
             var galleryTop = new Swiper ('.b-article-content__text-block-slider-top', {
-                // spaceBetween: 10, check this
-                slidesPerView: 1,
+                spaceBetween: 10,
+                // slidesPerView: 1,
                 loop: true,
-                effect: 'fade',
+                loopedSlides: 5,
+                // effect: 'fade',
                 navigation: {
                     prevEl: '.b-article-content__text-block-slider-arrow-left',
                     nextEl: '.b-article-content__text-block-slider-arrow-right'
@@ -144,10 +145,11 @@
             })
             var galleryThumbs = new Swiper ('.b-article-content__text-block-slider-bottom', {
                 loop: true,
-                spaceBetween: 14,
-                centeredSlides: true,
+                spaceBetween: 10,
+                // centeredSlides: true,
                 slidesPerView: 5,
-                // touchRatio: 0.2,
+                touchRatio: 0.2,
+                loopedSlides: 5,
                 slideToClickedSlide: true
 
                 // navigation: {
@@ -168,6 +170,43 @@
             //         galleryTop.slideTo(this.realIndex + 1)
             //     });
             // }
+
+            // var galleryTop = new Swiper ('.b-article-content__text-block-slider-top', {
+            //     // spaceBetween: 10, check this
+            //     slidesPerView: 1,
+            //     loop: true,
+            //     effect: 'fade',
+            //     navigation: {
+            //         prevEl: '.b-article-content__text-block-slider-arrow-left',
+            //         nextEl: '.b-article-content__text-block-slider-arrow-right'
+            //     }
+            // })
+            // var galleryThumbs = new Swiper ('.b-article-content__text-block-slider-bottom', {
+            //     loop: true,
+            //     spaceBetween: 14,
+            //     centeredSlides: true,
+            //     slidesPerView: 5,
+            //     // touchRatio: 0.2,
+            //     slideToClickedSlide: true
+
+            //     // navigation: {
+            //     //     prevEl: '.b-article-content__text-block-slider-arrow-left',
+            //     //     nextEl: '.b-article-content__text-block-slider-arrow-right'
+            //     // }
+            // })
+            // galleryTop.controller.control = galleryThumbs;
+            // galleryThumbs.controller.control = galleryTop;
+
+            // // if (window.innerWidth > 767) {
+            // //     galleryTop.on('slideChange', function () {
+            // //         //console.log("view index: " + this.realIndex)
+            // //         galleryThumbs.slideTo(this.realIndex)
+            // //     });
+            // //     galleryThumbs.on('slideChange', function () {
+            // //         //console.log("thumb index: " + this.realIndex)
+            // //         galleryTop.slideTo(this.realIndex + 1)
+            // //     });
+            // // }
         },
         methods: {
             getDate() {
