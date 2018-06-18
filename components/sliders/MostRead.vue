@@ -55,7 +55,6 @@
 
 <script>
     import ArticlePreview from '~/components/articles/ArticlePreview.vue'
-    import Swiper from 'swiper'
 
     export default {
         data() {
@@ -109,23 +108,11 @@
                 ]
             }
         },
-        mounted() {
-            var mySwiper = new Swiper ('.swiper-container-most-read', {
-                loop: true,
-                slidesPerView: 4,
-                spaceBetween: 33,
-                navigation: {
-                    nextEl: '.b-most-read__arrow-right',
-                    prevEl: '.b-most-read__arrow-left',
-                }
-            })
-        }
     }
 </script>
 
 <style lang="scss" scoped>
     @import '~assets/scss/settings';
-    @import '~assets/scss/plugins/swiper-min';
 
     .b-most-read {
         margin-top: 5.2rem;

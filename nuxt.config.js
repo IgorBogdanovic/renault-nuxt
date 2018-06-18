@@ -24,9 +24,10 @@ module.exports = {
   ** Build configuration
   */
   plugins: [
-    '~/plugins/api.js',
-    '~/plugins/core-components.js',
-    '~/plugins/Vuelidate'
+    '~/plugins/api',
+    '~/plugins/core-components',
+    '~/plugins/Vuelidate',
+    '~/plugins/vue-slick'
   ],
 
   modules: [
@@ -67,6 +68,15 @@ module.exports = {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
+      }
+    },
+    extend (config, { isServer }) {
+      if (isServer) {
+        config.externals += [
+          require('webpack-node-externals')({
+            whitelist: [/^vue-slick/]
+          })
+        ]
       }
     }
   }

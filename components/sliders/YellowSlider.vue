@@ -34,47 +34,13 @@
 </template>
 
 <script>
-    import Swiper from 'swiper'
-
     export default {
         props: ['slider'],
-        mounted() {
-            var mySwiper = new Swiper ('.swiper-container-yellow', {
-                loop: true,
-                autoplay: {
-                    delay: 3000,
-                },
-                navigation: {
-                    nextEl: '.c-yellow-slider__counter-arrow-right',
-                    prevEl: '.c-yellow-slider__counter-arrow-left',
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    type: 'fraction',
-                    formatFractionCurrent(num){
-                        if(num < 9){
-                            return '0'+num
-                        }
-                        return num;
-                    },
-                    formatFractionTotal(num){
-                        if(num < 9){
-                            return '0'+num
-                        }
-                        return num;
-                    },
-                    renderFraction(currentClass, totalClass) {
-                        return `<span class="${currentClass}" style="color:#ffcc33;"></span>/<span class="${totalClass}"></span>`
-                    }
-                }
-            })
-        }
     }
 </script>
 
 <style lang="scss" scoped>
     @import '~assets/scss/settings';
-    @import '~assets/scss/plugins/swiper-min';
 
     .c-yellow-slider {
         width: 49.2rem;

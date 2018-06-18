@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import Swiper        from 'swiper'; //npm module
 import NewsOfTheWeek from '~/components/blocks/NewsOfTheWeek.vue'
 import HeroArticles  from '~/components/blocks/HeroArticles.vue'
 import AppFaq        from '~/components/blocks/FAQSlider.vue'
@@ -38,39 +37,6 @@ export default {
         HeroArticles,
         AppFaq,
   },
-
-  mounted(){
-      var mySwiper = new Swiper ('.swiper-container-faq-mini', {
-      // Optional parameters
-      loop: true,
-      // Navigation arrows
-      navigation: {
-        nextEl: '.swiper-next',
-        prevEl: '.swiper-prev',
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        type: 'fraction',
-        formatFractionCurrent(num){
-            if(num < 9){
-                return '0'+num;
-            }
-            return num;
-        },
-        formatFractionTotal(num){
-            if(num < 9){
-                return '0'+num;
-            }
-            return num;
-        },
-        renderFraction(currentClass, totalClass) {
-            return `<span class="${currentClass}" style="color:#ffcc33;"></span>/<span class="${totalClass}"></span>`;
-
-        }
-
-      },
-    })
-  }
 }
 
 </script>

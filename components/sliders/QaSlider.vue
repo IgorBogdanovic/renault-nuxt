@@ -48,7 +48,6 @@
 </template>
 
 <script>
-import Swiper from "swiper";
 export default {
   data() {
     return {
@@ -77,48 +76,11 @@ export default {
       ]
     };
   },
-  mounted() {
-    var mySwiper = new Swiper(".swiper-container", {
-      // Optional parameters
-      loop: true,
-      allowTouchMove: false,
-      breakpoints: {
-        768: {
-          allowTouchMove: true
-        }
-      },
-      // Navigation arrows
-      navigation: {
-        nextEl: ".swiper-next",
-        prevEl: ".swiper-prev"
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        type: "fraction",
-        formatFractionCurrent(num) {
-          if (num < 9) {
-            return "0" + num;
-          }
-          return num;
-        },
-        formatFractionTotal(num) {
-          if (num < 9) {
-            return "0" + num;
-          }
-          return num;
-        },
-        renderFraction(currentClass, totalClass) {
-          return `<span class="${currentClass}" style="color:#ffcc33;"></span> / <span class="${totalClass}"></span>`;
-        }
-      }
-    });
-  }
 };
 </script>
 
 <style scoped lang='scss'>
 @import "~assets/scss/settings";
-@import "~assets/scss/plugins/swiper-min";
 
 .qa-slider {
   width: 100%;

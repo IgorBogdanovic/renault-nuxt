@@ -29,23 +29,18 @@
                                     <div class="swiper-container b-article-content__text-block-slider-top">
                                         <div class="swiper-wrapper">
                                             <div class="swiper-slide">
-                                                <!-- <img src="https://dummyimage.com/375x200/c9c9c9/000000.png" alt=""> -->
                                                 <img src="https://dummyimage.com/752x432/4286f4/000000.png" alt="">
                                             </div>
                                             <div class="swiper-slide">
-                                                <!-- <img src="https://dummyimage.com/375x200/222222/000000.png" alt=""> -->
                                                 <img src="https://dummyimage.com/752x432/f1f442/000000.png" alt="">
                                             </div>
                                             <div class="swiper-slide">
-                                                <!-- <img src="https://dummyimage.com/375x200/777777/000000.png" alt=""> -->
                                                 <img src="https://dummyimage.com/752x432/be41f4/000000.png" alt="">
                                             </div>
                                             <div class="swiper-slide">
-                                                <!-- <img src="https://dummyimage.com/375x200/777777/000000.png" alt=""> -->
                                                 <img src="https://dummyimage.com/752x432/8ff441/000000.png" alt="">
                                             </div>
                                             <div class="swiper-slide">
-                                                <!-- <img src="https://dummyimage.com/375x200/222222/000000.png" alt=""> -->
                                                 <img src="https://dummyimage.com/752x432/222222/000000.png" alt="">
                                             </div>
                                         </div>
@@ -131,35 +126,6 @@
             // let date = new Date(this.article.created_at)
             // console.log(date.toDateString())
         },
-        mounted() {
-            var galleryTop = new Swiper ('.b-article-content__text-block-slider-top', {
-                spaceBetween: 10,
-                // slidesPerView: 1,
-                loop: true,
-                loopedSlides: 5,
-                effect: 'fade',
-                navigation: {
-                    prevEl: '.b-article-content__text-block-slider-arrow-left',
-                    nextEl: '.b-article-content__text-block-slider-arrow-right'
-                }
-            })
-            var galleryThumbs = new Swiper ('.b-article-content__text-block-slider-bottom', {
-                loop: true,
-                spaceBetween: 10,
-                centeredSlides: true,
-                slidesPerView: 5,
-                touchRatio: 0.2,
-                loopedSlides: 5,
-                slideToClickedSlide: true
-
-                // navigation: {
-                //     prevEl: '.b-article-content__text-block-slider-arrow-left',
-                //     nextEl: '.b-article-content__text-block-slider-arrow-right'
-                // }
-            })
-            galleryTop.controller.control = galleryThumbs;
-            galleryThumbs.controller.control = galleryTop;
-        },
         methods: {
             getDate() {
                 let date = new Date(this.article.created_at)
@@ -173,7 +139,6 @@
 
 <style lang="scss" scoped>
     @import '~assets/scss/settings';
-    @import '~assets/scss/plugins/swiper-min';
 
     .b-article-content {
         &__wrapper {

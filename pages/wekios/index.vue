@@ -45,7 +45,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "~assets/scss/settings";
-@import "~assets/scss/plugins/swiper-min";
+
 .page {
   background-color: $white;
   color: $black;

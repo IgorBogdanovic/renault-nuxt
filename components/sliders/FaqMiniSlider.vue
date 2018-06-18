@@ -1,10 +1,7 @@
 <template lang="html">
     <div class='b-faq-slider-wrapper'>
-        <!-- Slider main container -->
         <div class="swiper-container swiper-container-faq-mini">
-            <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
-                <!-- Slides -->
                 <div class="swiper-slide">
                     <div class="swiper-slide__media">
                         <img srcset="https://dummyimage.com/336x281/c9c9c9/000000.png" alt="…">
@@ -42,7 +39,6 @@
 
             <div class="swiper-pagination"></div>
 
-            <!-- If we need navigation buttons -->
             <div class="swiper-prev">⬅</div>
             <div class="swiper-next">⬅</div>
         </div>
@@ -58,7 +54,7 @@ export default {
 
 <style scoped lang='scss'>
 @import '~assets/scss/settings';
-@import '~assets/scss/plugins/swiper-min';
+
 .b-faq-slider-wrapper{
     position: relative;
     width:100%;
