@@ -1,39 +1,39 @@
 <template>
   <div>
     <app-header></app-header>
-    <app-slick-test></app-slick-test>
+    <app-hp-slider :hpSlider="hpSlider"></app-hp-slider>
     <section class="temp"></section>
   </div>
 </template>
 
 <script>
-import SlickTest from '~/components/slickTest.vue';
+import HpSlider from '~/components/sliders/HpSlider.vue';
 
 export default {
   data () {
       return {
-        // hpSlider: []
+        hpSlider: []
       }
   },
-  // asyncData(context) {
-  //   return context.app.$api.get(context.app.$api.queries.homepage)
-  //     .then(res => {
-  //       const homepage = res.data.data.nodes[0].elements;
+  asyncData(context) {
+    return context.app.$api.get(context.app.$api.queries.homepage)
+      .then(res => {
+        const homepage = res.data.data.nodes[0].elements;
 
-  //       for (let node of homepage) {
-  //         if (node.data.item_name === 'HP Slider') {
-  //           return {
-  //             hpSlider: node.element_item.elements
-  //           }
-  //         }
-  //       }
-  //     })
-  // },
+        for (let node of homepage) {
+          if (node.data.item_name === 'HP Slider') {
+            return {
+              hpSlider: node.element_item.elements
+            }
+          }
+        }
+      })
+  },
   components: {
-    AppSlickTest: SlickTest
+    AppHpSlider: HpSlider
   },
   created() {
-    // console.log(this.hpSlider);
+    console.log(this.hpSlider);
   }
 }
 </script>

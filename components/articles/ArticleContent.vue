@@ -111,7 +111,6 @@
 
 <script>
     import Social from '~/components/Social.vue'
-    import Swiper from 'swiper'
 
     export default {
         props: ['article'],

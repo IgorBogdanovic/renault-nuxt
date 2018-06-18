@@ -26,8 +26,9 @@ module.exports = {
   plugins: [
     '~/plugins/api',
     '~/plugins/core-components',
-    '~/plugins/Vuelidate',
-    '~/plugins/vue-slick'
+    '~/plugins/vuelidate',
+    '~/plugins/vue-slick',
+    '~/plugins/thumbor'
   ],
 
   modules: [

@@ -1,29 +1,25 @@
 <template>
   <section class="b-hp-slider full-width-wrapper">
-    <!-- <div class="b-hp-slider__container swiper-container">
-      <div class="b-hp-slider__wrapper swiper-wrapper">
-        <div v-for="(item, index) in hpSlider" :key="index" class="b-hp-slider__slide swiper-slide">
-          checks for featured_image
-          <div v-if="item.element_item.featured_image.length > 0">
-            <div class="b-hp-slider__img" v-for="(img, index) in item.element_item.featured_image" :key="index">
-              <img v-if="index === 0" :src="img.data.file.url" :alt="img.data.seoalt">
-            </div>
+    <slick ref="slick" class="b-hp-slider__container"
+      :options="slickOptions">
+      <div v-for="(item, index) in hpSlider" :key="index" class="b-hp-slider__slide">
+        <div v-if="item.element_item.featured_image.length > 0">
+          <div class="b-hp-slider__img" v-for="(img, index) in item.element_item.featured_image" :key="index">
+            <img v-if="index === 0" :src="$thumbor(767, 409) + img.data.file.url" :alt="img.data.seoalt">
           </div>
-          if there is no featured_image, takes image from article that it leads to
-          <div v-else>
-            <div v-for="(img, index) in item.element_item.images" :key="index">
-              <img v-if="index === 0" :src="img.data.file.url" :alt="img.data.seoalt">
-            </div>
+        </div>
+        <div v-else>
+          <div v-for="(img, index) in item.element_item.images" :key="index">
+            <img v-if="index === 0" :src="$thumbor(767, 409) + img.data.file.url" :alt="img.data.seoalt">
           </div>
-          <div class="b-hp-slider__info">
-            <div class="b-hp-slider__tag" v-for="(category, index) in item.element_item.category" :key="index">
-              <span>{{ category.name }}</span>
-            </div>
+        </div>
+        <div class="b-hp-slider__info">
+          <div class="b-hp-slider__tag" v-for="(category, index) in item.element_item.category" :key="index">
+            <span>{{ category.name }}</span>
           </div>
         </div>
       </div>
-      <div class="b-hp-slider__pagination swiper-pagination"></div>
-    </div> -->
+    </slick>
   </section>
 </template>
 
@@ -32,11 +28,30 @@ export default {
   props: ['hpSlider'],
   data () {
       return {
+        slickOptions: {
+          // infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false
+        },
       }
   },
-  created() {
-    console.log(this.hpSlider);
+  methods: {
+    // next() {
+    //   this.$refs.slick.next();
+    // },
+    // prev() {
+    //   this.$refs.slick.prev();
+    // },
+    reInit() {
+      this.$nextTick(() => {
+          this.$refs.slick.reSlick();
+      });
+    }
   },
+  created() {
+    // console.log(this.hpSlider);
+  }
 }
 </script>
 
@@ -45,10 +60,16 @@ export default {
 
 .b-hp-slider {
 
+  &__slide {
+    position: relative;
+    width: 100%;
+    height: 20rem;
+  }
+
   &__img {
     img {
       width: 100%;
-      height: 20rem;
+      height: 100%;
     }
   }
 
