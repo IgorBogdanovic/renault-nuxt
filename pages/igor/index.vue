@@ -26,7 +26,6 @@ export default {
               hpSlider: node.element_item.elements
             }
           }
-          // ... else if
         }
       })
   },
@@ -34,7 +33,7 @@ export default {
     AppHpSlider: HpSlider
   },
   created() {
-    console.log(this.hpSlider);
+    // console.log(this.hpSlider);
   }
 }
 </script>

@@ -229,8 +229,14 @@ export default {
 @import '~assets/scss/settings';
 
 .main-nav {
+  position: relative;
   z-index: 10;
   width: 100%;
+  height: 4.4rem;
+
+  @include breakpoint(desktop) {
+    height: 5.5rem;
+  }
 }
 
 .c-nav {
