@@ -1,34 +1,36 @@
 <template>
     <div class="c-yellow-slider">
-        <div class="swiper-container swiper-container-yellow">
-            <div class="swiper-wrapper">
-                <div v-for="(slide, index) in slider" :key="index" class="swiper-slide">
-                    <div class="c-yellow-slider__wrapper">
-                        <div class="c-yellow-slider__image">
-                            <img :src="slide.image" :alt="slide.imageAlt">
-                        </div>
-                        <div class="c-yellow-slider__body">
-                            <h2><span class="bolder">MY</span><span class="cursive"> van</span></h2>
-                            <h4>{{ slide.title }}</h4>
-                            <p>{{ slide.desc }}</p>
-                            <button class="c-btn">See all</button>
-                        </div>
+        <slick ref="slick" :options="slickOptions">
+            <div v-for="(slide, index) in slider" :key="index">
+                <div class="c-yellow-slider__wrapper">
+                    <div class="c-yellow-slider__image">
+                        <img :src="slide.image" :alt="slide.imageAlt">
+                    </div>
+                    <div class="c-yellow-slider__body">
+                        <h2><span class="bolder">MY</span><span class="cursive"> van</span></h2>
+                        <h4>{{ slide.title }}</h4>
+                        <p>{{ slide.desc }}</p>
+                        <button class="c-btn">See all</button>
                     </div>
                 </div>
             </div>
-            <div class="c-yellow-slider__counter">
-                <span class="c-yellow-slider__counter-arrow-left">
-                    <svg viewBox="0 0 11.732 10.264">
-                        <path d="M11.487 2.932H5.379V.244a.245.245 0 0 0-.417-.173L.071 4.962a.245.245 0 0 0 0 .346l4.89 4.888a.244.244 0 0 0 .173.071.241.241 0 0 0 .093-.019.245.245 0 0 0 .151-.226v-2.69h6.108a.244.244 0 0 0 .244-.244V3.176a.244.244 0 0 0-.243-.244z" data-name="Path 15"/>
-                    </svg>
-                </span>
-                <div class="swiper-pagination"></div>
-                <span class="c-yellow-slider__counter-arrow-right">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11.079 9.693">
-                        <path d="M.231 6.924h5.768v2.538a.231.231 0 0 0 .394.163l4.619-4.614a.232.232 0 0 0 0-.327L6.394.068a.231.231 0 0 0-.163-.067.228.228 0 0 0-.088.018.231.231 0 0 0-.144.212v2.54H.231A.231.231 0 0 0 0 3.002v3.692a.231.231 0 0 0 .231.23z" data-name="Path 15"/>
-                    </svg>
-                </span>
+        </slick>
+        <div @click="prev()" class="c-yellow-slider__counter">
+            <span class="c-yellow-slider__counter-arrow-left">
+                <svg viewBox="0 0 11.732 10.264">
+                    <path d="M11.487 2.932H5.379V.244a.245.245 0 0 0-.417-.173L.071 4.962a.245.245 0 0 0 0 .346l4.89 4.888a.244.244 0 0 0 .173.071.241.241 0 0 0 .093-.019.245.245 0 0 0 .151-.226v-2.69h6.108a.244.244 0 0 0 .244-.244V3.176a.244.244 0 0 0-.243-.244z" data-name="Path 15"/>
+                </svg>
+            </span>
+            <div class="c-yellow-slider__counter-num">
+                <span class="current">01</span>
+                <span>&#47;</span>
+                <span class="total">05</span>
             </div>
+            <span @click="next()" class="c-yellow-slider__counter-arrow-right">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11.079 9.693">
+                    <path d="M.231 6.924h5.768v2.538a.231.231 0 0 0 .394.163l4.619-4.614a.232.232 0 0 0 0-.327L6.394.068a.231.231 0 0 0-.163-.067.228.228 0 0 0-.088.018.231.231 0 0 0-.144.212v2.54H.231A.231.231 0 0 0 0 3.002v3.692a.231.231 0 0 0 .231.23z" data-name="Path 15"/>
+                </svg>
+            </span>
         </div>
     </div>
 </template>
@@ -36,6 +38,24 @@
 <script>
     export default {
         props: ['slider'],
+        data() {
+            return {
+                slickOptions: {
+                    slidesToShow: 1,
+                    arrows: false,
+                    autoplay: true,
+                    autoplaySpeed: 3000
+                }
+            }
+        },
+        methods: {
+            next() {
+                this.$refs.slick.next();
+            },
+            prev() {
+                this.$refs.slick.prev();
+            }
+        }
     }
 </script>
 
@@ -51,11 +71,6 @@
 
         @include breakpoint(desktop) {
             display: block;
-        }
-
-        & .swiper-container {
-            width: 42.8rem;
-            height: 42.4rem;
         }
 
         &__wrapper {
@@ -109,6 +124,7 @@
 
         &__counter {
             @include fontSizeRem(0, 15);
+            font-family: "Lato-Bold";
             color: $white;
             position: absolute;
             top: 3rem;
@@ -125,15 +141,21 @@
                 z-index: 1;
             }
 
-            & .swiper-pagination {
-                width: 7rem;
-                margin-bottom: -1.1rem;
-                margin-left: 1.3rem;
-
-                &-current {
-                    color: red;
+            &-num {
+                & .current {
+                    color: $sun-yellow;
                 }
             }
+
+            // & .swiper-pagination {
+            //     width: 7rem;
+            //     margin-bottom: -1.1rem;
+            //     margin-left: 1.3rem;
+
+            //     &-current {
+            //         color: red;
+            //     }
+            // }
         }
     }
 </style>

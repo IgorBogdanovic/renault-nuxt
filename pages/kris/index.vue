@@ -5,9 +5,9 @@
         <!-- <app-social></app-social> -->
         <!-- <app-my-business></app-my-business> -->
         <!-- <app-editor></app-editor> -->
-        <!-- <app-whats-new></app-whats-new> -->
+        <app-whats-new></app-whats-new>
         <!-- <app-most-read></app-most-read> -->
-        <app-article-content :article="article"></app-article-content>
+        <!-- <app-article-content :article="article"></app-article-content> -->
     </div>
 </template>
 

@@ -10,7 +10,7 @@
                         <!-- check this class -->
                         <app-social></app-social>
                         <div class="b-article-content__text-wrap">
-                            <p class="b-article-content__date">Friday 01 June 2018</p>
+                            <p class="b-article-content__date">{{ getDate() }}</p>
                             <p class="b-article-content__intro">{{ article.additional_fields.intro }}</p>
                             <div class="b-article-content__text-block">
                                 <div v-for="(element, index) in article.elements" :key="index">
@@ -119,15 +119,20 @@
 
             }
         },
-        created() {
-            // check this
-            // console.log(this.article.created_at)
-            // let date = new Date(this.article.created_at)
-            // console.log(date.toDateString())
-        },
         methods: {
             getDate() {
-                let date = new Date(this.article.created_at)
+                var a = new Date(this.article.created_at * 1000);
+                var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+                var year = a.getFullYear();
+                var month = months[a.getMonth()];
+                var date = a.getDate();
+                var day = days[a.getDay()-1];
+                if(date < 10) {
+                    date = '0' + date;
+                }
+                var time = day + ' ' + date + ' ' + month + ' ' + year;
+                return time;
             }
         },
         components: {
@@ -178,7 +183,7 @@
                     margin-bottom: 0;
                 }
 
-                &--vertical {   //check this
+                &--vertical {
                     @include breakpoint(desktop) {
                         position: absolute;
                     }
@@ -208,10 +213,14 @@
                     @include fontSizeRem(14, 16);
                     @include lineHeightRem(21, 22);
                     margin-bottom: 1.8rem;
-                    color: $dark-grey; //check
+                    color: $dark-grey;
 
                     @include breakpoint(desktop) {
                         margin-bottom: 2.6rem;
+                    }
+
+                    /deep/ a {
+                        text-decoration: underline;
                     }
                 }
 
@@ -240,6 +249,8 @@
                         @include lineHeightRem(22, 22);
                         color: $dark-grey;
                         margin-bottom: 1rem;
+                        text-indent: -2.5rem;
+                        padding-left: 2.5rem;
 
                         @include breakpoint(desktop) {
                             margin-bottom: 1.1rem;
