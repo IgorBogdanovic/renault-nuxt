@@ -8,17 +8,13 @@
                     <app-article-preview v-for="(preview, index) in previews.slice(0,4)" :key="index" :prev="preview" class="c-article-preview c-article-preview-mr c-article-preview--most-read"></app-article-preview>
                 </div>
                 <div class="b-most-read__desk">
-                    <!-- <div class="swiper-container swiper-container-most-read"> -->
-                        <!-- <div class="swiper-wrapper"> -->
                     <div class="b-most-read__slider">
                         <slick ref="slick" :options="slickOptions">
-                            <app-article-preview v-for="(preview, index) in previews" :key="index" :prev="preview" class="c-article-preview c-article-preview-mr c-article-preview--most-read b-most-read__slider-slide"></app-article-preview>
+                            <app-article-preview v-for="(preview, index) in previews" :key="index" :prev="preview" class="c-article-preview c-article-preview-mr c-article-preview--most-read"></app-article-preview>
                         </slick>
                     </div>
-                        <!-- </div> -->
-                    <!-- </div> -->
                     <div class="b-most-read__arrow">
-                        <div class="b-most-read__arrow-left">
+                        <div @click="prev()" class="b-most-read__arrow-left">
                             <svg viewBox="0 0 51 51">
                                 <g id="arrow" transform="translate(-168 -6093)">
                                     <g id="arrow-2" data-name="arrow" transform="rotate(180 253 6443)">
@@ -35,7 +31,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <div class="b-most-read__arrow-right">
+                        <div @click="next()" class="b-most-read__arrow-right">
                             <svg viewBox="0 0 51 51">
                                 <g id="arrow" transform="translate(-1217 -6093)">
                                     <g id="circle" class="cls-1" transform="rotate(180 634 3072)">
@@ -58,14 +54,11 @@
 </template>
 
 <script>
-    // import ArticlePreview from '~/components/articles/ArticlePreview.vue'
-
     export default {
         data() {
             return {
                 slickOptions: {
                     slidesToShow: 4,
-                    // slidesToScroll: 4,
                     arrows: false
                 },
                 previews: [
@@ -117,6 +110,14 @@
                 ]
             }
         },
+        methods: {
+            next() {
+                this.$refs.slick.next();
+            },
+            prev() {
+                this.$refs.slick.prev();
+            }
+        }
     }
 </script>
 
@@ -190,21 +191,13 @@
             position: relative;
         }
 
-        // & .swiper-container {
-        //     width: 81.4%;
-        // }
-
         &__slider {
-            background: lightcoral;
-
-            &-slide {
-                // width: 20rem;
-                // margin: 0 1rem;
-            }
+            width: 84.6%;
+            margin: 0 auto;
 
             /deep/ .slick-slide {
                 width: 20rem;
-                margin: 0 2rem;
+                margin: 0 1.65rem;
             }
         }
 

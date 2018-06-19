@@ -1,6 +1,6 @@
 <template>
     <!-- check this class -->
-    <div class="b-article-content" :class='{ "b-article-content--portrait":false }'>
+    <div class="b-article-content" :class='{ "b-article-content--portrait":true }'>
         <div class="main-wrapper">
             <div class="inner-wrapper">
                 <div class="b-article-content__wrapper">
@@ -8,7 +8,7 @@
                     <h1 class="b-article-content__title">{{ article.title }}</h1>
                     <div class="b-article-content__text">
                         <!-- check this class -->
-                        <app-social :class='{"c-social--vertical":true}'></app-social>
+                        <app-social :class='{"c-social--vertical":false}'></app-social>
                         <div class="b-article-content__text-wrap">
                             <p class="b-article-content__date">{{ getDate() }}</p>
                             <p class="b-article-content__intro">{{ article.additional_fields.intro }}</p>
@@ -23,46 +23,55 @@
                                     <figure v-if="element.type === 'image'" class="b-article-content__text-block-img">
                                         <img :src="element.data.file.url" :alt="element.data.seoalt">
                                     </figure>
+                                    <!-- <div v-if="element.type === 'slider_image'" >
+                                        <p v-for="(slide, index) in slidersArr[0]" :key="index">{{ slide }}</p>
+                                    </div> -->
                                 </div>
                                 <!-- add arrows for slider-bottom -->
                                 <div class="b-article-content__text-block-slider">
-                                    <div class="swiper-container b-article-content__text-block-slider-top">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide">
-                                                <img src="https://dummyimage.com/752x432/4286f4/000000.png" alt="">
-                                            </div>
-                                            <div class="swiper-slide">
+                                    <div class="b-article-content__text-block-slider-top">
+                                        <slick ref="slick" :options="slickOptionsTop">
+                                            <div>
                                                 <img src="https://dummyimage.com/752x432/f1f442/000000.png" alt="">
                                             </div>
-                                            <div class="swiper-slide">
+                                            <div>
+                                                <img src="https://dummyimage.com/752x432/4286f4/000000.png" alt="">
+                                            </div>
+                                            <div>
+                                                <img src="https://dummyimage.com/752x432/f1f442/000000.png" alt="">
+                                            </div>
+                                            <div>
                                                 <img src="https://dummyimage.com/752x432/be41f4/000000.png" alt="">
                                             </div>
-                                            <div class="swiper-slide">
+                                            <div>
                                                 <img src="https://dummyimage.com/752x432/8ff441/000000.png" alt="">
                                             </div>
-                                            <div class="swiper-slide">
+                                            <div>
                                                 <img src="https://dummyimage.com/752x432/222222/000000.png" alt="">
                                             </div>
-                                        </div>
+                                        </slick>
                                     </div>
-                                    <div class="swiper-container b-article-content__text-block-slider-bottom">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide">
-                                                <img src="https://dummyimage.com/86x76/4286f4/000000.png" alt="">
-                                            </div>
-                                            <div class="swiper-slide">
+                                    <div class="b-article-content__text-block-slider-bottom">
+                                        <slick ref="slick" :options="slickOptionsBottom">
+                                            <div>
                                                 <img src="https://dummyimage.com/86x76/f1f442/000000.png" alt="">
                                             </div>
-                                            <div class="swiper-slide">
+                                            <div>
+                                                <img src="https://dummyimage.com/86x76/4286f4/000000.png" alt="">
+                                            </div>
+                                            <div>
+                                                <img src="https://dummyimage.com/86x76/f1f442/000000.png" alt="">
+                                            </div>
+                                            <div>
                                                 <img src="https://dummyimage.com/86x76/be41f4/000000.png" alt="">
                                             </div>
-                                            <div class="swiper-slide">
+                                            <div>
                                                 <img src="https://dummyimage.com/86x76/8ff441/000000.png" alt="">
                                             </div>
-                                            <div class="swiper-slide">
+                                            <div>
                                                 <img src="https://dummyimage.com/86x76/222222/000000.png" alt="">
                                             </div>
-                                        </div>
+                                        </slick>
                                     </div>
                                     <div class="b-article-content__text-block-slider-arrow">
                                         <div class="b-article-content__text-block-slider-arrow-left">
@@ -113,10 +122,19 @@
     import Social from '~/components/Social.vue'
 
     export default {
-        props: ['article'],
+        props: ['article', 'slidersArr'],
         data() {
             return {
-
+                slickOptionsTop: {
+                    slidesToShow: 1,
+                    arrows: false
+                },
+                slickOptionsBottom: {
+                    slidesToShow: 5,
+                    slidesToScroll: 1,
+                    arrows: false,
+                    focusOnSelect: true
+                },
             }
         },
         methods: {
@@ -287,35 +305,22 @@
                         }
                     }
 
-                    & .swiper-container {
-                        width: 100%;
+                    // & .swiper-container {
+                    //     width: 100%;
 
-                        & img {
-                            width: 100%;
-                        }
-                    }
+                    //     & img {
+                    //         width: 100%;
+                    //     }
+                    // }
 
                     &-bottom {
                         display: none;
 
                         @include breakpoint(desktop) {
                             display: block;
+                            width: 66.5%;
+                            margin-left: 17%;
                         }
-
-                        &.swiper-container {
-                            width: 66%;
-                            height: 7.6rem;
-                        }
-
-                        & .swiper-slide {
-                            width: 7.6rem;
-                        }
-
-                        & .swiper-slide-active {
-                            box-sizing: border-box;
-                            border: 0.3rem solid $sun-yellow;
-                        }
-
                     }
 
 
