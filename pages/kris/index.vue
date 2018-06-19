@@ -6,9 +6,9 @@
         <!-- <app-my-business></app-my-business> -->
         <!-- <app-editor></app-editor> -->
         <!-- <app-whats-new></app-whats-new> -->
-        <!-- <app-most-read></app-most-read> -->
-        <app-article-content :article="article" :slides='slides'></app-article-content>
-        <p>{{slides}}</p>
+        <app-most-read></app-most-read>
+        <!-- <app-article-content :article="article" :slides='slides'></app-article-content> -->
+        <!-- <p>{{slides}}</p> -->
     </div>
 </template>
 

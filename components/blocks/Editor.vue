@@ -18,7 +18,7 @@
 </template>
 
 <script>
-    import ArticlePreview from '~/components/articles/ArticlePreview.vue'
+    // import ArticlePreview from '~/components/articles/ArticlePreview.vue'
 
     export default {
         data() {
@@ -64,7 +64,7 @@
             }
         },
         components: {
-            appArticlePreview: ArticlePreview
+            // appArticlePreview: ArticlePreview
         }
     }
 </script>

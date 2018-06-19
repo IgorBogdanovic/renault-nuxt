@@ -137,8 +137,6 @@
                 width: 1.17rem;
                 height: 1.03rem;
                 cursor: pointer;
-                position: relative;
-                z-index: 1;
             }
 
             &-num {
@@ -146,16 +144,6 @@
                     color: $sun-yellow;
                 }
             }
-
-            // & .swiper-pagination {
-            //     width: 7rem;
-            //     margin-bottom: -1.1rem;
-            //     margin-left: 1.3rem;
-
-            //     &-current {
-            //         color: red;
-            //     }
-            // }
         }
     }
 </style>

@@ -28,7 +28,7 @@
 </template>
 
 <script>
-    import ArticlePreview from '~/components/articles/ArticlePreview.vue'
+    // import ArticlePreview from '~/components/articles/ArticlePreview.vue'
     import YellowSlider from '~/components/sliders/YellowSlider.vue'
 
     export default {
@@ -113,7 +113,7 @@
             }
         },
         components: {
-            appArticlePreview: ArticlePreview,
+            // appArticlePreview: ArticlePreview,
             appYellowSlider: YellowSlider
         }
     }

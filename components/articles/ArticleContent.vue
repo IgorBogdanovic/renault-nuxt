@@ -121,17 +121,17 @@
         },
         methods: {
             getDate() {
-                var a = new Date(this.article.created_at * 1000);
-                var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-                var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-                var year = a.getFullYear();
-                var month = months[a.getMonth()];
-                var date = a.getDate();
-                var day = days[a.getDay()-1];
+                let a = new Date(this.article.created_at * 1000);
+                let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                let days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+                let year = a.getFullYear();
+                let month = months[a.getMonth()];
+                let date = a.getDate();
+                let day = days[a.getDay()-1];
                 if(date < 10) {
                     date = '0' + date;
                 }
-                var time = day + ' ' + date + ' ' + month + ' ' + year;
+                let time = day + ' ' + date + ' ' + month + ' ' + year;
                 return time;
             }
         },

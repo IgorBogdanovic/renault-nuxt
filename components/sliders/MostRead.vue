@@ -8,11 +8,15 @@
                     <app-article-preview v-for="(preview, index) in previews.slice(0,4)" :key="index" :prev="preview" class="c-article-preview c-article-preview-mr c-article-preview--most-read"></app-article-preview>
                 </div>
                 <div class="b-most-read__desk">
-                    <div class="swiper-container swiper-container-most-read">
-                        <div class="swiper-wrapper">
-                            <app-article-preview v-for="(preview, index) in previews" :key="index" :prev="preview" class="swiper-slide c-article-preview c-article-preview-mr c-article-preview--most-read"></app-article-preview>
-                        </div>
+                    <!-- <div class="swiper-container swiper-container-most-read"> -->
+                        <!-- <div class="swiper-wrapper"> -->
+                    <div class="b-most-read__slider">
+                        <slick ref="slick" :options="slickOptions">
+                            <app-article-preview v-for="(preview, index) in previews" :key="index" :prev="preview" class="c-article-preview c-article-preview-mr c-article-preview--most-read b-most-read__slider-slide"></app-article-preview>
+                        </slick>
                     </div>
+                        <!-- </div> -->
+                    <!-- </div> -->
                     <div class="b-most-read__arrow">
                         <div class="b-most-read__arrow-left">
                             <svg viewBox="0 0 51 51">
@@ -54,11 +58,16 @@
 </template>
 
 <script>
-    import ArticlePreview from '~/components/articles/ArticlePreview.vue'
+    // import ArticlePreview from '~/components/articles/ArticlePreview.vue'
 
     export default {
         data() {
             return {
+                slickOptions: {
+                    slidesToShow: 4,
+                    // slidesToScroll: 4,
+                    arrows: false
+                },
                 previews: [
                     {
                         // image: 'https://dummyimage.com/160x137/c9c9c9/000000.png',//mobile
@@ -181,8 +190,22 @@
             position: relative;
         }
 
-        & .swiper-container {
-            width: 81.4%;
+        // & .swiper-container {
+        //     width: 81.4%;
+        // }
+
+        &__slider {
+            background: lightcoral;
+
+            &-slide {
+                // width: 20rem;
+                // margin: 0 1rem;
+            }
+
+            /deep/ .slick-slide {
+                width: 20rem;
+                margin: 0 2rem;
+            }
         }
 
         &__arrow {
