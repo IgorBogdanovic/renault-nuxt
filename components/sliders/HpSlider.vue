@@ -1,7 +1,8 @@
 <template>
   <section class="b-hp-slider full-width-wrapper">
     <slick ref="slick" class="b-hp-slider__container"
-      :options="slickOptions">
+      :options="slickOptions"
+      @afterChange="handleAfterChange">
       <div v-for="(item, index) in hpSlider" :key="index" class="b-hp-slider__slide">
         <div v-if="item.element_item.featured_image.length > 0">
           <div class="b-hp-slider__img" v-for="(img, index) in item.element_item.featured_image" :key="index">
@@ -10,7 +11,7 @@
           </div>
         </div>
         <div v-else>
-          <div v-for="(img, index) in item.element_item.images" :key="index">
+          <div class="b-hp-slider__img" v-for="(img, index) in item.element_item.images" :key="index">
             <img v-if="index === 0" class="u-only-mob" :src="$thumbor(767, 409) + img.data.file.url" :alt="img.data.seoalt">
             <img v-if="index === 0" class="u-only-desktop" :src="$thumbor(1920, 955) + img.data.file.url" :alt="img.data.seoalt">
           </div>
@@ -20,14 +21,38 @@
             <span>{{ category.name }}</span>
           </div>
           <h1 class="b-hp-slider__heading">{{ item.element_item.title }}</h1>
-          <p class="b-hp-slider__txt u-only-desktop">{{ item.element_item.additional_fields.intro }}</p>
-          <div class="b-hp-slider__counter">
-            <span class="b-hp-slider__counter-span b-hp-slider__counter-span--white"><span v-if="index + 1 < 10">0</span>{{ index + 1 }}</span>
-            <span class="b-hp-slider__counter-span b-hp-slider__counter-span--yellow">/<span v-if="hpSlider.length < 10">0</span>{{ hpSlider.length }}</span>
-          </div>
+          <p class="b-hp-slider__txt u-only-desktop">{{ introCut(item.element_item.additional_fields.intro, introCharLimit) }}</p>
         </div>
       </div>
     </slick>
+    <div class="b-hp-slider__counter">
+      <span class="b-hp-slider__counter-span b-hp-slider__counter-span--yellow"><span v-if="activeSlide < 10">0</span>{{ activeSlide }}</span>
+      <span class="b-hp-slider__counter-span b-hp-slider__counter-span--white">/<span v-if="hpSlider.length < 10">0</span>{{ hpSlider.length }}</span>
+    </div>
+    <div class="b-hp-slider__arrow b-hp-slider__arrow--right" @click="next()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 51">
+        <g id="arrow-right" transform="translate(-1360 -385)">
+            <circle id="circle" cx="25.5" cy="25.5" r="25.5" class="cls-1" transform="rotate(180 705.5 218)"/>
+            <g id="left-arrow" transform="rotate(180 695.471 223.519)">
+                <g id="Group_9" data-name="Group 9" transform="translate(0 32.038)">
+                    <path id="Path_15" d="M10.848 34.807H5.08v-2.538a.231.231 0 0 0-.394-.163L.067 36.72a.232.232 0 0 0 0 .327l4.618 4.616a.231.231 0 0 0 .163.067.228.228 0 0 0 .088-.018.231.231 0 0 0 .144-.212v-2.54h5.768a.231.231 0 0 0 .231-.231v-3.692a.231.231 0 0 0-.231-.23z" data-name="Path 15" transform="translate(0 -32.038)"/>
+                </g>
+            </g>
+        </g>
+    </svg>
+    </div>
+    <div class="b-hp-slider__arrow b-hp-slider__arrow--left" @click="prev()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 51">
+        <g id="arrow-left" transform="translate(-53 -380)">
+            <circle id="circle" cx="25.5" cy="25.5" r="25.5" class="cls-1" transform="translate(53 380)"/>
+            <g id="left-arrow" transform="translate(72 368.698)">
+                <g id="Group_9" data-name="Group 9" transform="translate(0 32.038)">
+                    <path id="Path_15" d="M11.487 34.97H5.379v-2.688a.245.245 0 0 0-.417-.173L.071 37a.245.245 0 0 0 0 .346l4.89 4.888a.244.244 0 0 0 .173.071.241.241 0 0 0 .093-.019.245.245 0 0 0 .151-.226v-2.69h6.108a.244.244 0 0 0 .244-.244v-3.912a.244.244 0 0 0-.243-.244z" data-name="Path 15" transform="translate(0 -32.038)"/>
+                </g>
+            </g>
+        </g>
+    </svg>
+    </div>
   </section>
 </template>
 
@@ -37,30 +62,44 @@ export default {
   data () {
       return {
         slickOptions: {
-          // infinite: true,
+          infinite: true,
           slidesToShow: 1,
           slidesToScroll: 1,
-          arrows: false,
-          ifDesktop: false
+          autoplay: true,
+          autoplaySpeed: 2000,
+          arrows: false
         },
+        activeSlide: 1,
+        introCharLimit: 100
       }
   },
   methods: {
-    // next() {
-    //   this.$refs.slick.next();
-    // },
-    // prev() {
-    //   this.$refs.slick.prev();
-    // },
+    next() {
+      this.$refs.slick.next();
+    },
+    prev() {
+      this.$refs.slick.prev();
+    },
     reInit() {
       this.$nextTick(() => {
           this.$refs.slick.reSlick();
       });
-    }
-  },
-  beforeMount() {
-    if (window.innerWidth > 767) {
-      this.ifDesktop = true;
+    },
+    handleAfterChange(event, slick, currentSlide) {
+      this.activeSlide = currentSlide + 1;
+    },
+    introCut(text, charAllowed) {
+      if (text.length > charAllowed) {
+        var textCuted = text.slice(0, charAllowed);
+      } else return text;
+
+      const wordsArray = textCuted.split(" ");
+      wordsArray.pop();
+      var textShort = "";
+      for (let word of wordsArray) {
+        textShort += word + " ";
+      }   
+      return textShort + "...";
     }
   }
 }
@@ -70,14 +109,10 @@ export default {
 @import '~assets/scss/settings';
 
 .b-hp-slider {
+  position: relative;
 
   &__container {
     width: 100%;
-    height: 20rem;
-
-    @include breakpoint(desktop) {
-      height: 71.6rem;
-    }
   }
 
   &__slide {
@@ -141,9 +176,13 @@ export default {
   }
 
   &__counter {
-    margin-top: 2.8rem;
+    position: absolute;
+    bottom: 3.8rem;
+    left: 2rem;
 
     @include breakpoint(desktop) {
+      bottom: 9.8rem;
+      left: 20.8rem;
     }
 
     &-span {
@@ -157,6 +196,24 @@ export default {
       &--yellow {
         color: $sun-yellow;
       }
+    }
+  }
+
+  &__arrow {
+    cursor: pointer;
+    @include absolute('center-vertical');
+    width: 5.1rem;
+    height: 5.1rem;
+
+    .cls-1 {
+      fill: $sun-yellow;
+    }
+
+    &--right {
+      right: 3rem;
+    }
+    &--left {
+      left: 3rem;
     }
   }
 }
