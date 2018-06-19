@@ -14,6 +14,7 @@
 
 <script>
 import TagsAtlas from '~/components/tags/TagsAtlas.vue'
+import { sortArrayByAlphabet } from '~/plugins/globalFunctions'
 
 export default {
     data(){
@@ -26,38 +27,10 @@ export default {
       .then( res => {
           return {
               //retrun reMaped array ( sort all tag names in one array )
-              sortedArray:res.data.data.tags.map( item => item.name )
+              sortedArray:sortArrayByAlphabet( res.data.data.tags.map( item => item.name ) )
           }
       })
   },
-  created(){
-     this.sortedArray = this.sortArray( this.sortedArray );
-     console.log(this.sortedArray);
-  },
-
-  methods:{
-      sortArray(arr){
-          var rArr = [];
-          var temp = [];
-
-          arr.reduce( function(acc, cur, index){
-            if(acc[0] === cur[0]){
-              temp.push(cur)
-              return cur
-            }else{
-              rArr.push(temp);
-              temp = [];
-              temp.push(cur)
-              if(index === arr.length - 1){
-                rArr.push(temp);
-              }
-              return cur
-            }
-          }, 0);
-          return rArr.splice(1);
-      }
-  },
-
     components: {
         TagsAtlas
     }

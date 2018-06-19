@@ -2,7 +2,7 @@
   <div class="main-wrapper">
      <div class="inner-wrapper">
          <!-- <p>{{articlesList}}</p> -->
-         <NewsOfTheWeek/>
+         <NewsOfTheWeek :latestArray = 'latestArray' />
          <HeroArticles/>
      </div>
       <app-faq/>
@@ -13,24 +13,31 @@
 import NewsOfTheWeek from '~/components/blocks/NewsOfTheWeek.vue'
 import HeroArticles  from '~/components/blocks/HeroArticles.vue'
 import AppFaq        from '~/components/blocks/FAQSlider.vue'
+import { cleanData } from '~/plugins/globalFunctions.js'
 
 
 export default {
 
     data() {
         return {
-            articlesList:[],
+            test:'',
+            latestArray:'',
         }
     },
     asyncData(context) {
-      return context.app.$api.get(context.app.$api.queries.allArticles)
-      .then( res => {
-          console.log(res);
-          return {
-             articlesList:res.data.data.nodes
-          }
-      })
-  },
+      return context.app.$api.get(context.app.$api.queries.homepage)
+        .then(res => {
+            return{
+                //res.data.data.nodes[0].elements = cleanData( res.data.data.nodes[0].elements)
+                //test:cleanData( res.data.data.nodes[0].elements)
+                test:cleanData( res.data.data.nodes[0].elements)
+            }
+        })
+    },
+
+    created(){
+        console.log(this.test);
+    },
 
   components:{
         NewsOfTheWeek,

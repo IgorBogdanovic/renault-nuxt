@@ -18,4 +18,46 @@ export function sortSliders(arr){
       }
    });
    return rArr;
+};
+
+export function sortArrayByAlphabet(arr){
+    //pass array with alphabeticaly sorted strings, to get array of arrays with same letters
+     var rArr = [];
+     var temp = [];
+
+     arr.reduce( function(acc, cur, index){
+       if(acc[0] === cur[0]){
+         temp.push(cur)
+         return cur
+       }else{
+         rArr.push(temp);
+         temp = [];
+         temp.push(cur)
+         if(index === arr.length - 1){
+           rArr.push(temp);
+         }
+         return cur
+       }
+     }, 0);
+     return rArr.splice(1);
+ };
+
+ export function cleanData(arr){
+  var rArr = [];
+  var count = 0;
+
+  arr.forEach( (item, i)=>{
+
+    if( item.type ==='slider_image'){
+        console.log('sliderIMG')
+      	if(count == 0 ){
+         rArr.push(item)
+         count ++;
+        }
+      }else{
+        rArr.push(item);
+        count = 0;
+      }
+  })
+  return rArr;
 }
