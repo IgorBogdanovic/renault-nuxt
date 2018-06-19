@@ -6,9 +6,9 @@
         <!-- <app-my-business></app-my-business> -->
         <!-- <app-editor></app-editor> -->
         <!-- <app-whats-new></app-whats-new> -->
-        <app-most-read></app-most-read>
-        <!-- <app-article-content :article="article" :slides='slides'></app-article-content> -->
-        <!-- <p>{{slides}}</p> -->
+        <!-- <app-most-read></app-most-read> -->
+        <app-article-content :article="article" :slidersArr='slidersArr'></app-article-content>
+        <p>{{slidersArr}}</p>
     </div>
 </template>
 
@@ -21,23 +21,23 @@
     import WhatsNew from '~/components/blocks/WhatsNew.vue'
     import MostRead from '~/components/sliders/MostRead.vue'
     import ArticleContent from '~/components/articles/ArticleContent.vue'
+    import { sortSliders } from '~/plugins/globalFunctions.js'
 
     export default {
         data() {
             return {
                 article: [],
-                slider:[],
-                slides:[]
+                slidersArr:[],
 
             }
         },
         asyncData(context) {
             return context.app.$api.get(context.app.$api.queries.article(36))
             .then( res => {
-                console.log(res);
+                //console.log(res);
                 return {
                     article: res.data.data.nodes[0],
-                    slider: res.data.data.nodes[0].elements,
+                    slidersArr: sortSliders( res.data.data.nodes[0].elements),
                 }
             })
         },
@@ -74,7 +74,7 @@
         //     })
         // },
         mounted() {
-            this.slides = this.sortSliders(this.slider)
+
         },
         components: {
             appPagination: Pagination,
