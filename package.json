@@ -20,6 +20,7 @@
     "node-sass": "^4.9.0",
     "nuxt": "^1.0.0",
     "sass-loader": "^7.0.1",
+    "vue-breakpoints": "^1.1.0",
     "vue-slick": "^1.1.12",
     "vuelidate": "^0.7.4",
     "vuex": "^3.0.1"

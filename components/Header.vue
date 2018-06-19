@@ -354,7 +354,7 @@ export default {
   &__menu-container {
     z-index: -1;
     position: relative;
-    left: calc(0% - 85%); // because width of '&__menu-inner-wrapper' is 85% (goal was to avoid js calculation for this)
+    left: -100%;
     padding-top: 4.4rem;
     height: 100vh;
     overflow: hidden;
