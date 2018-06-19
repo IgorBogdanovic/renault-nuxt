@@ -1,6 +1,6 @@
 <template>
     <!-- check this class -->
-    <div class="b-article-content b-article-content--portrait">
+    <div class="b-article-content" :class='{ "b-article-content--portrait":false }'>
         <div class="main-wrapper">
             <div class="inner-wrapper">
                 <div class="b-article-content__wrapper">
@@ -8,7 +8,7 @@
                     <h1 class="b-article-content__title">{{ article.title }}</h1>
                     <div class="b-article-content__text">
                         <!-- check this class -->
-                        <app-social></app-social>
+                        <app-social :class='{"c-social--vertical":true}'></app-social>
                         <div class="b-article-content__text-wrap">
                             <p class="b-article-content__date">{{ getDate() }}</p>
                             <p class="b-article-content__intro">{{ article.additional_fields.intro }}</p>
@@ -170,7 +170,7 @@
                 margin-bottom: 9rem;
             }
         }
-       
+
         &__text {
             @include breakpoint(desktop) {
                 position: relative;
@@ -315,10 +315,10 @@
                             box-sizing: border-box;
                             border: 0.3rem solid $sun-yellow;
                         }
-                        
+
                     }
-                    
-                    
+
+
 
                     &-arrow {
                         position: absolute;
@@ -419,7 +419,7 @@
                         @include breakpoint(desktop) {
                             margin-left: 0;
                         }
-                    } 
+                    }
                 }
 
                 &__title {

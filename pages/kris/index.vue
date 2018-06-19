@@ -5,9 +5,10 @@
         <!-- <app-social></app-social> -->
         <!-- <app-my-business></app-my-business> -->
         <!-- <app-editor></app-editor> -->
-        <app-whats-new></app-whats-new>
+        <!-- <app-whats-new></app-whats-new> -->
         <!-- <app-most-read></app-most-read> -->
-        <!-- <app-article-content :article="article"></app-article-content> -->
+        <app-article-content :article="article" :slides='slides'></app-article-content>
+        <p>{{slides}}</p>
     </div>
 </template>
 
@@ -24,7 +25,10 @@
     export default {
         data() {
             return {
-                article: []
+                article: [],
+                slider:[],
+                slides:[]
+
             }
         },
         asyncData(context) {
@@ -32,10 +36,34 @@
             .then( res => {
                 console.log(res);
                 return {
-                    article: res.data.data.nodes[0]
+                    article: res.data.data.nodes[0],
+                    slider: res.data.data.nodes[0].elements,
                 }
             })
         },
+
+        methods:{
+            sortSliders(arr){
+                let rArr = [];
+                let temp = [];
+                arr.map( (acc, cur) => {
+                  if( acc.type ==='slider_image'){
+                    temp.push(acc);
+                    return cur;
+                  }else{
+                  	if(temp.length){
+                    	rArr.push(temp);
+                      //console.log(rArr)
+                        temp = [];
+                        return cur;
+                    }else{
+                    return cur;
+                    }
+                  }
+  	           });
+               return rArr;
+           }
+       },
         // created() {
         //     return this.$api.get(this.$api.queries.oneArticle)
         //     .then( res => {
@@ -46,7 +74,7 @@
         //     })
         // },
         mounted() {
-            console.log(this.article)
+            this.slides = this.sortSliders(this.slider)
         },
         components: {
             appPagination: Pagination,
