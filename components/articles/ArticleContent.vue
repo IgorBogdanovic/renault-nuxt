@@ -1,6 +1,6 @@
 <template>
     <!-- check this class -->
-    <div class="b-article-content" :class='{ "b-article-content--portrait":true }'>
+    <div class="b-article-content" :class='{ "b-article-content--portrait": false }'>
         <div class="main-wrapper">
             <div class="inner-wrapper">
                 <div class="b-article-content__wrapper">
@@ -8,7 +8,7 @@
                     <h1 class="b-article-content__title">{{ article.title }}</h1>
                     <div class="b-article-content__text">
                         <!-- check this class -->
-                        <app-social :class='{"c-social--vertical":false}'></app-social>
+                        <app-social :class='{"c-social--vertical": true}'></app-social>
                         <div class="b-article-content__text-wrap">
                             <p class="b-article-content__date">{{ getDate() }}</p>
                             <p class="b-article-content__intro">{{ article.additional_fields.intro }}</p>
@@ -23,82 +23,7 @@
                                     <figure v-if="element.type === 'image'" class="b-article-content__text-block-img">
                                         <img :src="element.data.file.url" :alt="element.data.seoalt">
                                     </figure>
-                                    <!-- <div v-if="element.type === 'slider_image'" >
-                                        <p v-for="(slide, index) in slidersArr[0]" :key="index">{{ slide }}</p>
-                                    </div> -->
-                                </div>
-                                <!-- add arrows for slider-bottom -->
-                                <div class="b-article-content__text-block-slider">
-                                    <div class="b-article-content__text-block-slider-top">
-                                        <slick ref="slick" :options="slickOptionsTop">
-                                            <div>
-                                                <img src="https://dummyimage.com/752x432/f1f442/000000.png" alt="">
-                                            </div>
-                                            <div>
-                                                <img src="https://dummyimage.com/752x432/4286f4/000000.png" alt="">
-                                            </div>
-                                            <div>
-                                                <img src="https://dummyimage.com/752x432/f1f442/000000.png" alt="">
-                                            </div>
-                                            <div>
-                                                <img src="https://dummyimage.com/752x432/be41f4/000000.png" alt="">
-                                            </div>
-                                            <div>
-                                                <img src="https://dummyimage.com/752x432/8ff441/000000.png" alt="">
-                                            </div>
-                                            <div>
-                                                <img src="https://dummyimage.com/752x432/222222/000000.png" alt="">
-                                            </div>
-                                        </slick>
-                                    </div>
-                                    <div class="b-article-content__text-block-slider-bottom">
-                                        <slick ref="slick" :options="slickOptionsBottom">
-                                            <div>
-                                                <img src="https://dummyimage.com/86x76/f1f442/000000.png" alt="">
-                                            </div>
-                                            <div>
-                                                <img src="https://dummyimage.com/86x76/4286f4/000000.png" alt="">
-                                            </div>
-                                            <div>
-                                                <img src="https://dummyimage.com/86x76/f1f442/000000.png" alt="">
-                                            </div>
-                                            <div>
-                                                <img src="https://dummyimage.com/86x76/be41f4/000000.png" alt="">
-                                            </div>
-                                            <div>
-                                                <img src="https://dummyimage.com/86x76/8ff441/000000.png" alt="">
-                                            </div>
-                                            <div>
-                                                <img src="https://dummyimage.com/86x76/222222/000000.png" alt="">
-                                            </div>
-                                        </slick>
-                                    </div>
-                                    <div class="b-article-content__text-block-slider-arrow">
-                                        <div class="b-article-content__text-block-slider-arrow-left">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 51">
-                                                <g id="arrow-left" transform="translate(-53 -380)">
-                                                    <circle id="circle" cx="25.5" cy="25.5" r="25.5" class="cls-1" transform="translate(53 380)"/>
-                                                    <g id="left-arrow" transform="translate(72 368.698)">
-                                                        <g id="Group_9" data-name="Group 9" transform="translate(0 32.038)">
-                                                            <path id="Path_15" d="M11.487 34.97H5.379v-2.688a.245.245 0 0 0-.417-.173L.071 37a.245.245 0 0 0 0 .346l4.89 4.888a.244.244 0 0 0 .173.071.241.241 0 0 0 .093-.019.245.245 0 0 0 .151-.226v-2.69h6.108a.244.244 0 0 0 .244-.244v-3.912a.244.244 0 0 0-.243-.244z" data-name="Path 15" transform="translate(0 -32.038)"/>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <div class="b-article-content__text-block-slider-arrow-right">
-                                            <svg viewBox="0 0 36 36">
-                                                <g id="right-arrow" transform="translate(-256 -120)">
-                                                    <circle id="circle" cx="18" cy="18" r="18" class="cls-1" transform="rotate(180 146 78)"/>
-                                                    <g id="left-arrow" transform="rotate(180 138.921 70.588)">
-                                                        <g id="Group_9" data-name="Group 9">
-                                                            <path id="Path_15" d="M7.657 1.955H3.586V.163a.163.163 0 0 0-.278-.115L.048 3.305a.164.164 0 0 0 0 .231l3.26 3.259a.163.163 0 0 0 .115.048.161.161 0 0 0 .062-.012.163.163 0 0 0 .1-.15V4.886h4.072a.163.163 0 0 0 .163-.163V2.117a.163.163 0 0 0-.163-.162z" data-name="Path 15"/>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                    </div>
+                                    <app-article-slider v-if="element.type === 'slider'" :sliderArray="element.data.items"></app-article-slider>
                                 </div>
                             </div>
                             <div class="b-article-content__tags">
@@ -119,22 +44,13 @@
 </template>
 
 <script>
-    import Social from '~/components/Social.vue'
+    import Social from '~/components/Social.vue';
+    import ArticleSlider from '~/components/sliders/ArticleSlider.vue';
 
     export default {
-        props: ['article', 'slidersArr'],
+        props: ['article'],
         data() {
             return {
-                slickOptionsTop: {
-                    slidesToShow: 1,
-                    arrows: false
-                },
-                slickOptionsBottom: {
-                    slidesToShow: 5,
-                    slidesToScroll: 1,
-                    arrows: false,
-                    focusOnSelect: true
-                },
             }
         },
         methods: {
@@ -154,7 +70,8 @@
             }
         },
         components: {
-            appSocial: Social
+            AppSocial: Social,
+            AppArticleSlider: ArticleSlider
         }
     }
 </script>
@@ -282,85 +199,6 @@
                             border-radius: 50%;
                             background: $sun-yellow;
                             margin-right: 1.7rem;
-                        }
-                    }
-                }
-
-                &-slider {
-                    position: relative;
-                    width: 111%;
-                    left: -5.5%;
-                    margin-bottom: 3.2rem;
-
-                    @include breakpoint(desktop) {
-                        width: 100%;
-                        left: auto;
-                        position: static;
-                        margin-bottom: 6.7rem;
-                    }
-
-                    &-top {
-                        @include breakpoint(desktop) {
-                            margin-bottom: 2.9rem;
-                        }
-                    }
-
-                    // & .swiper-container {
-                    //     width: 100%;
-
-                    //     & img {
-                    //         width: 100%;
-                    //     }
-                    // }
-
-                    &-bottom {
-                        display: none;
-
-                        @include breakpoint(desktop) {
-                            display: block;
-                            width: 66.5%;
-                            margin-left: 17%;
-                        }
-                    }
-
-
-
-                    &-arrow {
-                        position: absolute;
-                        display: flex;
-                        justify-content: space-between;
-                        width: 100%;
-                        left: 0;
-                        top: 7.6rem;
-                        z-index: 1;
-
-                        @include breakpoint(desktop) {
-                            display: none;
-                        }
-
-                        &-left {
-                            width: 3.6rem;
-                            height: 3.6rem;
-                            margin-left: 2rem;
-                            cursor: pointer;
-                            outline: 0;
-                        }
-
-                        &-right {
-                            width: 3.6rem;
-                            height: 3.6rem;
-                            margin-right: 2rem;
-                            cursor: pointer;
-                            outline: 0;
-                        }
-
-                        & svg {
-                            width: 100%;
-                            height: 100%;
-
-                            & .cls-1 {
-                                fill:$sun-yellow;
-                            }
                         }
                     }
                 }

@@ -29,7 +29,7 @@
       <span class="b-hp-slider__counter-span b-hp-slider__counter-span--yellow"><span v-if="activeSlide < 10">0</span>{{ activeSlide }}</span>
       <span class="b-hp-slider__counter-span b-hp-slider__counter-span--white">/<span v-if="hpSlider.length < 10">0</span>{{ hpSlider.length }}</span>
     </div>
-    <div class="b-hp-slider__arrow b-hp-slider__arrow--right" @click="next()">
+    <div class="b-hp-slider__arrow b-hp-slider__arrow--right u-only-desktop" @click="next">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 51">
         <g id="arrow-right" transform="translate(-1360 -385)">
             <circle id="circle" cx="25.5" cy="25.5" r="25.5" class="cls-1" transform="rotate(180 705.5 218)"/>
@@ -41,7 +41,7 @@
         </g>
     </svg>
     </div>
-    <div class="b-hp-slider__arrow b-hp-slider__arrow--left" @click="prev()">
+    <div class="b-hp-slider__arrow b-hp-slider__arrow--left u-only-desktop" @click="prev">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 51">
         <g id="arrow-left" transform="translate(-53 -380)">
             <circle id="circle" cx="25.5" cy="25.5" r="25.5" class="cls-1" transform="translate(53 380)"/>
@@ -79,11 +79,6 @@ export default {
     },
     prev() {
       this.$refs.slick.prev();
-    },
-    reInit() {
-      this.$nextTick(() => {
-          this.$refs.slick.reSlick();
-      });
     },
     handleAfterChange(event, slick, currentSlide) {
       this.activeSlide = currentSlide + 1;
