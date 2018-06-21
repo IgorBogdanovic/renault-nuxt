@@ -1,14 +1,14 @@
 <template>
-    <!-- check this class -->
-    <div class="b-article-content" :class='{ "b-article-content--portrait": false }'>
+    <!-- if article type is landscape, set this class to false -->
+    <div class="b-article-content" :class='{ "b-article-content--portrait": true }'>
         <div class="main-wrapper">
             <div class="inner-wrapper">
                 <div class="b-article-content__wrapper">
                     <div class="c-btn c-btn--yellow">{{ article.category[0].name }}</div>
                     <h1 class="b-article-content__title">{{ article.title }}</h1>
                     <div class="b-article-content__text">
-                        <!-- check this class -->
-                        <app-social :class='{"c-social--vertical": true}'></app-social>
+                        <!-- if article type is landscape, set this class to true -->
+                        <app-social :class='{"c-social--vertical": false}'></app-social>
                         <div class="b-article-content__text-wrap">
                             <p class="b-article-content__date">{{ getDate() }}</p>
                             <p class="b-article-content__intro">{{ article.additional_fields.intro }}</p>
@@ -23,7 +23,19 @@
                                     <figure v-if="element.type === 'image'" class="b-article-content__text-block-img">
                                         <img :src="element.data.file.url" :alt="element.data.seoalt">
                                     </figure>
-                                    <app-article-slider v-if="element.type === 'slider'" :sliderArray="element.data.items"></app-article-slider>
+                                    <!-- if article type is landscape, set this class to true -->
+                                    <app-article-slider v-if="element.type === 'slider'" :sliderArray="element.data.items" :class='{ "b-article-content__text-block-slider--landscape": false }'></app-article-slider>
+                                    <!-- implement video here -->
+                                </div>
+                            </div>
+                            <!-- put video inside b-article-content__text-block div -->
+                            <div class="b-article-content__text-block-video">
+                                <div class="b-article-content__text-block-video-play">
+                                    <svg id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 357 357" style="enable-background:new 0 0 357 357;" xml:space="preserve">
+                                        <g id="play-arrow">
+                                            <polygon points="38.25,0 38.25,357 318.75,178.5"/>
+                                        </g>
+                                    </svg>
                                 </div>
                             </div>
                             <div class="b-article-content__tags">
@@ -199,6 +211,44 @@
                             border-radius: 50%;
                             background: $sun-yellow;
                             margin-right: 1.7rem;
+                        }
+                    }
+                }
+
+                &-video {
+                    width: 100%;
+                    height: 19.4rem;
+                    background: lightblue; //remove
+                    margin-bottom: 2.2rem;
+
+                    @include breakpoint(desktop) {
+                        height: 43.2rem;
+                        margin-bottom: 3rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    &-play {
+                        width: 7rem;
+                        height: 7rem;
+                        border-radius: 50%;
+                        background: #000;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                        display: none;
+
+                        @include breakpoint(desktop) {
+                            display: flex;
+                        }
+
+                        & svg {
+                            width: 2.3rem;
+                            height: 2.4rem;
+                            margin-left: 0.7rem;
+                            fill: $sun-yellow;
                         }
                     }
                 }

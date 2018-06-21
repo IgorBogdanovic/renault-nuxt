@@ -8,44 +8,40 @@
                     <app-article-preview v-for="(preview, index) in previews.slice(0,4)" :key="index" :prev="preview" class="c-article-preview c-article-preview-mr c-article-preview--most-read"></app-article-preview>
                 </div>
                 <div class="b-most-read__desk">
-                    <div class="b-most-read__slider">
-                        <slick ref="slick" :options="slickOptions">
-                            <app-article-preview v-for="(preview, index) in previews" :key="index" :prev="preview" class="c-article-preview c-article-preview-mr c-article-preview--most-read"></app-article-preview>
-                        </slick>
-                    </div>
-                    <div class="b-most-read__arrow">
-                        <div @click="prev()" class="b-most-read__arrow-left">
-                            <svg viewBox="0 0 51 51">
-                                <g id="arrow" transform="translate(-168 -6093)">
-                                    <g id="arrow-2" data-name="arrow" transform="rotate(180 253 6443)">
-                                        <g id="circle" class="cls-1" transform="rotate(180 169 3396.5)">
-                                            <circle cx="25.5" cy="25.5" r="25.5" class="cls-3"/>
-                                            <circle cx="25.5" cy="25.5" r="25" class="cls-4"/>
-                                        </g>
-                                        <g id="left-arrow" transform="rotate(180 158.971 3402.019)">
-                                            <g id="Group_9" data-name="Group 9" transform="translate(0 32.038)">
-                                                <path id="Path_15" d="M10.848 34.807H5.08v-2.538a.231.231 0 0 0-.394-.163L.067 36.72a.232.232 0 0 0 0 .327l4.618 4.616a.231.231 0 0 0 .163.067.228.228 0 0 0 .088-.018.231.231 0 0 0 .144-.212v-2.54h5.768a.231.231 0 0 0 .231-.231v-3.692a.231.231 0 0 0-.231-.23z" class="cls-2" data-name="Path 15" transform="translate(0 -32.038)"/>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                        <div @click="next()" class="b-most-read__arrow-right">
-                            <svg viewBox="0 0 51 51">
-                                <g id="arrow" transform="translate(-1217 -6093)">
-                                    <g id="circle" class="cls-1" transform="rotate(180 634 3072)">
+                    <slick ref="slick" :options="slickOptions" class="b-most-read__slider">
+                        <app-article-preview v-for="(preview, index) in previews" :key="index" :prev="preview" class="c-article-preview c-article-preview-mr c-article-preview--most-read"></app-article-preview>
+                    </slick>
+                    <div @click="prev()" class="b-most-read__arrow b-most-read__arrow--left">
+                        <svg viewBox="0 0 51 51">
+                            <g id="arrow" transform="translate(-168 -6093)">
+                                <g id="arrow-2" data-name="arrow" transform="rotate(180 253 6443)">
+                                    <g id="circle" class="cls-1" transform="rotate(180 169 3396.5)">
                                         <circle cx="25.5" cy="25.5" r="25.5" class="cls-3"/>
                                         <circle cx="25.5" cy="25.5" r="25" class="cls-4"/>
                                     </g>
-                                    <g id="right-arrow" transform="rotate(180 623.971 3077.519)">
+                                    <g id="left-arrow" transform="rotate(180 158.971 3402.019)">
                                         <g id="Group_9" data-name="Group 9" transform="translate(0 32.038)">
                                             <path id="Path_15" d="M10.848 34.807H5.08v-2.538a.231.231 0 0 0-.394-.163L.067 36.72a.232.232 0 0 0 0 .327l4.618 4.616a.231.231 0 0 0 .163.067.228.228 0 0 0 .088-.018.231.231 0 0 0 .144-.212v-2.54h5.768a.231.231 0 0 0 .231-.231v-3.692a.231.231 0 0 0-.231-.23z" class="cls-2" data-name="Path 15" transform="translate(0 -32.038)"/>
                                         </g>
                                     </g>
                                 </g>
-                            </svg>
-                        </div>
+                            </g>
+                        </svg>
+                    </div>
+                    <div @click="next()" class="b-most-read__arrow b-most-read__arrow--right">
+                        <svg viewBox="0 0 51 51">
+                            <g id="arrow" transform="translate(-1217 -6093)">
+                                <g id="circle" class="cls-1" transform="rotate(180 634 3072)">
+                                    <circle cx="25.5" cy="25.5" r="25.5" class="cls-3"/>
+                                    <circle cx="25.5" cy="25.5" r="25" class="cls-4"/>
+                                </g>
+                                <g id="right-arrow" transform="rotate(180 623.971 3077.519)">
+                                    <g id="Group_9" data-name="Group 9" transform="translate(0 32.038)">
+                                        <path id="Path_15" d="M10.848 34.807H5.08v-2.538a.231.231 0 0 0-.394-.163L.067 36.72a.232.232 0 0 0 0 .327l4.618 4.616a.231.231 0 0 0 .163.067.228.228 0 0 0 .088-.018.231.231 0 0 0 .144-.212v-2.54h5.768a.231.231 0 0 0 .231-.231v-3.692a.231.231 0 0 0-.231-.23z" class="cls-2" data-name="Path 15" transform="translate(0 -32.038)"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -204,23 +200,16 @@
         &__arrow {
             position: absolute;
             top: 15.8rem;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
+            width: 5.1rem;
+            height: 5.1rem;
+            cursor: pointer;
 
-            &-left {
-                width: 5.1rem;
-                height: 5.1rem;
-                cursor: pointer;
-                outline: none;
+            &--left {
+                left: 0;
             }
 
-            &-right {
-                width: 5.1rem;
-                height: 5.1rem;
-                cursor: pointer;
-                outline: none;
+            &--right {
+                right: 0;
             }
 
             & svg {

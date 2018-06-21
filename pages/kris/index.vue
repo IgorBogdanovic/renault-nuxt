@@ -6,9 +6,8 @@
         <!-- <app-my-business></app-my-business> -->
         <!-- <app-editor></app-editor> -->
         <!-- <app-whats-new></app-whats-new> -->
-        <app-most-read></app-most-read>
-        <!-- <app-article-content :article="article" :slidersArr='slidersArr'></app-article-content> -->
-        <!-- <p>{{slidersArr}}</p> -->
+        <!-- <app-most-read></app-most-read> -->
+        <app-article-content :article="article"></app-article-content>
     </div>
 </template>
 
@@ -21,7 +20,6 @@
     import WhatsNew from '~/components/blocks/WhatsNew.vue'
     import MostRead from '~/components/sliders/MostRead.vue'
     import ArticleContent from '~/components/articles/ArticleContent.vue'
-    import { sortSliders, cleanData } from '~/plugins/globalFunctions.js'
 
     export default {
         data() {
@@ -30,28 +28,27 @@
                 slidersArr:[]
             }
         },
-        asyncData(context) {
-           return context.app.$api.get(context.app.$api.queries.article(36))
-           .then( res => {
-               //console.log(res);
-               let returningObject = {};
-               returningObject.article = res.data.data.nodes[0];
-               returningObject.slidersArr = sortSliders( res.data.data.nodes[0].elements);
-               returningObject.article.elements = cleanData( res.data.data.nodes[0].elements );
-
-               return returningObject;
-           })
-        },
         // asyncData(context) {
-        //     return context.app.$api.get(context.app.$api.queries.article(36))
-        //     .then( res => {
-        //         //console.log(res);
-        //         return {
-        //             article: res.data.data.nodes[0],
-        //             slidersArr: sortSliders( res.data.data.nodes[0].elements),
-        //         }
-        //     })
+        //    return context.app.$api.get(context.app.$api.queries.article(36))
+        //    .then( res => {
+        //        //console.log(res);
+        //        let returningObject = {};
+        //        returningObject.article = res.data.data.nodes[0];
+        //        returningObject.slidersArr = sortSliders( res.data.data.nodes[0].elements);
+        //        returningObject.article.elements = cleanData( res.data.data.nodes[0].elements );
+
+        //        return returningObject;
+        //    })
         // },
+        asyncData(context) {
+            return context.app.$api.get(context.app.$api.queries.article(36))
+            .then( res => {
+                //console.log(res);
+                return {
+                    article: res.data.data.nodes[0]
+                }
+            })
+        },
         // created() {
         //     return this.$api.get(this.$api.queries.oneArticle)
         //     .then( res => {
@@ -74,9 +71,17 @@
             appMostRead: MostRead,
             appArticleContent: ArticleContent
         }
+
+        // var temp = {}
+        // temp.sliders = res.sliders
+        // temp.latestArticlesArr = res.fliter( array )
+
+        // return temp
     }
 </script>
 
 <style>
 
 </style>
+
+

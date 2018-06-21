@@ -122,6 +122,7 @@ export default {
 
       /deep/ .slick-slide {
         margin: 0 .8rem;
+        cursor: pointer;
       }
 
       /deep/ .slick-current {
@@ -175,6 +176,14 @@ export default {
 
       & .cls-1 {
         fill:$sun-yellow;
+      }
+    }
+  }
+
+  &--landscape {
+    & .b-article-content__text-block-slider-bottom {
+      /deep/ .slick-slide {
+        margin: 0 .45rem;
       }
     }
   }

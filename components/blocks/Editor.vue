@@ -18,8 +18,6 @@
 </template>
 
 <script>
-    // import ArticlePreview from '~/components/articles/ArticlePreview.vue'
-
     export default {
         data() {
             return {
@@ -62,9 +60,6 @@
                     }
                 ]
             }
-        },
-        components: {
-            // appArticlePreview: ArticlePreview
         }
     }
 </script>
