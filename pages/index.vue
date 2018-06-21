@@ -22,7 +22,7 @@
           myBusiness: [],
           faq: [],
           whatsNew: [],
-          myComunity: [], //this is data for yellow slider inside whats new block
+          myCommunity: [], //this is data for yellow slider inside whats new block
           mostRead: []
         }
     },
@@ -52,7 +52,7 @@
               tempObj.whatsNew = node.element_item.list_items
             }
             if (node.data.item_name === 'HP My Community') {
-              tempObj.myComunity = node.element_item.list_items
+              tempObj.myCommunity = node.element_item.list_items
             }
             if (node.data.item_name === 'HP Most Read') {
               tempObj.mostRead = node.element_item.list_items
@@ -85,9 +85,12 @@
       AppHpSlider: HpSlider,
       AppMyBusiness: MyBusiness
     },
-    mounted() {
-      console.log(this.myBusiness)
-    }
+    // created() {
+    //     return this.$api.get(this.$api.queries.homepage)
+    //     .then( res => {
+    //         console.log(res);
+    //     })
+    // }
   }
 </script>
 
