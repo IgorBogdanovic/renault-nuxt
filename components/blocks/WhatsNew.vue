@@ -50,7 +50,7 @@
                             ></app-article-preview>
                         </div>
                         <div class="b-whats-new__bottom-right">
-                            <app-yellow-slider :slider="slider"></app-yellow-slider>
+                            <app-yellow-slider :slider="yellowSlider"></app-yellow-slider>
                         </div>
                     </div>
                 </div>
@@ -63,37 +63,40 @@
     import YellowSlider from '~/components/sliders/YellowSlider.vue'
 
     export default {
-        props: ['previews'],
+        props: ['previews', 'yellowSlider'],
         data() {
             return {
                 tag: {
                     visible: true,
                     text: "What's new"
                 },
-                slider: [
-                    {
-                        image: 'https://dummyimage.com/428x424/555555/000000.png',
-                        imageAlt: 'some alt',
-                        title: '10 Tips to Adjust Your Driving to Winter Conditions',
-                        desc: 'Working through the winter? Visibility, temperature and weather can really make it harder to take your business on…'
-                    },
-                    {
-                        image: 'https://dummyimage.com/428x424/777777/000000.png',
-                        imageAlt: 'some alt',
-                        title: '10 Tips to Adjust Your Driving to Winter Conditions',
-                        desc: 'Working through the winter? Visibility, temperature and weather can really make it harder to take your business on…'
-                    },
-                    {
-                        image: 'https://dummyimage.com/428x424/c9c9c9/000000.png',
-                        imageAlt: 'some alt',
-                        title: '10 Tips to Adjust Your Driving to Winter Conditions',
-                        desc: 'Working through the winter? Visibility, temperature and weather can really make it harder to take your business on…'
-                    }
-                ]
+                // slider: [
+                //     {
+                //         image: 'https://dummyimage.com/428x424/555555/000000.png',
+                //         imageAlt: 'some alt',
+                //         title: '10 Tips to Adjust Your Driving to Winter Conditions',
+                //         desc: 'Working through the winter? Visibility, temperature and weather can really make it harder to take your business on…'
+                //     },
+                //     {
+                //         image: 'https://dummyimage.com/428x424/777777/000000.png',
+                //         imageAlt: 'some alt',
+                //         title: '10 Tips to Adjust Your Driving to Winter Conditions',
+                //         desc: 'Working through the winter? Visibility, temperature and weather can really make it harder to take your business on…'
+                //     },
+                //     {
+                //         image: 'https://dummyimage.com/428x424/c9c9c9/000000.png',
+                //         imageAlt: 'some alt',
+                //         title: '10 Tips to Adjust Your Driving to Winter Conditions',
+                //         desc: 'Working through the winter? Visibility, temperature and weather can really make it harder to take your business on…'
+                //     }
+                // ]
             }
         },
         components: {
             appYellowSlider: YellowSlider
+        },
+        mounted() {
+            console.log(this.yellowSlider)
         }
     }
 </script>
