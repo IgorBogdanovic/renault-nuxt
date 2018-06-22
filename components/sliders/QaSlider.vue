@@ -1,50 +1,42 @@
 <template>
-
-<div class="qa-slider">
-
-  <h2 class="qa-slider__heading">
-    <span class="text--regular">Renault</span>
-    <br>
-    <span class="text--italic">Vu </span>
-    <span class="text--bold">q&a</span>
-  </h2>
-  
-  <div class="qa-slider-wrapper">
-    
-    <!-- Slider main container -->
-    
-    <div class="swiper-container">
-      
-      <div class="swiper-wrapper">
-        
-        <div v-for="(slide, index) in slider" :key="index" class="swiper-slide">
-          
-          <img :src="slide.image" :alt="slide.imageAlt" class="swiper-slide__image">
-          
-          <h2 class='swiper-slide__title text--bolder'>{{ slide.title }}</h2>
-          
-          <p class='swiper-slide__description'>{{ slide.description }}</p>
-          
+    <div class="c-qa-slider__underlay">
+        <div class="c-qa-slider">
+            <slick ref="slick" :options="slickOptions" @afterChange="handleAfterChange">
+                <div v-for="(slide, index) in slider" :key="index">
+                    <div class="c-qa-slider__wrapper">
+                        <div class="c-qa-slider__image">
+                            <img :src="slide.image" :alt="slide.imageAlt">
+                        </div>
+                        <div class="c-qa-slider__body">
+                            <h4 class="c-qa-slider__body__title" >{{ slide.title }}</h4>
+                            <p class="c-qa-slider__body__description">{{ slide.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </slick>
+            <div class="c-qa-slider__counter">
+                <span @click="prev()">
+                    <svg viewBox="0 0 11.732 10.264">
+                        <path d="M11.487 2.932H5.379V.244a.245.245 0 0 0-.417-.173L.071 4.962a.245.245 0 0 0 0 .346l4.89 4.888a.244.244 0 0 0 .173.071.241.241 0 0 0 .093-.019.245.245 0 0 0 .151-.226v-2.69h6.108a.244.244 0 0 0 .244-.244V3.176a.244.244 0 0 0-.243-.244z"
+                            data-name="Path 15" />
+                    </svg>
+                </span>
+                <div class="c-qa-slider__counter-num">
+                    <span class="current">
+                        <span v-if="activeSlide < 10">0</span>{{ activeSlide }}</span>
+                    <span>&#47;</span>
+                    <span class="total">
+                        <span v-if="slider.length < 10">0</span>{{ slider.length }}</span>
+                </div>
+                <span @click="next()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11.079 9.693">
+                        <path d="M.231 6.924h5.768v2.538a.231.231 0 0 0 .394.163l4.619-4.614a.232.232 0 0 0 0-.327L6.394.068a.231.231 0 0 0-.163-.067.228.228 0 0 0-.088.018.231.231 0 0 0-.144.212v2.54H.231A.231.231 0 0 0 0 3.002v3.692a.231.231 0 0 0 .231.23z"
+                            data-name="Path 15" />
+                    </svg>
+                </span>
+            </div>
         </div>
-        
-      </div>
-      
-      <div class="swiper-navigation">
-
-        <div class="swiper-prev">⬅</div>
-      
-        <div class="swiper-pagination text--bold"></div>
-      
-        <div class="swiper-next" :style="{ transform: 'scaleX(-1)' }">⬅</div>
-      
-      </div>
-
     </div>
-
-  </div>
-  
-</div>
-
 </template>
 
 <script>
@@ -73,104 +65,113 @@ export default {
           description:
             "Working through the winter? Visibility, temperature and weather can really make it harder to take your business on…"
         }
-      ]
+      ],
+      slickOptions: {
+        slidesToShow: 1,
+        arrows: false,
+        autoplay: false,
+        autoplaySpeed: 3000
+      },
+      activeSlide: 1
     };
   },
+  methods: {
+    next() {
+      this.$refs.slick.next();
+    },
+    prev() {
+      this.$refs.slick.prev();
+    },
+    reInit() {
+      this.$nextTick(() => {
+        this.$refs.slick.reSlick();
+      });
+    },
+    handleAfterChange(event, slick, currentSlide) {
+      this.activeSlide = currentSlide + 1;
+    }
+  }
 };
 </script>
 
 <style scoped lang='scss'>
 @import "~assets/scss/settings";
 
-.qa-slider {
-  width: 100%;
-  height: 41.5rem;
+.c-qa-slider__underlay {
+  background-color: $white-two;
+  height: 26rem;
+  position: relative;
   @include breakpoint(desktop) {
+    height: 48.8rem;
     width: 65.6rem;
-    height: 69rem;
-  }
-
-  &__heading {
-    margin-bottom: 11rem;
-    padding: 0 5%;
-    @include breakpoint(desktop) {
-      padding: 0;
-      margin-bottom: 13.8rem;
-    }
-  }
-
-  &-wrapper {
-    background-color: $white-two;
-    height: 26rem;
-    @include breakpoint(desktop) {
-      height: 48.8rem;
-    }
   }
 }
 
-.swiper {
-  &-container {
-    width: 33.6rem;
-    top: -9.7rem;
+.c-qa-slider {
+  width: 33.6rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: -9.7rem auto;
+  @include breakpoint(desktop) {
+    width: 41.6rem;
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__image {
+    margin-bottom: 0.9rem;
     @include breakpoint(desktop) {
-      width: 41.6rem;
+      margin-bottom: 3.5rem;
     }
   }
 
-  &-slide {
-    &__image {
-      width: 100%;
-      margin-bottom: 0.9rem;
-      @include breakpoint(desktop) {
-        margin-bottom: 3.4rem;
-      }
-    }
+  &__body {
+    color: $warm-grey;
 
     &__title {
       @include fontSizeRem(14, 23);
-      line-height: 1.14;
+      font-family: "Lato-Black";
       margin-bottom: 1.6rem;
-      @include breakpoint(desktop) {
-        width: 17.7rem;
-        margin-bottom: 0.9rem;
-      }
+      color: $black;
     }
 
     &__description {
-      display: none;
+      @include fontSizeRem(0, 14);
+    }
+
+    &__title,
+    &__description {
       @include breakpoint(desktop) {
-        max-width: 27.2rem;
-        display: inline-block;
-        font-size: 1.4rem;
-        line-height: 1.5;
-        color: $warm-grey;
+        float: left;
       }
     }
   }
 
-  &-navigation {
-    @include breakpoint(desktop) {
-      position: absolute;
-      bottom: 9.5rem;
-      right: 0;
-      z-index: 999;
-    }
-  }
-
-  &-pagination {
+  &__counter {
     @include fontSizeRem(12, 15);
-    position: static;
-    display: inline;
-    margin: 0.8rem;
+    font-family: "Lato-Bold";
     color: $warm-grey;
-  }
+    width: 8rem;
+    display: flex;
+    justify-content: space-between;
+    @include breakpoint(desktop) {
+      float: right;
+    }
 
-  &-prev,
-  &-next {
-    display: inline-block;
-    font-size: 1rem;
-    outline: 0;
-    cursor: pointer;
+    & svg {
+      width: 1.17rem;
+      height: 1.03rem;
+      cursor: pointer;
+    }
+
+    &-num {
+      & .current {
+        color: $sun-yellow;
+      }
+    }
   }
 }
 </style>
