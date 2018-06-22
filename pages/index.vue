@@ -3,8 +3,7 @@
     <app-header></app-header>
     <app-hp-slider :hpSlider="hpSlider"></app-hp-slider>
     <app-my-business :previews="myBusiness"></app-my-business>
-    <section class="temp">
-    </section>
+    <app-whats-new :previews="whatsNew"></app-whats-new>
     <app-footer></app-footer>
   </div>
 </template>
@@ -12,6 +11,7 @@
 <script>
   import HpSlider from '~/components/sliders/HpSlider.vue';
   import MyBusiness from '~/components/blocks/MyBusiness.vue';
+  import WhatsNew from '~/components/blocks/WhatsNew.vue';
 
   export default {
     data () {
@@ -83,7 +83,8 @@
     // },
     components: {
       AppHpSlider: HpSlider,
-      AppMyBusiness: MyBusiness
+      AppMyBusiness: MyBusiness,
+      AppWhatsNew: WhatsNew
     },
     // created() {
     //     return this.$api.get(this.$api.queries.homepage)
@@ -95,8 +96,5 @@
 </script>
 
 <style>
-.temp {
-  height: 300vh;
-  background-color: beige;
-}
+
 </style>

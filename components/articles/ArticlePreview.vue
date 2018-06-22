@@ -1,37 +1,50 @@
 <template>
-
     <nuxt-link tag='article' to='/' class="c-article-preview">
         <figure class="c-article-preview__image">
-            <img :src="prev.image" :alt="prev.imageAlt">
-            <span v-if="prev.tagged" class="c-article-preview__tag">{{ prev.tag }}</span>
+            <div v-if="prev.featured_image.length > 0">
+                <div v-for="(img, index) in prev.featured_image" :key="index">
+                    <img v-if="index === 0" class="u-only-mob" :src="$thumbor(thumbor.imgMob.width, thumbor.imgMob.height) + img.data.file.url" :alt="img.data.seoalt">
+                    <img v-if="index === 0" class="u-only-desktop" :src="$thumbor(thumbor.imgDesk.width, thumbor.imgDesk.height) + img.data.file.url" :alt="img.data.seoalt">
+                </div>
+            </div>
+            <div v-else>
+                <div v-for="(img, index) in prev.images" :key="index">
+                    <img v-if="index === 0" class="u-only-mob" :src="$thumbor(thumbor.imgMob.width, thumbor.imgMob.height) + img.data.file.url" :alt="img.data.seoalt">
+                    <img v-if="index === 0" class="u-only-desktop" :src="$thumbor(thumbor.imgDesk.width, thumbor.imgDesk.height) + img.data.file.url" :alt="img.data.seoalt">
+                </div>
+            </div>
+            <span v-if="tag.visible" class="c-article-preview__tag">{{ tag.text }}</span>
         </figure>
         <div class="c-article-preview__content">
             <h4 v-if="prev.title" class="c-article-preview__title">{{ prev.title }}</h4>
-            <p v-if="prev.desc" class="c-article-preview__desc">{{ prev.desc }}</p>
+            <p v-if="prev.additional_fields.intro" class="c-article-preview__desc">{{ introCut(prev.additional_fields.intro, introCharLimit) }}</p>
         </div>
     </nuxt-link>
-
 </template>
 
 <script>
 export default {
-    props: ['prev']
-//     data: function() {
-//         return {
-//             tagged: true,
-//             desc: false
-//         };
-//     },
-//     mounted() {
-//         this.winWidth();
-//     },
-//     methods: {
-//         winWidth() {
-//             if (process.browser) {
-//                 if (window.innerWidth > 767) this.desc = true;
-//             }
-//         }
-//     }
+    props: ['prev', 'tag', 'thumbor'],
+    data() {
+        return {
+            introCharLimit: 115
+        }
+    },
+    methods: {
+        introCut(text, charAllowed) {
+            if (text.length > charAllowed) {
+                var textCuted = text.slice(0, charAllowed);
+            } else return text;
+
+            const wordsArray = textCuted.split(" ");
+            wordsArray.pop();
+            var textShort = "";
+            for (let word of wordsArray) {
+                textShort += word + " ";
+            }   
+            return textShort + "...";
+        }
+    }
 }
 </script>
 
