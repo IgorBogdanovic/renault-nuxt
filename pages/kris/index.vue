@@ -71,12 +71,6 @@
             appMostRead: MostRead,
             appArticleContent: ArticleContent
         }
-
-        // var temp = {}
-        // temp.sliders = res.sliders
-        // temp.latestArticlesArr = res.fliter( array )
-
-        // return temp
     }
 </script>
 

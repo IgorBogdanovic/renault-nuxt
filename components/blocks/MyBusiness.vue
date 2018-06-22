@@ -49,9 +49,6 @@
                     text: 'My business'
                 }
             }
-        },
-        mounted() {
-            console.log(this.previews)
         }
     }
 </script>
@@ -90,6 +87,10 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
+
+            @include breakpoint(desktop) {
+                margin-bottom: 3.8rem;
+            }
 
             & .c-article-preview {
                 width: 47.7%;
