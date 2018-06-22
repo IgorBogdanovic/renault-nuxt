@@ -3,7 +3,7 @@
     <app-header></app-header>
     <app-hp-slider :hpSlider="hpSlider"></app-hp-slider>
     <app-my-business :previews="myBusiness"></app-my-business>
-    <app-whats-new :previews="whatsNew"></app-whats-new>
+    <app-whats-new :previews="whatsNew" :yellowSlider="myCommunity"></app-whats-new>
     <app-footer></app-footer>
   </div>
 </template>

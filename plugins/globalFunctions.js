@@ -61,3 +61,18 @@ export function sortArrayByAlphabet(arr){
   })
   return rArr;
 }
+
+export function introCut(text, charAllowed) {
+  //trim text to 'charAllowed' number of characters
+  if (text.length > charAllowed) {
+      var textCuted = text.slice(0, charAllowed);
+  } else return text;
+
+  const wordsArray = textCuted.split(" ");
+  wordsArray.pop();
+  var textShort = "";
+  for (let word of wordsArray) {
+      textShort += word + " ";
+  }   
+  return textShort + "...";
+}

@@ -3,13 +3,18 @@
         <slick ref="slick" :options="slickOptions" @afterChange="handleAfterChange">
             <div v-for="(slide, index) in slider" :key="index">
                 <div class="c-yellow-slider__wrapper">
-                    <div class="c-yellow-slider__image">
-                        <img :src="slide.image" :alt="slide.imageAlt">
+                    <div v-if="slide.featured_image.length > 0" class="c-yellow-slider__image">
+                        <img :src="$thumbor(428, 424) + slide.featured_image[0].data.file.url" :alt="slide.featured_image[0].data.seoalt">
+                    </div>
+                    <div v-else class="c-yellow-slider__image">
+                        <div v-for="(img, index) in slide.images" :key="index">
+                            <img v-if="index === 0" :src="$thumbor(428, 424) + img.data.file.url" :alt="img.data.seoalt">
+                        </div>
                     </div>
                     <div class="c-yellow-slider__body">
                         <h2><span class="bolder">MY</span><span class="cursive"> van</span></h2>
-                        <h4>{{ slide.title }}</h4>
-                        <p>{{ slide.desc }}</p>
+                        <h4>{{ introCut(slide.title, titleCharLimit) }}</h4>
+                        <p>{{ introCut(slide.additional_fields.intro, introCharLimit) }}</p>
                         <button class="c-btn">See all</button>
                     </div>
                 </div>
@@ -36,6 +41,8 @@
 </template>
 
 <script>
+    import { introCut } from '~/plugins/globalFunctions.js'
+
     export default {
         props: ['slider'],
         data() {
@@ -43,10 +50,12 @@
                 slickOptions: {
                     slidesToShow: 1,
                     arrows: false,
-                    autoplay: true,
+                    // autoplay: true,
                     autoplaySpeed: 3000
                 },
-                activeSlide: 1
+                activeSlide: 1,
+                titleCharLimit: 40,
+                introCharLimit: 127
             }
         },
         methods: {
@@ -63,7 +72,8 @@
             },
             handleAfterChange(event, slick, currentSlide) {
                 this.activeSlide = currentSlide + 1;
-            }
+            },
+            introCut
         }
     }
 </script>

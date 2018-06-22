@@ -23,29 +23,18 @@
 </template>
 
 <script>
-export default {
-    props: ['prev', 'tag', 'thumbor'],
-    data() {
-        return {
-            introCharLimit: 115
-        }
-    },
-    methods: {
-        introCut(text, charAllowed) {
-            if (text.length > charAllowed) {
-                var textCuted = text.slice(0, charAllowed);
-            } else return text;
-
-            const wordsArray = textCuted.split(" ");
-            wordsArray.pop();
-            var textShort = "";
-            for (let word of wordsArray) {
-                textShort += word + " ";
-            }   
-            return textShort + "...";
+    import { introCut } from '~/plugins/globalFunctions.js'
+    export default {
+        props: ['prev', 'tag', 'thumbor'],
+        data() {
+            return {
+                introCharLimit: 115
+            }
+        },
+        methods: {
+            introCut
         }
     }
-}
 </script>
 
 <style lang="scss" scoped>
