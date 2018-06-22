@@ -50,7 +50,7 @@
                 slickOptions: {
                     slidesToShow: 1,
                     arrows: false,
-                    // autoplay: true,
+                    autoplay: true,
                     autoplaySpeed: 3000
                 },
                 activeSlide: 1,
