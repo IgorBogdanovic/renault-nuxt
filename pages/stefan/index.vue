@@ -1,11 +1,10 @@
 <template lang="html">
   <div class="main-wrapper">
      <div class="inner-wrapper">
-         <!-- <p>{{articlesList}}</p> -->
-         <NewsOfTheWeek :latestArray = 'latestArray' />
-         <HeroArticles/>
+         <!-- <NewsOfTheWeek :latestArray = 'latestArray' />
+         <HeroArticles/> -->
      </div>
-      <app-faq/>
+      <!-- <app-faq/> -->
   </div>
 </template>
 
@@ -13,37 +12,66 @@
 import NewsOfTheWeek from '~/components/blocks/NewsOfTheWeek.vue'
 import HeroArticles  from '~/components/blocks/HeroArticles.vue'
 import AppFaq        from '~/components/blocks/FAQSlider.vue'
-import { cleanData } from '~/plugins/globalFunctions.js'
 
 
 export default {
-
-    data() {
-        return {
-            test:'',
-            latestArray:'',
+  data () {
+      return {
+        hpSlider: [],
+        newsOfTheWeek: [],
+        myVan: [],
+        myBusiness: [],
+        faq: [],
+        whatsNew: [],
+        myCommunity: [], //this is data for yellow slider inside whats new block
+        mostRead: []
+      }
+  },
+  asyncData(context) {
+    return context.app.$api.get(context.app.$api.queries.homepage)
+      .then(res => {
+        let tempObj = {}
+        const homepage = res.data.data.nodes[0].elements
+        console.log('HOMEPAGE');
+        console.log(homepage);
+        for (let node of homepage) {
+          if (node.data.item_name === 'HP Slider') {
+            tempObj.hpSlider = node.element_item.elements
+          }
+          if (node.data.item_name === 'HP Latest All') {
+            tempObj.newsOfTheWeek = node.element_item.list_items
+          }
+          if (node.data.item_name === 'HP Latest My Van') {
+            tempObj.myVan = node.element_item.list_items
+          }
+          if (node.data.item_name === 'HP Latest My Business') {
+            tempObj.myBusiness = node.element_item.list_items
+          }
+          if (node.data.item_name === 'HP Latest FAQ') {
+            tempObj.faq = node.element_item.list_items
+          }
+          if (node.data.item_name === 'HP Latest Whats New') {
+            tempObj.whatsNew = node.element_item.list_items
+          }
+          if (node.data.item_name === 'HP My Community') {
+            tempObj.myCommunity = node.element_item.list_items
+          }
+          if (node.data.item_name === 'HP Most Read') {
+            tempObj.mostRead = node.element_item.list_items
+          }
         }
-    },
-    asyncData(context) {
-      return context.app.$api.get(context.app.$api.queries.homepage)
-        .then(res => {
-            return{
-                //res.data.data.nodes[0].elements = cleanData( res.data.data.nodes[0].elements)
-                //test:cleanData( res.data.data.nodes[0].elements)
-                test:cleanData( res.data.data.nodes[0].elements)
-            }
-        })
-    },
-
-    created(){
-        console.log(this.test);
-    },
-
+        return tempObj
+      })
+  },
   components:{
         NewsOfTheWeek,
         HeroArticles,
         AppFaq,
   },
+
+  created(){
+      console.log();
+  }
 }
 
 </script>
