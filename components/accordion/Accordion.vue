@@ -19,11 +19,6 @@
 import AppAccordionElement from "~/components/accordion/AccordionElement.vue";
 
 export default {
-  created() {
-    this.$api.get(this.$api.queries.test_node).then(res => {
-      console.log(res);
-    });
-  },
   data() {
     return {
       items: [
@@ -64,7 +59,4 @@ export default {
 
 <style lang="scss" scoped>
 @import "~assets/scss/settings";
-.accordion-wrapper {
-  margin-top: 10rem;
-}
 </style>

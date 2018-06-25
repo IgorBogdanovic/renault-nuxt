@@ -13,26 +13,44 @@
 
       <div class="row">
 
-        <app-article-preview :prev="previews[0]" class="c-article-preview-landscape padded float-right" />
+        <app-article-preview :prev="previews[0]"
+        :thumbor="{ imgDesk : {width: 232, height: 200}, imgMob: {width: 156, height: 137}}"
+        :tag="tag" class="c-article-preview-landscape padded float-right"/>
 
       </div>
 
       <div class="row">
 
-        <app-article-preview :prev="previews[1]" class="c-article-preview-square padded" />
-        <app-article-preview :prev="previews[2]" class="c-article-preview-square padded" />
-        <app-article-preview :prev="previews[3]" class="c-article-preview-square padded" />
-        <app-article-preview :prev="previews[0]" class="c-article-preview-square c-article-preview-landscape--desk padded"
+        <app-article-preview :prev="previews[1]"
+        :thumbor="{ imgDesk : {width: 232, height: 200}, imgMob: {width: 156, height: 137}}"
+        :tag="tag" class="c-article-preview-square padded" />
+        <app-article-preview :prev="previews[2]" 
+        :thumbor="{ imgDesk : {width: 232, height: 200}, imgMob: {width: 156, height: 137}}"
+        :tag="tag" class="c-article-preview-square padded" />
+        <app-article-preview :prev="previews[3]" 
+        :thumbor="{ imgDesk : {width: 232, height: 200}, imgMob: {width: 156, height: 137}}"
+        :tag="tag" class="c-article-preview-square padded" />
+        <app-article-preview :prev="previews[0]" 
+        :thumbor="{ imgDesk : {width: 232, height: 200}, imgMob: {width: 156, height: 137}}"
+        :tag="tag" class="c-article-preview-square c-article-preview-landscape--desk padded"
         />
 
       </div>
 
       <div class="row">
 
-        <app-article-preview :prev="previews[1]" class="c-article-preview-square padded" />
-        <app-article-preview :prev="previews[1]" class="c-article-preview-square padded" />
-        <app-article-preview :prev="previews[1]" class="c-article-preview-square padded" />
-        <app-article-preview :prev="previews[0]" class="c-article-preview-square c-article-preview-landscape--desk padded float-right" />
+        <app-article-preview :prev="previews[3]" 
+        :thumbor="{ imgDesk : {width: 232, height: 200}, imgMob: {width: 156, height: 137}}"
+        :tag="tag" class="c-article-preview-square padded" />
+        <app-article-preview :prev="previews[2]" 
+        :thumbor="{ imgDesk : {width: 232, height: 200}, imgMob: {width: 156, height: 137}}"
+        :tag="tag" class="c-article-preview-square padded" />
+        <app-article-preview :prev="previews[1]" 
+        :thumbor="{ imgDesk : {width: 232, height: 200}, imgMob: {width: 156, height: 137}}"
+        :tag="tag" class="c-article-preview-square padded" />
+        <app-article-preview :prev="previews[0]" 
+        :thumbor="{ imgDesk : {width: 232, height: 200}, imgMob: {width: 156, height: 137}}"
+        :tag="tag" class="c-article-preview-square c-article-preview-landscape--desk padded float-right" />
 
 
       </div>
@@ -43,57 +61,15 @@
 </template>
 
 <script>
-import ArticlePreview from "~/components/articles/ArticlePreview.vue";
-
 export default {
+  props: ["previews"],
   data() {
     return {
-      previews: [
-        {
-          image: "https://dummyimage.com/232x200/c9c9c9/000000.png", //mobile
-          //          image: "https://dummyimage.com/272x360/c9c9c9/000000.png",
-          imageAlt: "some alt",
-          tagged: false,
-          tag: "MY BUSINESS",
-          title: "Lorem Ipsum is simply dummy text of the printing ",
-          desc:
-            "A mobile showroom for your business really isn’t so different from the tried and tested mobile retail outlet…"
-        },
-        {
-          image: "https://dummyimage.com/232x200/c9c9c9/000000.png", //mobile
-          //          image: "https://dummyimage.com/272x224/c9c9c9/000000.png",
-          imageAlt: "some alt",
-          tagged: false,
-          tag: "MY BUSINESS",
-          title: "PRVI Ipsum is simply dummy text of the printing ",
-          desc:
-            "The UK boasts several ski resorts offering seasonal business opportunities to entrepreneurs on wheels. Here are a few.."
-        },
-        {
-          image: "https://dummyimage.com/232x200/c9c9c9/000000.png", //mobile
-          //          image: "https://dummyimage.com/492x400/c9c9c9/000000.png",
-          imageAlt: "some alt",
-          tagged: false,
-          tag: "MY BUSINESS",
-          title: " DRUGI Ipsum is simply dummy text of the printing ",
-          desc:
-            "The UK tourism economy is undergoing a boom; employment-wise, it has been the fastest-growing sector in the country…"
-        },
-        {
-          image: "https://dummyimage.com/156x136/c9c9c9/000000.png", //mobile
-          //          image: "https://dummyimage.com/492x400/c9c9c9/000000.png",
-          imageAlt: "some alt",
-          tagged: false,
-          tag: "MY BUSINESS",
-          title: "TRECI Ipsum is simply dummy text of the printing ",
-          desc:
-            "The UK tourism economy is undergoing a boom; employment-wise, it has been the fastest-growing sector in the country…"
-        }
-      ]
+      tag: {
+        visible: false,
+        text: ""
+      }
     };
-  },
-  components: {
-    appArticlePreview: ArticlePreview
   }
 };
 </script>

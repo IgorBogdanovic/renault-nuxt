@@ -11,18 +11,39 @@
 
             <div class="row">
 
-              <app-article-preview v-for="(preview, index) in previews.slice(0,2)" 
-              :key="index" :prev="preview" class="c-article-preview-square"/>
+              <app-article-preview 
+              :prev="previews[0]"
+              :thumbor="{ imgDesk : {width: 272, height: 224}, imgMob: {width: 156, height: 136}}"
+              :tag="tag"  class="c-article-preview-square"/>
 
-            <app-article-preview :prev="previews[2]" class="c-article-preview-square-lg"/>
+              <app-article-preview 
+              :prev="previews[1]"
+              :thumbor="{ imgDesk : {width: 272, height: 224}, imgMob: {width: 156, height: 136}}"
+              :tag="tag"  class="c-article-preview-square"/>
+              
+              <app-article-preview 
+              :prev="previews[2]"
+              :thumbor="{ imgDesk : {width: 492, height: 400}, imgMob: {width: 336, height: 284}}"
+              :tag="tag" class="c-article-preview-square-lg"/>
 
           </div>
           
           <div class="row">
-
-            <app-article-preview :prev="previews[3]" class="c-article-preview-square-lg"/>
-            <app-article-preview :prev="previews[4]" class="c-article-preview-square"/>
-            <app-article-preview :prev="previews[5]" class="c-article-preview-square"/>
+            
+            <app-article-preview 
+            :prev="previews[2]"
+            :thumbor="{ imgDesk : {width: 492, height: 400}, imgMob: {width: 336, height: 284}}"
+            :tag="tag" class="c-article-preview-square-lg"/>
+            
+            <app-article-preview 
+            :prev="previews[0]"
+            :thumbor="{ imgDesk : {width: 272, height: 224}, imgMob: {width: 156, height: 136}}"
+            :tag="tag"  class="c-article-preview-square"/>
+            
+            <app-article-preview 
+            :prev="previews[1]"
+            :thumbor="{ imgDesk : {width: 272, height: 224}, imgMob: {width: 156, height: 136}}"
+            :tag="tag"  class="c-article-preview-square"/>
             
           </div>
 
@@ -33,79 +54,15 @@
 </template>
 
 <script>
-import ArticlePreview from "~/components/articles/ArticlePreview.vue";
-
 export default {
+  props: ["previews"],
   data() {
     return {
-      previews: [
-        {
-          image: "https://dummyimage.com/156x136/c9c9c9/000000.png", //mobile
-          //          image: "https://dummyimage.com/272x360/c9c9c9/000000.png",
-          imageAlt: "some alt",
-          tagged: true,
-          tag: "MY BUSINESS",
-          title: "5 Novel Ideas For A Food Truck",
-          desc:
-            "A mobile showroom for your business really isn’t so different from the tried and tested mobile retail outlet…"
-        },
-        {
-          image: "https://dummyimage.com/156x136/c9c9c9/000000.png", //mobile
-          //          image: "https://dummyimage.com/272x224/c9c9c9/000000.png",
-          imageAlt: "some alt",
-          tagged: true,
-          tag: "MY BUSINESS",
-          title: "5 Novel Ideas for A Food Truck",
-          desc:
-            "The UK boasts several ski resorts offering seasonal business opportunities to entrepreneurs on wheels. Here are a few.."
-        },
-        {
-          image: "https://dummyimage.com/336x284/c9c9c9/000000.png", //mobile
-          //          image: "https://dummyimage.com/492x400/c9c9c9/000000.png",
-          imageAlt: "some alt",
-          tagged: true,
-          tag: "MY BUSINESS",
-          title:
-            "Setting Up A Mobile Business in the Tourism Sector: Do’s and Don’ts",
-          desc:
-            "The UK tourism economy is undergoing a boom; employment-wise, it has been the fastest-growing sector in the country…"
-        },
-        {
-          image: "https://dummyimage.com/336x284/c9c9c9/000000.png", //mobile
-          //          image: "https://dummyimage.com/272x224/c9c9c9/000000.png",
-          imageAlt: "some alt",
-          tagged: true,
-          tag: "MY BUSINESS",
-          title:
-            "Setting Up A Mobile Business in the Tourism Sector: Do’s and Don’ts",
-          desc:
-            "The process of writing an operations manual for your small business may sound dry, but once you get to grips with the…"
-        },
-        {
-          image: "https://dummyimage.com/156x136/c9c9c9/000000.png", //mobile
-          //          image: "https://dummyimage.com/272x360/c9c9c9/000000.png",
-          imageAlt: "some alt",
-          tagged: true,
-          tag: "MY BUSINESS",
-          title: "5 Novel Ideas for A Food Truck",
-          desc:
-            "Whether you’re operating a large delivery van fleet or running your electrical business from a single Kangoo, you’ll…"
-        },
-        {
-          image: "https://dummyimage.com/156x136/c9c9c9/000000.png", //mobile
-          //          image: "https://dummyimage.com/272x360/c9c9c9/000000.png",
-          imageAlt: "some alt",
-          tagged: true,
-          tag: "MY BUSINESS",
-          title: "5 Novel Ideas for A Food Truck",
-          desc:
-            "Whether you’re operating a large delivery van fleet or running your electrical business from a single Kangoo, you’ll…"
-        }
-      ]
+      tag: {
+        visible: true,
+        text: "My business"
+      }
     };
-  },
-  components: {
-    appArticlePreview: ArticlePreview
   }
 };
 </script>
