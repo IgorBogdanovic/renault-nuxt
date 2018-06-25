@@ -3,6 +3,7 @@
     <app-header></app-header>
     <app-hp-slider :hpSlider="hpSlider"></app-hp-slider>
     <app-news-of-the-week :previews='newsOfTheWeek'></app-news-of-the-week>
+    <app-my-van :previews='myVan'></app-my-van>
     <app-my-business :previews="myBusiness"></app-my-business>
     <app-whats-new :previews="whatsNew" :yellowSlider="myCommunity"></app-whats-new>
     <app-footer></app-footer>
@@ -10,10 +11,11 @@
 </template>
 
 <script>
-  import HpSlider from '~/components/sliders/HpSlider.vue';
-  import NewsOfTheWeek from '~/components/blocks/NewsOfTheWeek.vue'
-  import MyBusiness from '~/components/blocks/MyBusiness.vue';
-  import WhatsNew from '~/components/blocks/WhatsNew.vue';
+  import HpSlider       from '~/components/sliders/HpSlider.vue';
+  import NewsOfTheWeek  from '~/components/blocks/NewsOfTheWeek.vue'
+  import MyVan          from '~/components/blocks/MyVan.vue'
+  import MyBusiness     from '~/components/blocks/MyBusiness.vue';
+  import WhatsNew       from '~/components/blocks/WhatsNew.vue';
 
   export default {
     data () {
@@ -84,9 +86,11 @@
     // },
     components: {
       AppHpSlider: HpSlider,
+      AppNewsOfTheWeek: NewsOfTheWeek,
+      AppMyVan: MyVan,
       AppMyBusiness: MyBusiness,
       AppWhatsNew: WhatsNew,
-      AppNewsOfTheWeek: NewsOfTheWeek
+
     },
     // created() {
     //     return this.$api.get(this.$api.queries.homepage)

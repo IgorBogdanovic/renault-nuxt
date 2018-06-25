@@ -67,9 +67,10 @@ export default {
     &__title{
         position: absolute;
         top:3.2rem;
-        left:0;
+        left:1.9rem;
         @include breakpoint(desktop){
             top:21rem;
+            left:0;
         }
 
         & .bolder{
