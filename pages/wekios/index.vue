@@ -5,8 +5,11 @@
       <shp-faq-header></shp-faq-header>
       <div class="inner-wrapper">
         <app-accordion/>
+        <br>
+        <block-more-qa :previews="myBusiness"></block-more-qa>
+        <br><br><br>
         <block-latest-news :previews="newsOfTheWeek"></block-latest-news>
-        <hr>
+        <br><br><br>
         <block-qa-list :previews="whatsNew"></block-qa-list>
       </div>
       <div class="inner-wrapper--full">
@@ -22,6 +25,7 @@ import ShpHeader from "~/components/page__headers/ShpHeader.vue";
 import ShpFaqHeader from "~/components/page__headers/ShpFaqHeader.vue";
 import AppHeader from "~/components/Header.vue";
 import AppAccordion from "~/components/accordion/Accordion.vue";
+import BlockMoreQa from "~/components/blocks/MoreQa.vue";
 import BlockLatestNews from "~/components/blocks/LatestNews.vue";
 import BlockQaList from "~/components/blocks/QaList.vue";
 import QaSlider from "~/components/sliders/QaSlider.vue";
@@ -63,6 +67,7 @@ export default {
     ShpFaqHeader,
     AppHeader,
     AppAccordion,
+    BlockMoreQa,
     BlockLatestNews,
     BlockQaList,
     QaSlider,
