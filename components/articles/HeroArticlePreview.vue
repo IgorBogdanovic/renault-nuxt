@@ -2,24 +2,42 @@
     <nuxt-link tag='div' to='/' class="c-hero-article-preview">
         <div class="c-hero-article-preview__content">
             <h2 class='c-hero-article-preview__content__main-title'>MY <span>van</span></h2>
-            <h3 class='c-hero-article-preview__content__subtitle'>10 Tips to Adjust Your Driving to Winter Conditions</h3>
-            <p class='c-hero-article-preview__content__description'>Working through the winter? Visibility, temperature and weather can really make it harder to take your business on…</p>
+            <h3 class='c-hero-article-preview__content__subtitle' v-if="prev.title" >{{prev.title}}</h3>
+            <p class='c-hero-article-preview__content__description' v-if="prev.additional_fields.intro" >{{ introCut( prev.additional_fields.intro, introCharLimit ) }}</p>
         </div>
-        <div class="c-hero-article-preview__media">
-            <figure>
-                <picture>
-                    <source srcset="https://dummyimage.com/652x436/000000/fff.jpg" media="(min-width: 1024px)">
-                    <img srcset="https://dummyimage.com/272x160/000000/fff.jpg" alt="…">
-                </picture>
+        <div class="c-hero-article-preview__media" v-if="prev.featured_image.length > 0">
+            <figure  v-for="(img, index) in prev.featured_image" :key="index">
+                <img v-if="index === 0" class="u-only-mob" :src="$thumbor(thumbor.imgMob.width, thumbor.imgMob.height) + img.data.file.url" :alt="img.data.seoalt">
+                <img v-if="index === 0" class="u-only-desktop" :src="$thumbor(thumbor.imgDesk.width, thumbor.imgDesk.height) + img.data.file.url" :alt="img.data.seoalt">
+            </figure>
+        </div>
+        <div class="c-hero-article-preview__media" v-else>
+            <figure  v-for="(img, index) in prev.images" :key="index">
+                <img v-if="index === 0" class="u-only-mob" :src="$thumbor(thumbor.imgMob.width, thumbor.imgMob.height) + img.data.file.url" :alt="img.data.seoalt">
+                <img v-if="index === 0" class="u-only-desktop" :src="$thumbor(thumbor.imgDesk.width, thumbor.imgDesk.height) + img.data.file.url" :alt="img.data.seoalt">
             </figure>
         </div>
     </nuxt-link>
 </template>
 
 <script>
-export default {
+import { introCut } from '~/plugins/globalFunctions.js';
 
+export default {
+    props:['prev', 'thumbor'],
+    data() {
+        return {
+            introCharLimit: 80
+        }
+    },
+    methods: {
+        introCut
+    },
+    created(){
+        console.log(this.prev);
+    },
 }
+
 </script>
 
 <style scoped lang='scss'>

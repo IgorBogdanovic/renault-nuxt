@@ -10,7 +10,7 @@
 
 <script>
 import NewsOfTheWeek from '~/components/blocks/NewsOfTheWeek.vue'
-import HeroArticles  from '~/components/blocks/HeroArticles.vue'
+// import HeroArticles  from '~/components/blocks/HeroArticles.vue'
 import AppFaq        from '~/components/blocks/FAQSlider.vue'
 
 
