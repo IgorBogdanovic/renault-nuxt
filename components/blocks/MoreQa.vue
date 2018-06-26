@@ -1,67 +1,64 @@
 <template>
 
-  <section class="b-more-qa">
+    <section class="b-more-qa">
 
-    <div class="b-more-qa__inner">
-        
-        <div class="row">
-            
-            <h2 class='b-more-qa__title'>
-                <span class="text--regular">more</span>
-                <br>
-                <span class="text--bolder">Q&A</span>
-            </h2>
+        <div class="b-more-qa__inner">
 
-        <app-article-preview :prev="previews[1]"
-        :thumbor="{ imgDesk : {width: 334, height: 344}, imgMob: {width: 161, height: 155}}"
-        :tag="tag" class="c-article-preview-landscape c-article-preview-landscape--lg"/>
 
-        <app-article-preview :prev="previews[0]"
-        :thumbor="{ imgDesk : {width: 232, height: 200}, imgMob: {width: 72, height: 72}}"
-        :tag="tag" class="c-article-preview-landscape"/>
+            <div class="row">
 
-        <app-article-preview :prev="previews[2]"
-        :thumbor="{ imgDesk : {width: 232, height: 200}, imgMob: {width: 72, height: 72}}"
-        :tag="tag" class="c-article-preview-landscape"/>
+                <h2 class='b-more-qa__title'>
+                    <span class="text--regular">more</span>
+                    <br>
+                    <span class="text--bolder">Q&A</span>
+                </h2>
 
-        <app-article-preview :prev="previews[1]"
-        :thumbor="{ imgDesk : {width: 232, height: 200}, imgMob: {width: 72, height: 72}}"
-        :tag="tag" class="c-article-preview-landscape"/>
+                <app-article-preview :prev="previews[1]" :thumbor="{ imgDesk : {width: 334, height: 344}, imgMob: {width: 161, height: 136}}"
+                    :tag="tag" class="c-article-preview-landscape c-article-preview-landscape--lg" />
 
-      </div>
+                <div class="col">
+                    
+                    <app-article-preview :prev="previews[0]" :thumbor="{ imgDesk : {width: 72, height: 72}, imgMob: {width: 112, height: 92}}"
+                    :tag="tag" class="c-article-preview-landscape" />
+                    
+                    <app-article-preview :prev="previews[2]" :thumbor="{ imgDesk : {width: 72, height: 72}, imgMob: {width: 112, height: 92}}"
+                    :tag="tag" class="c-article-preview-landscape" />
+                    
+                    <app-article-preview :prev="previews[0]" :thumbor="{ imgDesk : {width: 72, height: 72}, imgMob: {width: 112, height: 92}}"
+                    :tag="tag" class="c-article-preview-landscape" />
+                    
+                </div>
 
-      <div class="row">
-          <app-article-preview :prev="previews[0]"
-        :thumbor="{ imgDesk : {width: 232, height: 200}, imgMob: {width: 72, height: 72}}"
-        :tag="tag" class="c-article-preview-landscape"/>
+            </div>
 
-        <app-article-preview :prev="previews[2]"
-        :thumbor="{ imgDesk : {width: 232, height: 200}, imgMob: {width: 72, height: 72}}"
-        :tag="tag" class="c-article-preview-landscape"/>
+<div class="row">
 
-        <app-article-preview :prev="previews[1]"
-        :thumbor="{ imgDesk : {width: 232, height: 200}, imgMob: {width: 72, height: 72}}"
-        :tag="tag" class="c-article-preview-landscape"/>
-      </div>
+            <app-article-preview :prev="previews[0]" :thumbor="{ imgDesk : {width: 72, height: 72}, imgMob: {width: 112, height: 92}}"
+                :tag="tag" class="c-article-preview-landscape" />
 
-      <div class="row">
-          
-          <app-article-preview :prev="previews[0]"
-        :thumbor="{ imgDesk : {width: 232, height: 200}, imgMob: {width: 72, height: 72}}"
-        :tag="tag" class="c-article-preview-landscape"/>
+            <app-article-preview :prev="previews[2]" :thumbor="{ imgDesk : {width: 72, height: 72}, imgMob: {width: 112, height: 92}}"
+                :tag="tag" class="c-article-preview-landscape" />
 
-        <app-article-preview :prev="previews[2]"
-        :thumbor="{ imgDesk : {width: 232, height: 200}, imgMob: {width: 72, height: 72}}"
-        :tag="tag" class="c-article-preview-landscape"/>
+            <app-article-preview :prev="previews[0]" :thumbor="{ imgDesk : {width: 72, height: 72}, imgMob: {width: 112, height: 92}}"
+                :tag="tag" class="c-article-preview-landscape" />
+</div>
 
-        <app-article-preview :prev="previews[1]"
-        :thumbor="{ imgDesk : {width: 232, height: 200}, imgMob: {width: 72, height: 72}}"
-        :tag="tag" class="c-article-preview-landscape"/>
-      </div>
+<div class="row">
 
-    </div>
+                <app-article-preview :prev="previews[0]" :thumbor="{ imgDesk : {width: 72, height: 72}, imgMob: {width: 112, height: 92}}"
+                :tag="tag" class="c-article-preview-landscape" />
 
-  </section>
+            <app-article-preview :prev="previews[2]" :thumbor="{ imgDesk : {width: 72, height: 72}, imgMob: {width: 112, height: 92}}"
+                :tag="tag" class="c-article-preview-landscape" />
+
+            <app-article-preview :prev="previews[0]" :thumbor="{ imgDesk : {width: 72, height: 72}, imgMob: {width: 112, height: 92}}"
+                :tag="tag" class="c-article-preview-landscape" />
+
+</div>
+
+        </div>
+
+    </section>
 
 </template>
 
@@ -91,19 +88,26 @@ export default {
   }
 }
 
-.row {
-  @include breakpoint(desktop) {
-    display: block;
-    padding-top: 15rem;
+.col {
+  width: 100%;
+}
 
-    > * {
-      float: left;
-    }
+@include breakpoint(desktop) {
+  .row {
+    align-items: flex-start;
+    justify-content: flex-end;
   }
-  &:after {
-    content: "";
-    clear: both;
-    display: table;
+
+  .col {
+    width: inherit;
+  }
+
+  .c-article-preview-landscape {
+    margin-left: 1.6rem;
+  }
+
+  .c-article-preview-landscape--lg {
+    margin: 0 2.4rem 3.2rem 6.3em;
   }
 }
 </style>
