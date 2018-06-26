@@ -33,9 +33,6 @@ export default {
     methods: {
         introCut
     },
-    created(){
-        console.log(this.prev);
-    },
 }
 
 </script>

@@ -1,7 +1,7 @@
 <template lang="html">
   <section class='b-faq'>
       <h2 class='b-faq__title'>FAQ</h2>
-      <FaqMiniSlider/>
+      <FaqMiniSlider :faqSlider='faqSlider'/>
   </section>
 </template>
 
@@ -9,7 +9,7 @@
 import FaqMiniSlider from '~/components/sliders/FaqMiniSlider.vue'
 
 export default {
-
+    props:['faqSlider'],
     components:{
         FaqMiniSlider
     }

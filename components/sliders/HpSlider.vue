@@ -70,7 +70,7 @@ export default {
           arrows: false
         },
         activeSlide: 1,
-        introCharLimit: 100
+        introCharLimit: 100,
       }
   },
   methods: {

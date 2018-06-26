@@ -5,7 +5,7 @@
     <app-news-of-the-week :previews='newsOfTheWeek'></app-news-of-the-week>
     <app-my-van :previews='myVan'></app-my-van>
     <app-my-business :previews="myBusiness"></app-my-business>
-    <!-- <app-faq :faqSlider='faq'></app-faq> -->
+    <app-faq :faqSlider='faq'></app-faq>
     <app-whats-new :previews="whatsNew" :yellowSlider="myCommunity"></app-whats-new>
     <app-footer></app-footer>
   </div>
@@ -76,6 +76,10 @@
       AppWhatsNew: WhatsNew,
 
     },
+
+    created(){
+        console.log(this.faq);
+    }
   }
 </script>
 
