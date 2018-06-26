@@ -5,6 +5,7 @@
     <app-news-of-the-week :previews='newsOfTheWeek'></app-news-of-the-week>
     <app-my-van :previews='myVan'></app-my-van>
     <app-my-business :previews="myBusiness"></app-my-business>
+    <!-- <app-faq :faqSlider='faq'></app-faq> -->
     <app-whats-new :previews="whatsNew" :yellowSlider="myCommunity"></app-whats-new>
     <app-footer></app-footer>
   </div>
@@ -15,6 +16,7 @@
   import NewsOfTheWeek  from '~/components/blocks/NewsOfTheWeek.vue'
   import MyVan          from '~/components/blocks/MyVan.vue'
   import MyBusiness     from '~/components/blocks/MyBusiness.vue';
+  import Faq            from '~/components/blocks/FAQSlider.vue'
   import WhatsNew       from '~/components/blocks/WhatsNew.vue';
 
   export default {
@@ -64,40 +66,16 @@
           return tempObj
         })
     },
-    // data () {
-    //     return {
-    //       hpSlider: []
-    //     }
-    // },
-    // asyncData(context) {
-    //   return context.app.$api.get(context.app.$api.queries.homepage)
-    //     .then(res => {
-    //       const homepage = res.data.data.nodes[0].elements;
 
-    //       for (let node of homepage) {
-    //         if (node.data.item_name === 'HP Slider') {
-    //           return {
-    //             hpSlider: node.element_item.elements
-    //           }
-    //         }
-    //         // ... else if for rest of the blocks
-    //       }
-    //     })
-    // },
     components: {
       AppHpSlider: HpSlider,
       AppNewsOfTheWeek: NewsOfTheWeek,
       AppMyVan: MyVan,
       AppMyBusiness: MyBusiness,
+      AppFaq:Faq,
       AppWhatsNew: WhatsNew,
 
     },
-    // created() {
-    //     return this.$api.get(this.$api.queries.homepage)
-    //     .then( res => {
-    //         console.log(res);
-    //     })
-    // }
   }
 </script>
 

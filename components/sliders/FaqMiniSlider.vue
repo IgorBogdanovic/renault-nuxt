@@ -1,54 +1,79 @@
 <template lang="html">
-    <div class='b-faq-slider-wrapper'>
-        <div class="swiper-container swiper-container-faq-mini">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="swiper-slide__media">
-                        <img srcset="https://dummyimage.com/336x281/c9c9c9/000000.png" alt="…">
-                    </div>
-                    <div class="swiper-slide__content">
-                          <h2 class='swiper-slide__content__title'>My Van & Traffic Regulation</h2>
-                          <p class='swiper-slide__content__description'>
-                              The UK boasts several ski resorts offering seasonal business opportunities to entrepreneurs on wheels. Here are a few..
-                          </p>
-                      </div>
+    <section class='b-faq-slider'>
+        <slick ref="slickFaq" class='b-faq-slider-wrapper'
+        :options="slickOptions"
+        @afterChange="handleAfterChange">
+            <div v-for="(item, index) in faqSlider" :key="index" class="b-hp-slider__slide">
+              <div v-if="item.element_item.featured_image.length > 0">
+                <div class="b-hp-slider__img" v-for="(img, index) in item.element_item.featured_image" :key="index">
+                  <img v-if="index === 0" class="u-only-mob" :src="$thumbor(767, 409) + img.data.file.url" :alt="img.data.seoalt">
+                  <img v-if="index === 0" class="u-only-desktop" :src="$thumbor(1920, 955) + img.data.file.url" :alt="img.data.seoalt">
                 </div>
-                <div class="swiper-slide">
-                    <div class="swiper-slide__media">
-                        <img srcset="https://dummyimage.com/416x352/c9c9c9/000000.png" alt="…">
-                    </div>
-                    <div class="swiper-slide__content">
-                          <h2 class='swiper-slide__content__title'>My Van & Traffic Regulation</h2>
-                          <p class='swiper-slide__content__description'>
-                              The UK boasts several ski resorts offering seasonal business opportunities to entrepreneurs on wheels. Here are a few..
-                          </p>
-                      </div>
+              </div>
+              <div v-else>
+                <div class="b-hp-slider__img" v-for="(img, index) in item.element_item.images" :key="index">
+                  <img v-if="index === 0" class="u-only-mob" :src="$thumbor(767, 409) + img.data.file.url" :alt="img.data.seoalt">
+                  <img v-if="index === 0" class="u-only-desktop" :src="$thumbor(1920, 955) + img.data.file.url" :alt="img.data.seoalt">
                 </div>
-                <div class="swiper-slide">
-                    <div class="swiper-slide__media">
-                        <img srcset="https://dummyimage.com/416x352/c9c9c9/000000.png" alt="…">
-                    </div>
-                    <div class="swiper-slide__content">
-                          <h2 class='swiper-slide__content__title'>My Van & Traffic Regulation</h2>
-                          <p class='swiper-slide__content__description'>
-                              The UK boasts several ski resorts offering seasonal business opportunities to entrepreneurs on wheels. Here are a few..
-                          </p>
-                      </div>
+              </div>
+          </div>
+            <div class="swiper-container swiper-container-faq-mini">
+                <div class="swiper-wrapper">
+
                 </div>
+
+                <div class="swiper-prev">⬅</div>
+                <div class="swiper-next">⬅</div>
             </div>
-
-            <div class="swiper-pagination"></div>
-
-            <div class="swiper-prev">⬅</div>
-            <div class="swiper-next">⬅</div>
-        </div>
-    </div>
+        </slick>
+    </section>
 
 </template>
 
 <script>
 export default {
+    props: ['faqSlider'],
+    data () {
+        return {
+          slickOptions: {
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            arrows: false
+          },
+          activeSlide: 1,
+          introCharLimit: 100
+        }
+    },
+    methods: {
+      next() {
+        this.$refs.slickFaq.next();
+      },
+      prev() {
+        this.$refs.slickFaq.prev();
+      },
+      handleAfterChange(event, slick, currentSlide) {
+        this.activeSlide = currentSlide + 1;
+      },
+      introCut(text, charAllowed) {
+        if (text.length > charAllowed) {
+          var textCuted = text.slice(0, charAllowed);
+        } else return text;
 
+        const wordsArray = textCuted.split(" ");
+        wordsArray.pop();
+        var textShort = "";
+        for (let word of wordsArray) {
+          textShort += word + " ";
+        }
+        return textShort + "...";
+      }
+  },
+  created(){
+      console.log(this.faqSlider);
+  }
 }
 </script>
 
