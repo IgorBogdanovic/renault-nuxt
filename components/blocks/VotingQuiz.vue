@@ -12,7 +12,6 @@
       </div>
       <button type="button" name="button" class='c-btn c-btn--submit-car-quiz c-btn c-btn--disabled' disabled > SUBMIT</button>
   </div>
-
 </template>
 
 <script>
