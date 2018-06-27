@@ -27,16 +27,16 @@ export function sortArrayByAlphabet(arr){
 
      arr.reduce( function(acc, cur, index){
        if(acc[0] === cur[0]){
-         temp.push(cur)
-         return cur
+         temp.push(cur);
+         return cur;
        }else{
          rArr.push(temp);
          temp = [];
-         temp.push(cur)
+         temp.push(cur);
          if(index === arr.length - 1){
            rArr.push(temp);
          }
-         return cur
+         return cur;
        }
      }, 0);
      return rArr.splice(1);
@@ -49,9 +49,9 @@ export function sortArrayByAlphabet(arr){
   arr.forEach( (item, i)=>{
 
     if( item.type ==='slider_image'){
-        console.log('sliderIMG')
+        console.log('sliderIMG');
       	if(count == 0 ){
-         rArr.push(item)
+         rArr.push(item);
          count ++;
         }
       }else{
@@ -63,16 +63,47 @@ export function sortArrayByAlphabet(arr){
 }
 
 export function introCut(text, charAllowed) {
+  var textCuted;
   //trim text to 'charAllowed' number of characters
   if (text.length > charAllowed) {
-      var textCuted = text.slice(0, charAllowed);
+    textCuted = text.slice(0, charAllowed);
   } else return text;
 
   const wordsArray = textCuted.split(" ");
   wordsArray.pop();
   var textShort = "";
   for (let word of wordsArray) {
-      textShort += word + " ";
+    textShort += word + " ";
   }   
   return textShort + "...";
+}
+
+// counter start and increment logic should be defined out of this function in asyncData or similar
+export function nodeVisiblity({ block, startLimit, counter }) {
+  block.nodeId = counter;
+  if (counter <= startLimit ) {
+    block.nodeVisible = true;
+  } else block.nodeVisible = false;
+}
+
+export function blockScrollLoader({ vueCmp, el, triggerPrecent }) {
+  window.onscroll = () => {
+    const elHeight = el.offsetHeight;
+    const trigger = window.innerHeight * triggerPrecent/100;
+    const windowBottomPos = window.pageYOffset + window.innerHeight;
+    if (elHeight - windowBottomPos < trigger) {
+      for (let i = 0; i < el.childNodes.length; i++) {
+        if (!el.childNodes[i].classList.contains('js-active')) {
+          el.childNodes[i].classList.add('js-active');
+          var index = el.childNodes[i].getAttribute('data-index');
+          Object.keys(vueCmp._data).forEach(function(key) {
+            if (index == vueCmp._data[key].nodeId) {
+              vueCmp._data[key].nodeVisible = true;
+            }
+          });
+          break;
+        }
+      }
+    }
+  };
 }

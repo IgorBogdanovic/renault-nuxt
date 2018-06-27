@@ -82,9 +82,13 @@
         </div>
       </div>
     </nav>
-    <app-search :class="{'is-active': searchState}" @deactivateSearch="stateController('search')"></app-search>
-    <app-signup :class="{'is-active': signupState}" @deactivateSignup="stateController('signup')" @activateLogin="stateController('login')"></app-signup>
-    <app-login :class="{'is-active': loginState}" @deactivateLogin="stateController('login')" @activateSignup="stateController('signup')"></app-login>
+    <transition mode="out-in" name="slide">
+      <app-search v-if="searchState" @deactivateSearch="stateController('search')"></app-search>
+    </transition>
+    <transition mode="out-in" name="fade">
+      <app-signup v-if="signupState" @deactivateSignup="stateController('signup')" @activateLogin="stateController('login')"></app-signup>
+      <app-login v-if="loginState" @deactivateLogin="stateController('login')" @activateSignup="stateController('signup')"></app-login>
+    </transition>
   </div>
 </template>
 
@@ -655,5 +659,24 @@ export default {
       }
     }
   }
+}
+
+// animations for search, signup and login components
+.slide-enter-active, .slide-leave-active {
+  left: 0;
+  transition: left .2s ease-in-out;
+}
+
+.slide-enter, .slide-leave-to {
+  left: -100%;
+}
+
+.fade-enter-active, .fade-leave-active {
+  opacity: 1;
+  transition: opacity .3s ease-in-out;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>

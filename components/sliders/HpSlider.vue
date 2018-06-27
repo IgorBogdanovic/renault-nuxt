@@ -65,7 +65,7 @@ export default {
           infinite: true,
           slidesToShow: 1,
           slidesToScroll: 1,
-          autoplay: false,
+          autoplay: true,
           autoplaySpeed: 2000,
           arrows: false
         },
@@ -105,6 +105,17 @@ export default {
 
 .b-hp-slider {
   position: relative;
+  width: 100%;
+  height: 19.9rem;
+  overflow: hidden;
+
+  @include breakpoint(desktop) {
+    height: 70.7rem;
+  }
+
+  @include breakpoint(desktopLarge) {
+    height: auto;
+  }
 
   &__container {
     width: 100%;

@@ -3,14 +3,22 @@
         <figure class="c-article-preview__image">
             <div v-if="prev.featured_image.length > 0">
                 <div v-for="(img, index) in prev.featured_image" :key="index">
-                    <img v-if="index === 0" class="u-only-mob" :src="$thumbor(thumbor.imgMob.width, thumbor.imgMob.height) + img.data.file.url" :alt="img.data.seoalt">
-                    <img v-if="index === 0" class="u-only-desktop" :src="$thumbor(thumbor.imgDesk.width, thumbor.imgDesk.height) + img.data.file.url" :alt="img.data.seoalt">
+                    <hide-at :breakpoints="{medium: 768}" breakpoint="mediumAndAbove">
+                        <img v-if="index === 0" :src="$thumbor(thumbor.imgMob.width, thumbor.imgMob.height) + img.data.file.url" :alt="img.data.seoalt">
+                    </hide-at>
+                    <show-at :breakpoints="{medium: 768}" breakpoint="mediumAndAbove">
+                        <img v-if="index === 0" :src="$thumbor(thumbor.imgDesk.width, thumbor.imgDesk.height) + img.data.file.url" :alt="img.data.seoalt">
+                    </show-at>
                 </div>
             </div>
             <div v-else>
                 <div v-for="(img, index) in prev.images" :key="index">
-                    <img v-if="index === 0" class="u-only-mob" :src="$thumbor(thumbor.imgMob.width, thumbor.imgMob.height) + img.data.file.url" :alt="img.data.seoalt">
-                    <img v-if="index === 0" class="u-only-desktop" :src="$thumbor(thumbor.imgDesk.width, thumbor.imgDesk.height) + img.data.file.url" :alt="img.data.seoalt">
+                    <hide-at :breakpoints="{medium: 768}" breakpoint="mediumAndAbove">
+                        <img v-if="index === 0" :src="$thumbor(thumbor.imgMob.width, thumbor.imgMob.height) + img.data.file.url" :alt="img.data.seoalt">
+                    </hide-at>
+                    <show-at :breakpoints="{medium: 768}" breakpoint="mediumAndAbove">
+                        <img v-if="index === 0" :src="$thumbor(thumbor.imgDesk.width, thumbor.imgDesk.height) + img.data.file.url" :alt="img.data.seoalt">
+                    </show-at>
                 </div>
             </div>
             <span v-if="tag.visible" class="c-article-preview__tag">{{ tag.text }}</span>
@@ -24,8 +32,11 @@
 
 <script>
     import { introCut } from '~/plugins/globalFunctions.js'
+    import { showAt, hideAt } from 'vue-breakpoints'
+
     export default {
         props: ['prev', 'tag', 'thumbor', 'trim'],
+        components: { hideAt, showAt },
         methods: {
             introCut
         }

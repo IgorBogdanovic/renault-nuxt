@@ -109,23 +109,15 @@ export default {
     }
     
 		&__wrapper{
-      visibility: hidden;
-      opacity: 0;
       overflow: auto;
 			padding: 6.8rem 2.5rem;
 			position: fixed;
       height: 100%;
       width: 100%;
       background: rgba(0, 0, 0, 0.65);
-      transition: .3s ease-in-out;
 
       @include breakpoint(desktop){
 				padding: 0;
-      }
-      
-      &.is-active {
-        visibility: visible;
-        opacity: 1;
       }
     }
 
@@ -159,7 +151,7 @@ export default {
 		&--left{
 			color: $white;
       padding: 1rem 3.3rem 5.5rem 3.3rem;
-      background: url('~static/images/signup-back.png');
+      background: url('~static/images/signup-back.jpg');
 			background-size: cover !important;
 			background-position: center !important;
       position: relative;

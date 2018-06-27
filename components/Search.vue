@@ -59,14 +59,8 @@ export default {
   z-index: 11;
   position: absolute;
   top: 0;
-  left: -100%;
   height: 100vh;
   background-color: rgba($black-45, 0.85);
-  transition: .2s ease-in-out;
-
-  &.is-active {
-    left: 0;
-  }
 
   &__close {
     cursor: pointer;
