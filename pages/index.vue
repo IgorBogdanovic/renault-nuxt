@@ -2,7 +2,7 @@
   <div>
     <app-header></app-header>
     <app-hp-slider :hpSlider="hpSlider"></app-hp-slider>
-    <!-- <app-voting></app-voting> -->
+    <app-voting></app-voting>
     <!-- <app-voted></app-voted> -->
     <app-news-of-the-week :previews='newsOfTheWeek'></app-news-of-the-week>
     <app-my-van :previews='myVan'></app-my-van>

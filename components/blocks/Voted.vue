@@ -40,7 +40,7 @@ export default {
 @import '~assets/scss/settings';
 .b-voting{
     position:relative;
-    padding-top:2.3rem;
+    padding-top:6.4rem;
     padding-bottom: 0;
 
     @include breakpoint(desktop){
@@ -87,8 +87,10 @@ export default {
 .c-car{
     width:47%;
     position: relative;
+    margin-bottom: 2.2rem;
     @include breakpoint(desktop){
         width: 18.7%;
+        margin-bottom: 0;
     }
     & img{
         width: 100%;
