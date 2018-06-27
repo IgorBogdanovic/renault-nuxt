@@ -1,45 +1,49 @@
 <template>
   <div class="page">
-      <app-header :nav="navigation"/>
-      <!-- 404 Page -->
+    <app-header :nav="navigation" />
 
-      <div class="p-static p-404">
+    <!-- 404 Page -->
 
-          <div class="container">
+    <div class="p-static p-404">
 
-              <div class="c-404">
-                  <p class="c-404__heading text--bolder">Take another <span>road</span></p>
-                  <img src="~static/images/404-van.png" alt="van" class="c-404__van">
-              </div>
+      <div class="c-404">
 
-              <button href="localhost:3000" class="c-btn c-btn--404"><a href="http://localhost:3000/">back to homepage</a></button>
+        <div class="c-404-wrapper">
+          <p class="c-404__heading text--bolder">Take another
+            <span>road</span>
+          </p>
+          <img src="~static/images/404-van.png" alt="van" class="c-404__van">
+        </div>
 
-          </div>
+        <button href="localhost:3000" class="c-btn c-btn--404">
+          <a href="http://localhost:3000/">back to homepage</a>
+        </button>
 
       </div>
-          
-      <!-- 404 Page End-->
-      <app-footer/>
+
+    </div>
+
+    <!-- 404 Page End-->
+    <app-footer/>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
-      return {
-        navigation: []
-      }
+  data() {
+    return {
+      navigation: []
+    };
   },
   asyncData(context) {
-    return context.app.$api.get(context.app.$api.queries.nav)
-    .then(res => {
+    return context.app.$api.get(context.app.$api.queries.nav).then(res => {
       console.log(res);
       return {
         navigation: res.data.data.navigation
-      }
-    })
+      };
+    });
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -48,35 +52,42 @@ export default {
 .p-404 {
   margin-top: 6rem;
   margin-bottom: 7.6rem;
+  text-align: center;
   @include breakpoint(desktop) {
-    margin-top: 8rem;
     margin-bottom: 14.4rem;
   }
 }
 
 .c-404 {
-  position: relative;
-  text-align: center;
-  margin-bottom: 5rem;
+  width: 26rem;
   @include breakpoint(desktop) {
-    margin-bottom: 8rem;
+    width: 99rem;
+  }
+
+  &-wrapper {
+    position: relative;
+    text-align: center;
+    margin-bottom: 5.4rem;
+    @include breakpoint(desktop) {
+      margin-bottom: 10.5rem;
+    }
   }
 
   &__heading {
-    @include fontSizeRem(23.4, 68);
+    @include fontSizeRem(17, 68);
     letter-spacing: -0.025em;
     color: $sun-yellow;
     position: absolute;
     z-index: -1;
-    top: -1.4rem;
+    top: -0.9rem;
     left: 1.5rem;
     @include breakpoint(desktop) {
-      top: -3.7rem;
-      left: 8rem;
+      top: -4.2rem;
+      left: 4rem;
     }
 
     span {
-      @include fontSizeRem(45.9, 132.1);
+      @include fontSizeRem(35, 132.1);
       vertical-align: text-top;
     }
   }
