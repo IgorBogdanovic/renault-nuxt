@@ -96,7 +96,8 @@ export default {
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-
+        align-items: flex-start;
+        
         @include breakpoint(desktop){
             padding-top: 13.6rem;
             width:52.3%;
@@ -110,9 +111,9 @@ export default {
             }
 
             &:nth-child(1){
-                padding-top: 7.7rem;
+                margin-top: 7.7rem;
                 @include breakpoint(desktop){
-                    padding-top:19.2rem;
+                    margin-top:19.2rem;
                     width: 34.6%;
                 }
             }

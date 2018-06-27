@@ -41,6 +41,12 @@
 @import '~assets/scss/settings';
 
 .c-article-preview {
+    cursor: pointer;
+    transition: all 0.35s ease;
+    &:hover{
+        //box-shadow: 0px 15px 20px -15px rgba(0, 0, 0, 0.4);
+        transform: translateY(-5px);
+    }
 
     &__image {
         position: relative;
@@ -107,11 +113,11 @@
             margin-bottom: 1.9rem;
         }
     }
-    
+
     & .c-article-preview__title {
         @include fontSizeRem(14, 14);
         font-family: 'Lato';
-        
+
         @include breakpoint(desktop) {
             font-family: 'Lato-Bold';
         }
