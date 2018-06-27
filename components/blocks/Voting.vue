@@ -6,7 +6,6 @@
       </div>
       <app-voting-quiz/>
   </section>
-
 </template>
 
 <script>

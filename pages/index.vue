@@ -2,6 +2,8 @@
   <div>
     <app-header></app-header>
     <app-hp-slider :hpSlider="hpSlider"></app-hp-slider>
+    <!-- <app-voting></app-voting> -->
+    <!-- <app-voted></app-voted> -->
     <app-news-of-the-week :previews='newsOfTheWeek'></app-news-of-the-week>
     <app-my-van :previews='myVan'></app-my-van>
     <app-my-business :previews="myBusiness"></app-my-business>
@@ -13,6 +15,8 @@
 
 <script>
   import HpSlider       from '~/components/sliders/HpSlider.vue';
+  import Voting         from '~/components/blocks/Voting.vue';
+  import Voted          from '~/components/blocks/Voted.vue';
   import NewsOfTheWeek  from '~/components/blocks/NewsOfTheWeek.vue'
   import MyVan          from '~/components/blocks/MyVan.vue'
   import MyBusiness     from '~/components/blocks/MyBusiness.vue';
@@ -69,6 +73,8 @@
 
     components: {
       AppHpSlider: HpSlider,
+      AppVoting: Voting,
+      AppVoted: Voted,
       AppNewsOfTheWeek: NewsOfTheWeek,
       AppMyVan: MyVan,
       AppMyBusiness: MyBusiness,
