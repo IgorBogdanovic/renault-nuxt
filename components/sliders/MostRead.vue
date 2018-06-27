@@ -1,15 +1,30 @@
 <template>
-    <div class="b-most-read">
-        <div class="b-most-read__back"></div>
+    <section class="b-most-read">
+        <div class="b-most-read__background"></div>
         <div class="main-wrapper">
             <div class="inner-wrapper">
                 <h2 class='b-most-read__title'><span class='cursive'>PLUS</span> <span class='bolder'>LUS</span></h2>
                 <div class="b-most-read__mobile">
-                    <app-article-preview v-for="(preview, index) in previews.slice(0,4)" :key="index" :prev="preview" class="c-article-preview c-article-preview-mr c-article-preview--most-read"></app-article-preview>
+                    <app-article-preview v-for="(preview, index) in mostReadSlider.slice(0,4)"
+                        :key = 'index'
+                        :prev = "preview"
+                        :thumbor = "{ imgDesk : {width: 200, height: 160}, imgMob: {width: 160, height: 136} }"
+                        :tag = "tag"
+                        :trim = "{ description: 100, title:45 }"
+                    ></app-article-preview>
                 </div>
                 <div class="b-most-read__desk">
-                    <slick ref="slick" :options="slickOptions" class="b-most-read__slider">
-                        <app-article-preview v-for="(preview, index) in previews" :key="index" :prev="preview" class="c-article-preview c-article-preview-mr c-article-preview--most-read"></app-article-preview>
+                    <slick
+                        ref="slick"
+                        :options="slickOptions"
+                        class="b-most-read__slider">
+                        <app-article-preview v-for="(preview, index) in mostReadSlider"
+                            :key = 'index'
+                            :prev = "preview"
+                            :thumbor = "{ imgDesk : {width: 200, height: 160}, imgMob: {width: 160, height: 136} }"
+                            :tag = "tag"
+                            :trim = "{ description: 100, title:45 }"
+                        ></app-article-preview>
                     </slick>
                     <div @click="prev()" class="b-most-read__arrow b-most-read__arrow--left">
                         <svg viewBox="0 0 51 51">
@@ -46,64 +61,22 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
     export default {
+        props: ['mostReadSlider'],
         data() {
             return {
                 slickOptions: {
                     slidesToShow: 4,
                     arrows: false
                 },
-                previews: [
-                    {
-                        // image: 'https://dummyimage.com/160x137/c9c9c9/000000.png',//mobile
-                        image: 'https://dummyimage.com/200x160/c9c9c9/000000.png',
-                        imageAlt: 'some alt',
-                        tagged: false,
-                        tag: '',
-                        title: 'Whether you are interested in this activity as an entrepreneur or...',
-                        desc: false
-                    },
-                    {
-                        // image: 'https://dummyimage.com/160x137/c9c9c9/000000.png',//mobile
-                        image: 'https://dummyimage.com/200x160/c9c9c9/000000.png',
-                        imageAlt: 'some alt',
-                        tagged: false,
-                        tag: '',
-                        title: 'Whether you are interested in this activity as an entrepreneur or...',
-                        desc: false
-                    },
-                    {
-                        // image: 'https://dummyimage.com/160x137/c9c9c9/000000.png',//mobile
-                        image: 'https://dummyimage.com/200x160/c9c9c9/000000.png',
-                        imageAlt: 'some alt',
-                        tagged: false,
-                        tag: '',
-                        title: 'Whether you are interested in this activity as an entrepreneur or...',
-                        desc: false
-                    },
-                    {
-                        // image: 'https://dummyimage.com/160x137/c9c9c9/000000.png',//mobile
-                        image: 'https://dummyimage.com/200x160/c9c9c9/000000.png',
-                        imageAlt: 'some alt',
-                        tagged: false,
-                        tag: '',
-                        title: 'Whether you are interested in this activity as an entrepreneur or...',
-                        desc: false
-                    },
-                    {
-                        // image: 'https://dummyimage.com/160x137/c9c9c9/000000.png',//mobile
-                        image: 'https://dummyimage.com/200x160/c9c9c9/000000.png',
-                        imageAlt: 'some alt',
-                        tagged: false,
-                        tag: '',
-                        title: 'Whether you are interested in this activity as an entrepreneur or...',
-                        desc: false
-                    }
-                ]
+                tag: {
+                    visible: false,
+                    text: 'My business'
+                },
             }
         },
         methods: {
@@ -122,6 +95,7 @@
 
     .b-most-read {
         margin-top: 5.2rem;
+        margin-bottom: 4.7rem;
         padding: 2.4rem 0 1.8rem;
         background: $white-two;
 
@@ -129,10 +103,11 @@
             position: relative;
             background: transparent;
             margin-top: 6.1rem;
+            margin-bottom: 9.6rem;
             padding: 0;
         }
 
-        &__back {
+        &__background {
             display: none;
 
             @include breakpoint(desktop) {
@@ -144,7 +119,7 @@
                 top: 14.7rem;
                 left: 0;
             }
-            
+
         }
 
         &__title {
@@ -177,6 +152,10 @@
 
             & .c-article-preview {
                 margin-bottom: 2.6rem;
+                width: 47.3%;
+                &__title{
+                    display: none;
+                }
             }
         }
 

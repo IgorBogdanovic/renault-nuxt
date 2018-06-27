@@ -3,7 +3,8 @@
       <div class="b-vote__cars_list">
           <div class="c-car" v-for="(car,i) in cars" :key='i'>
               <div class="c-car__image">
-                  <img src="https://dummyimage.com/308x308/eb00eb/fff.jpg&text" alt="">
+                  <img  class="u-only-mob" src="https://dummyimage.com/157x157/eb00eb/fff.jpg&text" >
+                  <img  class="u-only-desktop" src="https://dummyimage.com/208x208/eb00eb/fff.jpg&text">
               </div>
               <div class="c-voting-stars" data-rating='0' @mouseover="hoverStar" @mouseleave='unhoverStar' @click='clickStar'>
                   <span v-for='(star, i) in cars' :key='i' class='star' :data-count='`${i+1}`'>{{'★'}}</span>

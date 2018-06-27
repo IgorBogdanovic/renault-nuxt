@@ -10,12 +10,14 @@
                                 :prev="previews[0]"
                                 :thumbor="{ imgDesk : {width: 272, height: 224}, imgMob: {width: 156, height: 136}}"
                                 :tag="tag"
+                                :trim = "{ description: 100, title:45 }"
                                 class="c-article-preview-square"
                             ></app-article-preview>
                             <app-article-preview
                                 :prev="previews[1]"
                                 :thumbor="{ imgDesk : {width: 272, height: 360}, imgMob: {width: 156, height: 276}}"
                                 :tag="tag"
+                                :trim = "{ description: 100, title:45 }"
                                 class="c-article-preview-square"
                             ></app-article-preview>
                         </div>
@@ -24,12 +26,14 @@
                                 :prev="previews[2]"
                                 :thumbor="{ imgDesk : {width: 272, height: 360}, imgMob: {width: 156, height: 276}}"
                                 :tag="tag"
+                                :trim = "{ description: 100, title:45 }"
                                 class="c-article-preview-square"
                             ></app-article-preview>
                             <app-article-preview
                                 :prev="previews[3]"
                                 :thumbor="{ imgDesk : {width: 188, height: 264}, imgMob: {width: 156, height: 136}}"
                                 :tag="tag"
+                                :trim = "{ description: 100, title:45 }"
                                 class="c-article-preview-square-sm"
                             ></app-article-preview>
                         </div>
@@ -40,12 +44,14 @@
                                 :prev="previews[4]"
                                 :thumbor="{ imgDesk : {width: 272, height: 224}, imgMob: {width: 156, height: 136}}"
                                 :tag="tag"
+                                :trim = "{ description: 100, title:45 }"
                                 class="c-article-preview-square"
                             ></app-article-preview>
                             <app-article-preview
                                 :prev="previews[5]"
                                 :thumbor="{ imgDesk : {width: 272, height: 224}, imgMob: {width: 156, height: 136}}"
                                 :tag="tag"
+                                :trim = "{ description: 100, title:45 }"
                                 class="c-article-preview-square"
                             ></app-article-preview>
                         </div>
@@ -123,7 +129,7 @@
                     margin-bottom: 0.8rem;
                 }
             }
-            
+
             &-right {
                 margin-bottom: 2.1rem;
 

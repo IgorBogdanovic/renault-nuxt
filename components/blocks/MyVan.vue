@@ -5,6 +5,7 @@
               <app-hero-article-preview
                 :prev="previews[0]"
                 :thumbor="{ imgDesk : {width: 652, height: 436}, imgMob: {width: 272, height: 160}}"
+                :trim = "{ description: 100, title:45 }"
               />
           </div>
       </div>
@@ -14,6 +15,7 @@
               :prev="item"
               :thumbor="{ imgDesk : {width: 273, height: 227}, imgMob: {width: 132, height: 108}}"
               :tag="tag"
+              :trim = "{ description: 100, title:45 }"
           ></app-article-preview>
       </div>
   </section>

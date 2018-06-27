@@ -7,11 +7,13 @@
                     :prev="previews[0]"
                     :thumbor="{ imgDesk : {width: 200, height:264}, imgMob: {width: 156, height: 192}}"
                     :tag="tag"
+                    :trim = "{ description: 100, title:45 }"
                 ></app-article-preview>
                 <app-article-preview
                     :prev="previews[1]"
                     :thumbor="{ imgDesk : {width: 344, height:456}, imgMob: {width: 160, height: 275}}"
                     :tag="tag"
+                    :trim = "{ description: 100, title:45 }"
                 ></app-article-preview>
             </div>
             <div class="b-news-otw__col-right">
@@ -19,12 +21,14 @@
                     :prev="previews[2]"
                     :thumbor="{ imgDesk : {width: 492, height:400}, imgMob: {width: 336, height: 284}}"
                     :tag="tag"
+                    :trim = "{ description: 100, title:45 }"
                 ></app-article-preview>
                 <app-article-preview
                      class='component--landscape'
                     :prev="previews[3]"
                     :thumbor="{ imgDesk : {width: 272, height:224}, imgMob: {width: 200, height: 164}}"
                     :tag="tag"
+                    :trim = "{ description: 100, title:45 }"
                 ></app-article-preview>
             </div>
         </div>
@@ -97,7 +101,7 @@ export default {
         flex-flow: row nowrap;
         justify-content: space-between;
         align-items: flex-start;
-        
+
         @include breakpoint(desktop){
             padding-top: 13.6rem;
             width:52.3%;

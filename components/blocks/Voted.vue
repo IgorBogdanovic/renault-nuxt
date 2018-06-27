@@ -7,7 +7,8 @@
         <div class="b-voted__cars_list">
             <div class="c-car" v-for="(car,i) in cars" :key='i' :class="{'c-car__favorite':car.favorite}">
                 <div class="c-car__image">
-                    <img src="https://dummyimage.com/308x308/eb00eb/fff.jpg&text" alt="">
+                    <img  class="u-only-mob" src="https://dummyimage.com/157x157/eb00eb/fff.jpg&text" >
+                    <img  class="u-only-desktop" src="https://dummyimage.com/208x208/eb00eb/fff.jpg&text">
                 </div>
                 <div class="c-car__points">
                     <p>{{i + 1}}</p>

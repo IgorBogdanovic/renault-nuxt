@@ -9,28 +9,33 @@
                             :prev="previews[0]"
                             :thumbor="{ imgDesk : {width: 272, height: 360}, imgMob: {width: 160, height: 276}}"
                             :tag="tag"
+                            :trim = "{ description: 100, title:45 }"
                         ></app-article-preview>
                         <app-article-preview
                             :prev="previews[1]"
                             :thumbor="{ imgDesk : {width: 272, height: 224}, imgMob: {width: 156, height: 136}}"
                             :tag="tag"
+                            :trim = "{ description: 100, title:45 }"
                         ></app-article-preview>
                         <app-article-preview
                             :prev="previews[2]"
                             :thumbor="{ imgDesk : {width: 492, height: 400}, imgMob: {width: 336, height: 284}}"
                             :tag="tag"
+                            :trim = "{ description: 100, title:45 }"
                         ></app-article-preview>
                     </div>
                     <div class="b-my-business__bottom">
-                        <app-article-preview 
+                        <app-article-preview
                             :prev="previews[3]"
                             :thumbor="{ imgDesk : {width: 272, height: 224}, imgMob: {width: 160, height: 136}}"
                             :tag="tag"
+                            :trim = "{ description: 100, title:45 }"
                         ></app-article-preview>
-                        <app-article-preview 
+                        <app-article-preview
                             :prev="previews[4]"
                             :thumbor="{ imgDesk : {width: 272, height: 360}, imgMob: {width: 156, height: 276}}"
                             :tag="tag"
+                            :trim = "{ description: 100, title:45 }"
                         ></app-article-preview>
                     </div>
                 </div>

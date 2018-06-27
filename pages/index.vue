@@ -7,8 +7,9 @@
     <app-news-of-the-week :previews='newsOfTheWeek'></app-news-of-the-week>
     <app-my-van :previews='myVan'></app-my-van>
     <app-my-business :previews="myBusiness"></app-my-business>
-    <app-faq :faqSlider='faq'></app-faq>
+    <app-faq-slider :faqSlider='faq'></app-faq-slider>
     <app-whats-new :previews="whatsNew" :yellowSlider="myCommunity"></app-whats-new>
+    <app-most-read-slider :mostReadSlider="myVan"></app-most-read-slider>
     <app-footer></app-footer>
   </div>
 </template>
@@ -22,6 +23,7 @@
   import MyBusiness     from '~/components/blocks/MyBusiness.vue';
   import Faq            from '~/components/blocks/FAQSlider.vue'
   import WhatsNew       from '~/components/blocks/WhatsNew.vue';
+  import MostReadSlider from '~/components/sliders/MostRead.vue';
 
   export default {
     data () {
@@ -78,8 +80,9 @@
       AppNewsOfTheWeek: NewsOfTheWeek,
       AppMyVan: MyVan,
       AppMyBusiness: MyBusiness,
-      AppFaq:Faq,
+      AppFaqSlider: Faq,
       AppWhatsNew: WhatsNew,
+      AppMostReadSlider: MostReadSlider,
 
     },
 

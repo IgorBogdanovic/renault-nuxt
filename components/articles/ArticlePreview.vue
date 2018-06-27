@@ -16,8 +16,8 @@
             <span v-if="tag.visible" class="c-article-preview__tag">{{ tag.text }}</span>
         </figure>
         <div class="c-article-preview__content">
-            <h4 v-if="prev.title" class="c-article-preview__title">{{ prev.title }}</h4>
-            <p v-if="prev.additional_fields.intro" class="c-article-preview__desc">{{ introCut(prev.additional_fields.intro, introCharLimit) }}</p>
+            <h4 v-if="prev.title" class="c-article-preview__title">{{ introCut(prev.title, trim.title)}}</h4>
+            <p v-if="prev.additional_fields.intro" class="c-article-preview__desc">{{ introCut(prev.additional_fields.intro, trim.description) }}</p>
         </div>
     </nuxt-link>
 </template>
@@ -25,12 +25,7 @@
 <script>
     import { introCut } from '~/plugins/globalFunctions.js'
     export default {
-        props: ['prev', 'tag', 'thumbor'],
-        data() {
-            return {
-                introCharLimit: 115
-            }
-        },
+        props: ['prev', 'tag', 'thumbor', 'trim'],
         methods: {
             introCut
         }
@@ -44,7 +39,6 @@
     cursor: pointer;
     transition: all 0.35s ease;
     &:hover{
-        //box-shadow: 0px 15px 20px -15px rgba(0, 0, 0, 0.4);
         transform: translateY(-5px);
     }
 
@@ -195,6 +189,27 @@
                 padding: 0;
                 width: 40%;
                 margin-top: -0.5rem;
+            }
+        }
+    }
+}
+
+.b-most-read{
+    .c-article-preview{
+        &__title{
+            display: none;
+        }
+        &__desc{
+            display: block;
+            color:$black;
+            font-family: 'Lato-Bold';
+            @include fontSizeRem(14,14);
+            //line-height: 1.36;
+        }
+        &__image {
+            margin-bottom: 0.7rem;
+            @include breakpoint(desktop) {
+                margin-bottom: 0.7rem;
             }
         }
     }

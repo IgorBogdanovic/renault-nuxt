@@ -185,12 +185,14 @@ export default {
        position: absolute;
        top:0;
        left: 0;
+       cursor: pointer;
     }
     &__next{
         transform: scaleX(-1);
         position: absolute;
         top:0;
         left: 6rem;
+        cursor: pointer;
         @include breakpoint(desktop){
             left:8.2rem;
         }

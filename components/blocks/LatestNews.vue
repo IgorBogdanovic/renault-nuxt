@@ -11,46 +11,54 @@
 
             <div class="row">
 
-              <app-article-preview 
+              <app-article-preview
               :prev="previews[0]"
               :thumbor="{ imgDesk : {width: 272, height: 224}, imgMob: {width: 156, height: 136}}"
-              :tag="tag"  class="c-article-preview-square"/>
+              :tag="tag"  class="c-article-preview-square"
+              :trim = "{ description: 100, title:45 }"
+              />
 
-              <app-article-preview 
+              <app-article-preview
               :prev="previews[1]"
               :thumbor="{ imgDesk : {width: 272, height: 224}, imgMob: {width: 156, height: 136}}"
-              :tag="tag"  class="c-article-preview-square"/>
-              
-              <app-article-preview 
+              :tag="tag"  class="c-article-preview-square"
+              :trim = "{ description: 100, title:45 }"
+              />
+
+              <app-article-preview
               :prev="previews[2]"
               :thumbor="{ imgDesk : {width: 492, height: 400}, imgMob: {width: 336, height: 284}}"
-              :tag="tag" class="c-article-preview-square-lg"/>
+              :tag="tag" class="c-article-preview-square-lg"
+              :trim = "{ description: 100, title:45 }"
+              />
 
           </div>
-          
+
           <div class="row">
-            
-            <app-article-preview 
+
+            <app-article-preview
             :prev="previews[2]"
             :thumbor="{ imgDesk : {width: 492, height: 400}, imgMob: {width: 336, height: 284}}"
-            :tag="tag" class="c-article-preview-square-lg"/>
-            
-            <app-article-preview 
+            :tag="tag" class="c-article-preview-square-lg"
+            :trim = "{ description: 100, title:45 }"
+            />
+
+            <app-article-preview
             :prev="previews[0]"
             :thumbor="{ imgDesk : {width: 272, height: 224}, imgMob: {width: 156, height: 136}}"
-            :tag="tag"  class="c-article-preview-square"/>
-            
-            <app-article-preview 
+            :tag="tag"  class="c-article-preview-square"
+            :trim = "{ description: 100, title:45 }"
+            />
+
+            <app-article-preview
             :prev="previews[1]"
             :thumbor="{ imgDesk : {width: 272, height: 224}, imgMob: {width: 156, height: 136}}"
-            :tag="tag"  class="c-article-preview-square"/>
-            
+            :tag="tag"  class="c-article-preview-square"
+            :trim = "{ description: 100, title:45 }"
+            />
           </div>
-
         </div>
-        
   </section>
-
 </template>
 
 <script>

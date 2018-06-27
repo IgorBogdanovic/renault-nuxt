@@ -3,7 +3,7 @@
         <div class="c-hero-article-preview__content">
             <h2 class='c-hero-article-preview__content__main-title'>MY <span>van</span></h2>
             <h3 class='c-hero-article-preview__content__subtitle' v-if="prev.title" >{{prev.title}}</h3>
-            <p class='c-hero-article-preview__content__description' v-if="prev.additional_fields.intro" >{{ introCut( prev.additional_fields.intro, introCharLimit ) }}</p>
+            <p class='c-hero-article-preview__content__description' v-if="prev.additional_fields.intro" >{{ introCut( prev.additional_fields.intro, trim.description ) }}</p>
         </div>
         <div class="c-hero-article-preview__media" v-if="prev.featured_image.length > 0">
             <figure  v-for="(img, index) in prev.featured_image" :key="index">
@@ -24,12 +24,7 @@
 import { introCut } from '~/plugins/globalFunctions.js';
 
 export default {
-    props:['prev', 'thumbor'],
-    data() {
-        return {
-            introCharLimit: 80
-        }
-    },
+    props:['prev', 'thumbor', 'trim'],
     methods: {
         introCut
     },
