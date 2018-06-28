@@ -1,43 +1,25 @@
 <template>
-<div class="page">
-    <app-header/>
-    <!-- 404 Page -->
+  <div class="p-static p-404">
 
-    <div class="p-static p-404">
+    <div class="inner-wrapper">
 
-        <div class="container">
+      <div class="c-404">
+        <p class="c-404__heading text--bolder">Take another
+          <span>road</span>
+        </p>
+        <img src="~static/images/404-van.png" alt="van" class="c-404__van">
+      </div>
 
-            <div class="c-404">
-                <p class="c-404__heading text--bolder">Take another <span>road</span></p>
-                <img src="~static/images/404-van.png" alt="van" class="c-404__van">
-            </div>
-
-            <button href="localhost:3000" class="c-btn c-btn--404"><a href="http://localhost:3000/">back to homepage</a></button>
-
-        </div>
+      <button href="localhost:3000" class="c-btn c-btn--404">
+        <a href="http://localhost:3000/">back to homepage</a>
+      </button>
 
     </div>
-        
-    <!-- 404 Page End-->
-    <app-footer/>
-</div>
+
+  </div>
 </template>
 
 <script>
-import AppHeader from "~/components/Header.vue";
-import AppFooter from "~/components/Footer.vue";
-
-export default {
-  created() {
-    this.$api.get(this.$api.queries.test_node).then(res => {
-      console.log(res);
-    });
-  },
-  components: {
-    AppHeader,
-    AppFooter
-  }
-};
 </script>
 
 <style lang="scss" scoped>

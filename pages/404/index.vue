@@ -1,31 +1,24 @@
 <template>
-  <div class="page">
-    <app-header :nav="navigation" />
 
-    <!-- 404 Page -->
+  <div class="p-static p-404">
 
-    <div class="p-static p-404">
+    <div class="c-404">
 
-      <div class="c-404">
-
-        <div class="c-404-wrapper">
-          <p class="c-404__heading text--bolder">Take another
-            <span>road</span>
-          </p>
-          <img src="~static/images/404-van.png" alt="van" class="c-404__van">
-        </div>
-
-        <button href="localhost:3000" class="c-btn c-btn--404">
-          <a href="http://localhost:3000/">back to homepage</a>
-        </button>
-
+      <div class="c-404-wrapper">
+        <p class="c-404__heading text--bolder">Take another
+          <span>road</span>
+        </p>
+        <img src="~static/images/404-van.png" alt="van" class="c-404__van">
       </div>
+
+      <button href="localhost:3000" class="c-btn c-btn--404">
+        <a href="http://localhost:3000/">back to homepage</a>
+      </button>
 
     </div>
 
-    <!-- 404 Page End-->
-    <app-footer/>
   </div>
+
 </template>
 
 <script>
@@ -53,6 +46,8 @@ export default {
   margin-top: 6rem;
   margin-bottom: 7.6rem;
   text-align: center;
+  display: flex;
+  justify-content: center;
   @include breakpoint(desktop) {
     margin-bottom: 14.4rem;
   }

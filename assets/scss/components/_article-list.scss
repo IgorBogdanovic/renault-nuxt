@@ -11,6 +11,8 @@
   flex-direction: row-reverse;
 }
 
+// Default Article Preview Classes
+
 .c-article-preview-square {
   width: 15.6rem;
   @include breakpoint(desktop) {
@@ -24,6 +26,22 @@
     width: 49.2rem;
   }
 }
+
+.c-article-preview-portrait {
+  width: 15.6rem;
+  @include breakpoint(desktop) {
+    width: 20rem;
+  }
+}
+
+.c-article-preview-portrait-lg {
+  width: 16rem;
+  @include breakpoint(desktop) {
+    width: 34.4em;
+  }
+}
+
+// Default Article Preview Classes With Modifiers
 
 .c-article-preview-landscape.padded {
   width: 33.6rem;
@@ -47,140 +65,6 @@
   .c-article-preview__content {
     width: 49%;
     padding-left: 5%;
-  }
-}
-
-.b-qa-list {
-  .c-article-preview-square.padded {
-    background-color: $white-two;
-    padding-bottom: 3.3rem;
-    @include breakpoint(desktop) {
-      width: 34.5rem;
-    }
-
-    .c-article-preview__image {
-      width: 100%;
-      margin-bottom: 0;
-      margin-top: -6.4rem;
-      @include box-shadow;
-      @include breakpoint(desktop) {
-        width: 23.2rem;
-        margin-top: -10rem;
-      }
-    }
-
-    .c-article-preview__content {
-      margin-top: 1.9re;
-      @include breakpoint(desktop) {
-        width: 22rem;
-      }
-    }
-  }
-
-  .c-article-preview-landscape--desk.padded {
-    @include breakpoint(desktop) {
-      width: 60.5rem;
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-end;
-      padding-bottom: 3.3rem;
-
-      .c-article-preview__image {
-        width: 46%;
-        margin-bottom: 0;
-        margin-top: -3.3rem;
-        @include breakpoint(desktop) {
-          width: 23.2rem;
-          margin-left: 6.4rem;
-        }
-      }
-
-      .c-article-preview__content {
-        width: 49%;
-        padding-left: 5%;
-      }
-    }
-  }
-}
-
-///////////////////////////////////////
-// MORE QA BLOCK - ARTICLE FAQ PAGE //
-///////////////////////////////////////
-
-.b-more-qa {
-  // Shorter Landscape Article Preview
-
-  .c-article-preview-landscape {
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    background-color: $white-two;
-    padding: 0 1.9rem 1.9rem 1.2rem;
-    margin-bottom: 3.3rem;
-    @include breakpoint(desktop) {
-      align-items: flex-start;
-      width: 26.7rem;
-      padding: 0 1.6rem 1.6rem 2.4rem;
-    }
-
-    .c-article-preview__image {
-      margin-top: -1.7rem;
-      margin-bottom: 0;
-      width: 11.2rem;
-      @include breakpoint(desktop) {
-        width: 7.2rem;
-      }
-    }
-
-    .c-article-preview__content {
-      width: 17.6rem;
-      margin-top: 2rem;
-      @include breakpoint(desktop) {
-        width: 14.4rem;
-        margin-top: 1.6rem;
-
-        h4 {
-          font-size: 1.4rem;
-        }
-
-        p {
-          font-size: 0;
-          padding: 0;
-        }
-      }
-    }
-  }
-
-  // Wider Landscape Article Preview //
-
-  .c-article-preview-landscape--lg {
-    padding: 0 1.9rem 3.6rem 1.2rem;
-    @include breakpoint(desktop) {
-      width: 63.5rem;
-      padding: 0 2.8rem 5rem 5.6rem;
-    }
-
-    .c-article-preview__image {
-      width: 16.1rem;
-      margin-top: -2.8rem;
-      @include breakpoint(desktop) {
-        width: 33.4rem;
-        margin-top: -12.8rem;
-      }
-    }
-    .c-article-preview__content {
-      margin-top: 2.5rem;
-      width: 13.1rem;
-      @include breakpoint(desktop) {
-        margin-top: 4.8rem;
-        width: 19.2rem;
-
-        p {
-          font-size: 1.4rem;
-        }
-      }
-    }
   }
 }
 

@@ -10,13 +10,14 @@
         <br><br><br>
         <block-latest-news :previews="newsOfTheWeek"></block-latest-news>
         <br><br><br>
+        <block-editors-picks :previews="myBusiness"></block-editors-picks>
+        <br><br><br>
         <block-qa-list :previews="whatsNew"></block-qa-list>
       </div>
       <div class="inner-wrapper--full">
         <qa-slider></qa-slider>
       </div>
     </div>
-    <app-footer/>
   </div>
 </template>
 
@@ -27,9 +28,9 @@ import AppHeader from "~/components/Header.vue";
 import AppAccordion from "~/components/accordion/Accordion.vue";
 import BlockMoreQa from "~/components/blocks/MoreQa.vue";
 import BlockLatestNews from "~/components/blocks/LatestNews.vue";
+import BlockEditorsPicks from "~/components/blocks/EditorsPicks.vue";
 import BlockQaList from "~/components/blocks/QaList.vue";
 import QaSlider from "~/components/sliders/QaSlider.vue";
-import AppFooter from "~/components/Footer.vue";
 
 export default {
   data() {
@@ -69,9 +70,9 @@ export default {
     AppAccordion,
     BlockMoreQa,
     BlockLatestNews,
+    BlockEditorsPicks,
     BlockQaList,
-    QaSlider,
-    AppFooter
+    QaSlider
   }
 };
 </script>
