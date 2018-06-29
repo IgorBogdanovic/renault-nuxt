@@ -165,7 +165,7 @@
 
     },
     created(){
-      console.log(this.faq);
+      // console.log(this.faq);
     },
     mounted() {
       // console.log(this.myVan);
@@ -182,11 +182,11 @@
   .slideUp-enter-active, .slideUp-leave-active {
     margin-top: initial;
     opacity: 1;
-    transition: .5s ease-in-out;
+    transition: 1.5s ease;
   }
 
   .slideUp-enter, .slideUp-leave-to {
-    margin-top: 5rem;
+    margin-top: 10rem;
     opacity: 0;
   }
 </style>

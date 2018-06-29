@@ -28,7 +28,8 @@ module.exports = {
     '~/plugins/core-components',
     '~/plugins/vuelidate',
     '~/plugins/vue-slick',
-    '~/plugins/thumbor'
+    '~/plugins/thumbor',
+    '~/plugins/vue-youtube'
   ],
 
   modules: [
@@ -68,7 +69,7 @@ module.exports = {
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /(node_modules)/
-        })
+        });
       }
     },
     extend (config, { isServer }) {
@@ -77,8 +78,8 @@ module.exports = {
           require('webpack-node-externals')({
             whitelist: [/^vue-slick/]
           })
-        ]
+        ];
       }
     }
   }
-}
+};

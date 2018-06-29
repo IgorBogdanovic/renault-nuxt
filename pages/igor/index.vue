@@ -1,15 +1,13 @@
 <template>
   <div>
-    <app-header></app-header>
-    <!-- <app-hp-slider :hpSlider="homepage.hpSlider"></app-hp-slider> -->
-    <app-article-content :article="article"></app-article-content>
-    <!-- <section class="temp"></section> -->
+    <app-article-header></app-article-header>
   </div>
 </template>
 
 <script>
 import HpSlider from '~/components/sliders/HpSlider.vue';
 import ArticleContent from '~/components/articles/ArticleContent.vue'
+import ArticleHeader from '~/components/page__headers/ArticleHeader.vue'
 
 export default {
   data () {
@@ -45,7 +43,8 @@ export default {
   },
   components: {
     AppHpSlider: HpSlider,
-    AppArticleContent: ArticleContent
+    AppArticleContent: ArticleContent,
+    AppArticleHeader: ArticleHeader
   },
   created() {
     console.log(this.article);
