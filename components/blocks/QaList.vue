@@ -50,7 +50,7 @@
 
       </div>
 
-      <div class="row">
+      <div class="row row--last">
 
         <app-article-preview 
         :prev="previews[3]" 
@@ -75,7 +75,6 @@
         :thumbor="{ imgDesk : {width: 232, height: 200}, imgMob: {width: 156, height: 137}}"
         :trim= "{ description: 100, title:45 }"
         :tag="tag" class="c-article-preview-square c-article-preview-landscape--desk padded float-right" />
-
 
       </div>
 
@@ -103,9 +102,6 @@ export default {
 @import "~assets/scss/settings";
 
 .b-qa-list {
-  &__inner {
-    margin: 5rem auto;
-  }
 
   &__title {
     margin-bottom: 6.2rem;
@@ -113,6 +109,7 @@ export default {
       margin-bottom: 0;
     }
   }
+}
 
   .c-article-preview {
     margin-bottom: 8.8rem;
@@ -161,5 +158,9 @@ export default {
       margin-left: calc(111rem - 60.5rem);
     }
   }
+
+.row--last {
+  margin-bottom: -10rem;
 }
+
 </style>

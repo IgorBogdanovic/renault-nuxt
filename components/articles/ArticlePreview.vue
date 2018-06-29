@@ -256,7 +256,6 @@ export default {
 .b-qa-list {
   .c-article-preview-square.padded {
     background-color: $white-two;
-    padding-bottom: 3.3rem;
     @include breakpoint(desktop) {
       width: 34.5rem;
     }
@@ -273,7 +272,7 @@ export default {
     }
 
     .c-article-preview__content {
-      margin-top: 1.9re;
+      padding: 2rem 1.7rem 1.6rem;
       @include breakpoint(desktop) {
         width: 22rem;
       }

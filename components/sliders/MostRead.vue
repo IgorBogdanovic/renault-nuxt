@@ -123,6 +123,7 @@
         }
 
         &__title {
+            color: $black;
             margin-bottom: 3.4rem;
             @include fontSizeRem(22, 32);
 
