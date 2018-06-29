@@ -386,4 +386,12 @@ export default {
     }
   }
 }
+.b-search-result{
+    .c-article-preview{
+        width:47%;
+        @include breakpoint(desktop) {
+            width:24%;
+        }
+    }
+}
 </style>
