@@ -58,9 +58,7 @@ export default {
   &__inner {
     padding-top: 4.4rem;
     @include breakpoint(desktop) {
-      margin-top: 11.2rem;
       padding-top: 3.6rem;
-      border-top: 0.1rem solid $white-two;
     }
   }
 
@@ -102,4 +100,5 @@ export default {
     margin-bottom: 0;
   }
 }
+
 </style>
