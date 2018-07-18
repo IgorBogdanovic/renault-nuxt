@@ -57,7 +57,7 @@ export default {
 
 .b-search {
   z-index: 11;
-  position: absolute;
+  position: fixed;
   top: 0;
   height: 100vh;
   background-color: rgba($black-45, 0.85);
