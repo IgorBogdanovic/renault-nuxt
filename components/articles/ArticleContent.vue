@@ -25,19 +25,49 @@
                                     </figure>
                                     <!-- if article type is landscape, set this class to true -->
                                     <app-article-slider v-if="element.type === 'slider'" :sliderArray="element.data.items" :class='{ "b-article-content__text-block-slider--landscape": false }'></app-article-slider>
-                                    <!-- implement video here -->
+                                    <!-- check this -->
+                                    <div v-if="element.type === 'video'" class="b-article-content__text-block-video">
+                                        <div class="b-article-content__text-block-video-iframe" :class="{ 'is-active': videoVisible, 'not-active': !videoVisible }">
+                                            <youtube :video-id="element.data.remote_id" ref="youtube" @playing="playing" :width="playerWidth" :height="playerHeight"></youtube>
+                                        </div>
+                                        <div class="b-article-content__text-block-video-thumb" :class="{ 'is-active': thumbVisible, 'not-active': !thumbVisible }">
+                                            <hide-at :breakpoints="{ medium: 768 }" breakpoint="mediumAndAbove">
+                                                <img :src="$thumbor(336, 194) + 'http://img.youtube.com/vi/' + element.data.remote_id + '/hqdefault.jpg'" alt="">
+                                            </hide-at>
+                                            <show-at :breakpoints="{ medium: 768 }" breakpoint="mediumAndAbove">
+                                                <img :src="$thumbor(752, 432) + 'http://img.youtube.com/vi/' + element.data.remote_id + '/hqdefault.jpg'" alt="">
+                                            </show-at>
+                                        </div>
+                                        <button class="b-article-content__text-block-video-play" :class="{ 'is-active': buttonVisible, 'not-active': !buttonVisible}" @click="playVideo">
+                                            <svg id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 357 357" style="enable-background:new 0 0 357 357;" xml:space="preserve">
+                                                <g id="play-arrow">
+                                                    <polygon points="38.25,0 38.25,357 318.75,178.5"/>
+                                                </g>
+                                            </svg>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- put video inside b-article-content__text-block div -->
-                            <div class="b-article-content__text-block-video">
-                                <div class="b-article-content__text-block-video-play">
+                            <!-- <div class="b-article-content__text-block-video">
+                                <div class="b-article-content__text-block-video-iframe" :class="{ 'is-active': videoVisible, 'not-active': !videoVisible }">
+                                    <youtube :video-id="videoId" ref="youtube" @playing="playing" :width="playerWidth" :height="playerHeight"></youtube>
+                                </div>
+                                <div class="b-article-content__text-block-video-thumb" :class="{ 'is-active': thumbVisible, 'not-active': !thumbVisible }">
+                                    <hide-at :breakpoints="{ medium: 768 }" breakpoint="mediumAndAbove">
+                                        <img :src="$thumbor(336, 194) + 'http://img.youtube.com/vi/' + videoId + '/hqdefault.jpg'" alt="">
+                                    </hide-at>
+                                    <show-at :breakpoints="{ medium: 768 }" breakpoint="mediumAndAbove">
+                                        <img :src="$thumbor(752, 432) + 'http://img.youtube.com/vi/' + videoId + '/hqdefault.jpg'" alt="">
+                                    </show-at>
+                                </div>
+                                <button class="b-article-content__text-block-video-play" :class="{ 'is-active': buttonVisible, 'not-active': !buttonVisible}" @click="playVideo">
                                     <svg id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 357 357" style="enable-background:new 0 0 357 357;" xml:space="preserve">
                                         <g id="play-arrow">
                                             <polygon points="38.25,0 38.25,357 318.75,178.5"/>
                                         </g>
                                     </svg>
-                                </div>
-                            </div>
+                                </button>
+                            </div> -->
                             <div class="b-article-content__tags">
                                 <ul>
                                     <li>Tags: </li>
@@ -58,11 +88,23 @@
 <script>
     import Social from '~/components/Social.vue';
     import ArticleSlider from '~/components/sliders/ArticleSlider.vue';
+    import { showAt, hideAt } from 'vue-breakpoints';
 
     export default {
         props: ['article'],
         data() {
             return {
+                // videoId: 'KWTt7f3PgGI',
+                playerWidth: '100%',
+                playerHeight: '100%',
+                videoVisible: false,
+                thumbVisible: true,
+                buttonVisible: true
+            }
+        },
+        computed: {
+            player() {
+                return this.$refs.youtube.player
             }
         },
         methods: {
@@ -79,11 +121,21 @@
                 }
                 let time = day + ' ' + date + ' ' + month + ' ' + year;
                 return time;
+            },
+            playVideo() {
+                this.player.playVideo()
+            },
+            playing() {
+                this.videoVisible = true,
+                this.thumbVisible = false,
+                this.buttonVisible = false 
             }
         },
         components: {
             AppSocial: Social,
-            AppArticleSlider: ArticleSlider
+            AppArticleSlider: ArticleSlider,
+            hideAt,
+            showAt
         }
     }
 </script>
@@ -216,20 +268,36 @@
                 }
 
                 &-video {
+                    position: relative;
                     width: 100%;
                     height: 19.4rem;
-                    background: lightblue; //remove
                     margin-bottom: 2.2rem;
 
                     @include breakpoint(desktop) {
                         height: 43.2rem;
                         margin-bottom: 3rem;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
+                    }
+
+                    &-iframe {
+                        width: 100%;
+                        height: 19.4rem;
+
+                        @include breakpoint(desktop) {
+                            height: 43.2rem;
+                        }
+                    }
+
+                    &-thumb {
+                        & img {
+                            width: 100%;
+                        }
                     }
 
                     &-play {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
                         width: 7rem;
                         height: 7rem;
                         border-radius: 50%;
@@ -238,11 +306,6 @@
                         align-items: center;
                         justify-content: center;
                         cursor: pointer;
-                        display: none;
-
-                        @include breakpoint(desktop) {
-                            display: flex;
-                        }
 
                         & svg {
                             width: 2.3rem;
@@ -321,6 +384,14 @@
                     }
                 }
             }
+        }
+
+        & .is-active {
+            display: block;
+        }
+
+        & .not-active {
+            display: none;
         }
     }
 </style>
