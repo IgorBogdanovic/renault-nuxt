@@ -1,33 +1,35 @@
 <template>
-	<nuxt-link tag='article' to='/' class="c-article-preview">
-		<figure class="c-article-preview__image">
-			<div v-if="prev.featured_image.length > 0">
-				<div v-for="(img, index) in prev.featured_image" :key="index">
-					<hide-at :breakpoints="{medium: 768}" breakpoint="mediumAndAbove">
-						<img v-if="index === 0" :src="$thumbor(thumbor.imgMob.width, thumbor.imgMob.height) + img.data.file.url" :alt="img.data.seoalt">
-					</hide-at>
-					<show-at :breakpoints="{medium: 768}" breakpoint="mediumAndAbove">
-						<img v-if="index === 0" :src="$thumbor(thumbor.imgDesk.width, thumbor.imgDesk.height) + img.data.file.url" :alt="img.data.seoalt">
-					</show-at>
-				</div>
-			</div>
-			<div v-else>
-				<div v-for="(img, index) in prev.images" :key="index">
-					<hide-at :breakpoints="{medium: 768}" breakpoint="mediumAndAbove">
-						<img v-if="index === 0" :src="$thumbor(thumbor.imgMob.width, thumbor.imgMob.height) + img.data.file.url" :alt="img.data.seoalt">
-					</hide-at>
-					<show-at :breakpoints="{medium: 768}" breakpoint="mediumAndAbove">
-						<img v-if="index === 0" :src="$thumbor(thumbor.imgDesk.width, thumbor.imgDesk.height) + img.data.file.url" :alt="img.data.seoalt">
-					</show-at>
-				</div>
-			</div>
-			<span v-if="tag.visible" class="c-article-preview__tag">{{ tag.text }}</span>
-		</figure>
-		<div class="c-article-preview__content">
-			<h4 v-if="prev.title" class="c-article-preview__title">{{ introCut(prev.title, trim.title)}}</h4>
-			<p v-if="prev.additional_fields.intro" class="c-article-preview__desc">{{ introCut(prev.additional_fields.intro, trim.description) }}</p>
-		</div>
-	</nuxt-link>
+  <nuxt-link tag='article' :to="{path: 'news/' + prev.id}" class="c-article-preview">
+    <!-- <nuxt-link tag='article' :to="{/news/${pre.id}}" class="c-article-preview"> -->
+    <figure class="c-article-preview__image">
+      <h1> {{ prev.id }} </h1>
+      <div v-if="prev.featured_image.length > 0">
+        <div v-for="(img, index) in prev.featured_image" :key="index">
+          <hide-at :breakpoints="{medium: 768}" breakpoint="mediumAndAbove">
+            <img v-if="index === 0" :src="$thumbor(thumbor.imgMob.width, thumbor.imgMob.height) + img.data.file.url" :alt="img.data.seoalt">
+          </hide-at>
+          <show-at :breakpoints="{medium: 768}" breakpoint="mediumAndAbove">
+            <img v-if="index === 0" :src="$thumbor(thumbor.imgDesk.width, thumbor.imgDesk.height) + img.data.file.url" :alt="img.data.seoalt">
+          </show-at>
+        </div>
+      </div>
+      <div v-else>
+        <div v-for="(img, index) in prev.images" :key="index">
+          <hide-at :breakpoints="{medium: 768}" breakpoint="mediumAndAbove">
+            <img v-if="index === 0" :src="$thumbor(thumbor.imgMob.width, thumbor.imgMob.height) + img.data.file.url" :alt="img.data.seoalt">
+          </hide-at>
+          <show-at :breakpoints="{medium: 768}" breakpoint="mediumAndAbove">
+            <img v-if="index === 0" :src="$thumbor(thumbor.imgDesk.width, thumbor.imgDesk.height) + img.data.file.url" :alt="img.data.seoalt">
+          </show-at>
+        </div>
+      </div>
+      <span v-if="tag.visible" class="c-article-preview__tag">{{ tag.text }}</span>
+    </figure>
+    <div class="c-article-preview__content">
+      <h4 v-if="prev.title" class="c-article-preview__title">{{ introCut(prev.title, trim.title)}}</h4>
+      <p v-if="prev.additional_fields.intro" class="c-article-preview__desc">{{ introCut(prev.additional_fields.intro, trim.description) }}</p>
+    </div>
+  </nuxt-link>
 </template>
 
 <script>
@@ -385,12 +387,12 @@ export default {
     }
   }
 }
-.b-search-result{
-    .c-article-preview{
-        width:47%;
-        @include breakpoint(desktop) {
-            width:24%;
-        }
+.b-search-result {
+  .c-article-preview {
+    width: 47%;
+    @include breakpoint(desktop) {
+      width: 24%;
     }
+  }
 }
 </style>
