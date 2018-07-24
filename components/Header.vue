@@ -14,7 +14,7 @@
         <div class="c-nav__search" :class="{'is-hidden': dropMenuState}" @click="stateController('search')">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17">
             <g id="search" transform="translate(-595.064 -192)">
-                <path id="Path_14" d="M27.792 26.793L23.7 22.706a7.158 7.158 0 1 0-1 1l4.087 4.083a.708.708 0 1 0 1-1zM18.164 23.9a5.74 5.74 0 1 1 5.742-5.738 5.746 5.746 0 0 1-5.742 5.738z" class="cls-1" data-name="Path 14" transform="translate(584.064 181)"/>
+              <path id="Path_14" d="M27.792 26.793L23.7 22.706a7.158 7.158 0 1 0-1 1l4.087 4.083a.708.708 0 1 0 1-1zM18.164 23.9a5.74 5.74 0 1 1 5.742-5.738 5.746 5.746 0 0 1-5.742 5.738z" class="cls-1" data-name="Path 14" transform="translate(584.064 181)" />
             </g>
           </svg>
         </div>
@@ -31,19 +31,20 @@
               </li>
               <li v-for="(menuItem, index) in nav" :key="index">
                 <div class="c-nav__menu-arrow u-only-mob">
-                  <svg v-if="menuItem.children.length > 0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                    viewBox="0 0 444.819 444.819" style="enable-background:new 0 0 444.819 444.819;" xml:space="preserve">
+                  <svg v-if="menuItem.children.length > 0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 444.819 444.819" style="enable-background:new 0 0 444.819 444.819;" xml:space="preserve">
                     <g>
                       <path d="M434.252,114.203l-21.409-21.416c-7.419-7.04-16.084-10.561-25.975-10.561c-10.095,0-18.657,3.521-25.7,10.561
                         L222.41,231.549L83.653,92.791c-7.042-7.04-15.606-10.561-25.697-10.561c-9.896,0-18.559,3.521-25.979,10.561l-21.128,21.416
                         C3.615,121.436,0,130.099,0,140.188c0,10.277,3.619,18.842,10.848,25.693l185.864,185.865c6.855,7.23,15.416,10.848,25.697,10.848
                         c10.088,0,18.75-3.617,25.977-10.848l185.865-185.865c7.043-7.044,10.567-15.608,10.567-25.693
-                        C444.819,130.287,441.295,121.629,434.252,114.203z"/>
+                        C444.819,130.287,441.295,121.629,434.252,114.203z" />
                     </g>
                   </svg>
                 </div>
-                <span class="c-nav__menu-item" @click="activateThisSubmenu">{{ menuItem.name }}</span>
-                <div v-if="menuItem.children.length > 0" class="c-nav__submenu-container" @mouseover="submenuMouseEvent" @mouseleave="submenuMouseEvent">
+                <nuxt-link tag="a" :to="{path: '/tag/' + menuItem.name } ">
+                  <span class="c-nav__menu-item " @click="activateThisSubmenu ">{{ menuItem.name }}</span>
+                </nuxt-link>
+                <div v-if="menuItem.children.length> 0" class="c-nav__submenu-container" @mouseover="submenuMouseEvent" @mouseleave="submenuMouseEvent">
                   <div class="c-nav__submenu-wrapper main-wrapper u-clearfix">
                     <ul class="c-nav__submenu-list">
                       <div class="c-nav__submenu-list-mid-border"></div>
@@ -52,7 +53,10 @@
                       </li>
                     </ul>
                     <ul class="c-nav__submenu-articles u-only-desktop">
-                      <h4><span>top&nbsp;</span><span>articles</span></h4>
+                      <h4>
+                        <span>top&nbsp;</span>
+                        <span>articles</span>
+                      </h4>
                       <li v-for="(articleItem, index) in topArticles" :key="index">
                         <img :src="articleItem.image" alt="article preview image">
                         <h6>{{ articleItem.text }}</h6>
@@ -66,14 +70,14 @@
               <div class="c-nav__menu-link c-nav__menu-link--fb">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.101 17.36">
                   <g id="facebook" transform="translate(-461.252 -240.951)">
-                      <path id="Facebook-2" d="M116.447 3.363v2.39H114.7v2.923h1.751v8.685h3.6V8.676h2.414s.226-1.4.336-2.934h-2.736v-2a.849.849 0 0 1 .78-.7h1.96V0h-2.665c-3.782 0-3.693 2.926-3.693 3.363z" class="cls-1" data-name="Facebook" transform="translate(346.556 240.95)"/>
+                    <path id="Facebook-2" d="M116.447 3.363v2.39H114.7v2.923h1.751v8.685h3.6V8.676h2.414s.226-1.4.336-2.934h-2.736v-2a.849.849 0 0 1 .78-.7h1.96V0h-2.665c-3.782 0-3.693 2.926-3.693 3.363z" class="cls-1" data-name="Facebook" transform="translate(346.556 240.95)" />
                   </g>
                 </svg>
               </div>
               <div class="c-nav__menu-link c-nav__menu-link--yt">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.148 12.772">
                   <g id="youtube" transform="translate(-658.06 -99.062)">
-                      <path id="XMLID_823_" d="M17.441 47.013c-.655-.779-1.865-1.1-4.174-1.1H4.882c-2.363 0-3.593.338-4.245 1.167C0 47.893 0 49.084 0 50.732v3.142c0 3.194.755 4.815 4.882 4.815h8.385c2 0 3.113-.28 3.831-.968.736-.7 1.051-1.855 1.051-3.847v-3.142c-.001-1.738-.049-2.932-.708-3.719zm-5.79 5.723l-3.808 1.99a.585.585 0 0 1-.857-.519v-3.966a.585.585 0 0 1 .855-.52L11.65 51.7a.585.585 0 0 1 0 1.038z" class="cls-1" transform="translate(658.06 53.145)"/>
+                    <path id="XMLID_823_" d="M17.441 47.013c-.655-.779-1.865-1.1-4.174-1.1H4.882c-2.363 0-3.593.338-4.245 1.167C0 47.893 0 49.084 0 50.732v3.142c0 3.194.755 4.815 4.882 4.815h8.385c2 0 3.113-.28 3.831-.968.736-.7 1.051-1.855 1.051-3.847v-3.142c-.001-1.738-.049-2.932-.708-3.719zm-5.79 5.723l-3.808 1.99a.585.585 0 0 1-.857-.519v-3.966a.585.585 0 0 1 .855-.52L11.65 51.7a.585.585 0 0 1 0 1.038z" class="cls-1" transform="translate(658.06 53.145)" />
                   </g>
                 </svg>
               </div>
@@ -93,18 +97,18 @@
 </template>
 
 <script>
-import Search from '~/components/Search.vue';
-import Signup from '~/components/Signup.vue';
-import Login from '~/components/Login.vue';
+import Search from "~/components/Search.vue";
+import Signup from "~/components/Signup.vue";
+import Login from "~/components/Login.vue";
 
 export default {
-  data () {
+  data() {
     return {
       dropMenuState: false,
       searchState: false,
       signupState: false,
       loginState: false
-    }
+    };
   },
   computed: {
     nav() {
@@ -117,15 +121,17 @@ export default {
   watch: {
     dropMenuState() {
       if (!this.dropMenuState) {
-        const activeMenuItems = document.getElementsByClassName('c-nav__menu-item js-active');
+        const activeMenuItems = document.getElementsByClassName(
+          "c-nav__menu-item js-active"
+        );
         for (let item of activeMenuItems) {
           const itemArrow = item.previousSibling;
           const itemArrowSvg = itemArrow.childNodes[0];
           const itemSubmenuList = item.nextSibling.childNodes[0].childNodes[0];
-          itemArrowSvg.style.transform = 'rotate(0deg)';
-          itemSubmenuList.style.height = 0 + 'px';
-          item.classList.remove('js-active');
-          itemSubmenuList.classList.remove('js-active');
+          itemArrowSvg.style.transform = "rotate(0deg)";
+          itemSubmenuList.style.height = 0 + "px";
+          item.classList.remove("js-active");
+          itemSubmenuList.classList.remove("js-active");
         }
       } else {
         if (this.signupState) {
@@ -145,29 +151,33 @@ export default {
         const submenuList = menuItem.nextSibling.childNodes[0].childNodes[0];
         const submenuListChildCount = submenuList.childElementCount - 1; // -1 because of the div (border) used on desktop
         const submenuListChildHeight = submenuList.childNodes[1].offsetHeight; // [0] because of the div (border) used on desktop
-        const submenuListTotalHeight = submenuListChildCount * submenuListChildHeight;
+        const submenuListTotalHeight =
+          submenuListChildCount * submenuListChildHeight;
 
-        if (menuItem.classList.contains('js-active')) {
-          menuItemArrowSvg.style.transform = 'rotate(0deg)';
-          submenuList.style.height = 0 + 'px';
-          menuItem.classList.remove('js-active');
-          submenuList.classList.remove('js-active');
+        if (menuItem.classList.contains("js-active")) {
+          menuItemArrowSvg.style.transform = "rotate(0deg)";
+          submenuList.style.height = 0 + "px";
+          menuItem.classList.remove("js-active");
+          submenuList.classList.remove("js-active");
         } else {
-          const activeMenuItems = document.getElementsByClassName('c-nav__menu-item js-active');
+          const activeMenuItems = document.getElementsByClassName(
+            "c-nav__menu-item js-active"
+          );
           for (let item of activeMenuItems) {
             const itemArrow = item.previousSibling;
             const itemArrowSvg = itemArrow.childNodes[0];
-            const itemSubmenuList = item.nextSibling.childNodes[0].childNodes[0];
-            itemArrowSvg.style.transform = 'rotate(0deg)';
-            itemSubmenuList.style.height = 0 + 'px';
-            item.classList.remove('js-active');
-            itemSubmenuList.classList.remove('js-active');
+            const itemSubmenuList =
+              item.nextSibling.childNodes[0].childNodes[0];
+            itemArrowSvg.style.transform = "rotate(0deg)";
+            itemSubmenuList.style.height = 0 + "px";
+            item.classList.remove("js-active");
+            itemSubmenuList.classList.remove("js-active");
           }
-          menuItem.classList.add('js-active');
-          submenuList.classList.add('js-active');
-          if (submenuList.classList.contains('js-active')) {
-            menuItemArrowSvg.style.transform = 'rotate(180deg)';
-            submenuList.style.height = submenuListTotalHeight + 'px';
+          menuItem.classList.add("js-active");
+          submenuList.classList.add("js-active");
+          if (submenuList.classList.contains("js-active")) {
+            menuItemArrowSvg.style.transform = "rotate(180deg)";
+            submenuList.style.height = submenuListTotalHeight + "px";
           }
         }
       }
@@ -176,18 +186,18 @@ export default {
       if (window.innerWidth > 767) {
         const submenuContainer = e.currentTarget;
         const menuItem = submenuContainer.previousSibling;
-        if (e.type === 'mouseleave') {
-          menuItem.classList.remove('on-submenu-container-hover');
+        if (e.type === "mouseleave") {
+          menuItem.classList.remove("on-submenu-container-hover");
         } else {
-          menuItem.classList.add('on-submenu-container-hover');
+          menuItem.classList.add("on-submenu-container-hover");
         }
       }
     },
     stateController(arg) {
-      const body = document.getElementsByTagName('body')[0];
+      const body = document.getElementsByTagName("body")[0];
 
       // arg case 'search'
-      if (arg === 'search') {
+      if (arg === "search") {
         this.searchState = !this.searchState;
         if (this.signupState) {
           this.signupState = false;
@@ -195,8 +205,8 @@ export default {
           this.loginState = false;
         }
 
-      // arg case 'signup'
-      } else if (arg === 'signup') {
+        // arg case 'signup'
+      } else if (arg === "signup") {
         this.signupState = !this.signupState;
         if (this.dropMenuState) {
           this.dropMenuState = false;
@@ -204,8 +214,8 @@ export default {
           this.loginState = false;
         }
 
-      // arg case 'login'
-      } else if (arg === 'login') {
+        // arg case 'login'
+      } else if (arg === "login") {
         this.loginState = !this.loginState;
         if (this.dropMenuState) {
           this.dropMenuState = false;
@@ -215,9 +225,9 @@ export default {
       }
 
       if (this.searchState || this.signupState || this.loginState) {
-        body.style.overflow = 'hidden';
+        body.style.overflow = "hidden";
       } else {
-        body.style.overflow = 'initial';
+        body.style.overflow = "initial";
       }
     }
   },
@@ -226,11 +236,11 @@ export default {
     AppSignup: Signup,
     AppLogin: Login
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/scss/settings';
+@import "~assets/scss/settings";
 
 .main-nav {
   position: relative;
@@ -267,7 +277,7 @@ export default {
     width: 2rem;
     height: 2rem;
     transform: rotate(0deg);
-    transition: .3s ease-in-out;
+    transition: 0.3s ease-in-out;
     cursor: pointer;
 
     span {
@@ -279,13 +289,14 @@ export default {
       opacity: 1;
       left: 0;
       transform: rotate(0deg);
-      transition: .15s ease-in-out;
+      transition: 0.15s ease-in-out;
 
       &:nth-child(1) {
         top: 0;
       }
-      &:nth-child(2), &:nth-child(3) {
-        top: .6rem;
+      &:nth-child(2),
+      &:nth-child(3) {
+        top: 0.6rem;
       }
       &:nth-child(4) {
         top: 1.2rem;
@@ -351,7 +362,7 @@ export default {
     }
 
     .cls-1 {
-      fill:#fff
+      fill: #fff;
     }
   }
 
@@ -362,7 +373,7 @@ export default {
     padding-top: 4.4rem;
     height: 100vh;
     overflow: hidden;
-    transition: left .3s ease;
+    transition: left 0.3s ease;
 
     @include breakpoint(desktop) {
       left: 0;
@@ -391,7 +402,7 @@ export default {
   }
 
   &__menu-list {
-    font-family: 'Lato-Black';
+    font-family: "Lato-Black";
     @include fontSizeRem(17, 12);
     @include lineHeightRem(22, 15);
     @include letterSpacingEm(50, 0);
@@ -414,7 +425,7 @@ export default {
         color: $sun-yellow;
         margin-top: 0;
         margin-right: 3.2rem;
-        
+
         // hadn't better solution for solving this then nth-child selector because of logo in the middle
         // should be changed in case of more li elements in menu list
         &:nth-child(5) {
@@ -433,7 +444,7 @@ export default {
               content: "";
               display: block;
               height: 3px;
-              margin-top: .4rem;
+              margin-top: 0.4rem;
               background-color: $white;
             }
 
@@ -450,7 +461,7 @@ export default {
               content: "";
               display: block;
               height: 3px;
-              margin-top: .4rem;
+              margin-top: 0.4rem;
               background-color: $white;
             }
           }
@@ -501,12 +512,12 @@ export default {
   }
 
   &__submenu-list {
-    font-family: 'Lato';
+    font-family: "Lato";
     @include fontSizeRem(18, 14);
     @include lineHeightRem(35, 24);
     @include letterSpacingEm(50, 50);
     height: 0;
-    transition: height .3s ease;
+    transition: height 0.3s ease;
     overflow: auto;
 
     @include breakpoint(desktop) {
@@ -532,7 +543,7 @@ export default {
       padding-left: 3.6rem;
 
       @include breakpoint(desktop) {
-        font-family: 'Lato-Black';
+        font-family: "Lato-Black";
         text-transform: uppercase;
         color: #000;
         display: inline-block;
@@ -564,14 +575,14 @@ export default {
 
     h4 {
       span:first-child {
-        font-family: 'Lato-Black';
+        font-family: "Lato-Black";
         @include fontSizeRem(0, 18);
         @include lineHeightRem(0, 48);
         @include letterSpacingEm(0, 0);
       }
 
       span:last-child {
-        font-family: 'Airways';
+        font-family: "Airways";
         @include fontSizeRem(0, 18);
         @include lineHeightRem(0, 48);
         @include letterSpacingEm(0, 0);
@@ -583,17 +594,17 @@ export default {
       cursor: pointer;
       display: inline-block;
       width: 50%;
-      margin-bottom: .8rem;
+      margin-bottom: 0.8rem;
 
       h6 {
-        font-family: 'Lato';
+        font-family: "Lato";
         @include fontSizeRem(0, 12);
         @include lineHeightRem(0, 15);
         @include letterSpacingEm(0, 50);
         text-transform: initial;
         float: left;
         width: 13.5rem;
-        margin-left: .9rem;
+        margin-left: 0.9rem;
       }
 
       img {
@@ -606,13 +617,13 @@ export default {
 
   &__menu-arrow {
     display: inline-block;
-    width: .8rem;
+    width: 0.8rem;
     margin-right: 2rem;
 
     svg {
       fill: $sun-yellow;
-      margin-bottom: .2rem;
-      transition: .15s ease-in-out;
+      margin-bottom: 0.2rem;
+      transition: 0.15s ease-in-out;
     }
   }
 
@@ -643,40 +654,44 @@ export default {
       margin-right: 3.6rem;
 
       @include breakpoint(desktop) {
-        width: .7rem;
+        width: 0.7rem;
         margin-right: 2.2rem;
       }
     }
 
     &--yt {
       width: 2.5rem;
-      padding: .2rem 0;
+      padding: 0.2rem 0;
 
       @include breakpoint(desktop) {
         width: 2rem;
         margin-right: 0;
-        padding: .1rem 0;
+        padding: 0.1rem 0;
       }
     }
   }
 }
 
 // animations for search, signup and login components
-.slide-enter-active, .slide-leave-active {
+.slide-enter-active,
+.slide-leave-active {
   left: 0;
-  transition: left .2s ease-in-out;
+  transition: left 0.2s ease-in-out;
 }
 
-.slide-enter, .slide-leave-to {
+.slide-enter,
+.slide-leave-to {
   left: -100%;
 }
 
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   opacity: 1;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 </style>

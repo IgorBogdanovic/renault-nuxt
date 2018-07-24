@@ -1,8 +1,6 @@
 <template>
-  <nuxt-link tag='article' :to="{path: 'news/' + prev.id}" class="c-article-preview">
-    <!-- <nuxt-link tag='article' :to="{/news/${pre.id}}" class="c-article-preview"> -->
+  <nuxt-link tag='a' :to="{path: '/article/' + prev.id}" class="c-article-preview" replace>
     <figure class="c-article-preview__image">
-      <h1> {{ prev.id }} </h1>
       <div v-if="prev.featured_image.length > 0">
         <div v-for="(img, index) in prev.featured_image" :key="index">
           <hide-at :breakpoints="{medium: 768}" breakpoint="mediumAndAbove">

@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <app-pagination></app-pagination> -->
-    <app-breadcrumbs></app-breadcrumbs>
+    <!-- <app-breadcrumbs></app-breadcrumbs> -->
     <app-article-content :article="article"></app-article-content>
   </div>
 </template>
